@@ -1,0 +1,768 @@
+@use "../../abstracts/mixin";
+
+.finance-management {
+    padding: 32px 16px !important;
+    background-color: #FFFFFF !important;
+    border-radius: 12px;
+    border: 1px solid #C3DCF9;
+    display: flex;
+    gap: 0px;
+    
+    @include mixin.breakpoint(sm){
+       background-color: unset !important; 
+       border: unset !important;
+       padding: unset !important; 
+       gap:16px;
+    }
+    .total-jobs {
+        background-color: #E9F3FF !important;
+        border: 1px solid #C3DCF9 !important;
+        border-radius: 12px;
+    }
+
+    .data-table {
+        border: none !important;
+        padding-left: 0px;
+        padding-right: 0px;
+        padding-bottom: 0px;
+        margin-bottom: 0px ;
+        @include mixin.breakpoint (sm){
+            border:1px solid #C3DCF9 !important;
+             gap:16px !important;
+             padding-bottom: 32px !important;
+        }
+    }
+
+    .table-title-section {
+        position: relative;
+        top: 61px;
+        @include mixin.breakpoint(sm){
+            top:24px;
+        }
+    }
+
+    .table-subheader {
+        margin-top: 0px !important;
+    }
+
+
+    .filter-date {
+
+        .react-datepicker {
+            right: 0px;
+            left: 1rem;
+        }
+
+        .position-relative {
+            .px-4 {
+                height: 56px !important;
+                width: 350px !important;
+                @include mixin.breakpoint (sm){
+                    width:268px !important;
+                }
+            }
+
+            .input-icon {
+                right: -12.6rem;
+                @include mixin.breakpoint(sm){
+                    right: -7.4rem !important; 
+            }
+        }
+            // input[type="text"]{
+            //     border:2px solid #5D88CC !important;
+            // }
+
+        }
+    }
+
+    .from-date {
+        margin-bottom: 1.5rem;
+    }
+
+    .react-datepicker-popper{
+        z-index: 100 !important;
+        left: 3.5rem !important;
+        @include mixin.breakpoint(sm){
+            left: 2.6rem !important;
+        }
+    }
+
+    .jobs-container{
+        // scrollbar-color: transparent transparent; 
+    .job-summary{
+       gap:8px !important;
+       @include mixin.breakpoint(sm){
+        margin: 0px 0px;
+        gap:16px !important;
+
+       }
+       .seperator{
+        height: 72px !important;
+       }
+    }
+
+    .summary-box{
+        padding:20px 12px !important;
+        height: 81px !important;
+        width: max-content !important;
+    }
+    .job-summary p{
+        font-size:12px !important;
+    }
+   }
+   
+   .jobs-container::-webkit-scrollbar {
+    height: 6px;
+    background: transparent;
+  }
+  .search-container{
+    gap:12px !important;
+    .filter-dropdown{
+        img{
+            width:20px;
+            height: 20px;
+        }
+    }
+    @include mixin.breakpoint (sm){
+        margin-top: 48px;
+        margin-bottom: 0px;
+    }
+  }
+  .dataTable-container{
+   @include mixin.breakpoint (sm){
+    margin-top: 24px;
+   }
+  }
+  
+  .tag-box {
+    @include mixin.breakpoint (sm){
+        margin-top: 24px;
+        margin-bottom:4px;
+    }
+  }
+
+  .apply-top{
+    justify-content: left !important;
+  }
+  
+  
+    .default {
+        .datepicker {
+            width: 260px !important;
+        }
+    }
+
+    .chrome  {
+        .datepicker {
+            width: 248px !important;
+        }
+    }
+    
+ .pagination{
+    gap:12px;
+    .page-link {
+        font-size: 12px !important;
+    }
+ }
+ 
+ .excel-button{
+    gap: 4px;
+    img{
+        padding-right: 0px;
+    }
+    @include mixin.breakpoint (sm){
+      top:61px !important;
+    }
+ }
+ 
+ .pagination-container{
+    margin-top: 0px !important;
+    @include mixin.breakpoint (sm){
+        margin-top: 0px !important;
+        padding-top:0px !important ;
+    }
+ }
+
+ .page-item{
+    margin-right: 0px !important;
+ }
+
+.prev-link{
+    padding: 0px !important;
+    width: fit-content !important;
+
+}
+
+.next-link{
+    padding: 0px !important;
+   
+    width: 20px !important;
+}
+
+@include mixin.breakpoint (sm){
+    .rdt_TableRow{
+    .rdt_TableCell:last-child{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 52px !important;
+        max-width: 52px !important;
+        min-width: 52px !important;
+    }}
+
+    .rdt_TableHead{
+        .rdt_TableHeadRow {
+            .rdt_TableCol:last-child{
+                width: 52px !important;
+                max-width: 52px !important;
+                min-width: 52px !important;
+            }
+        }
+    }
+    
+}
+.rdt_TableBody{
+    margin-bottom: 12px !important;
+    @include mixin.breakpoint (sm){
+        margin-bottom:  8px !important;
+    }
+}
+
+.filter-pop  {
+    .due-date {
+         margin-bottom: 16px !important;
+    }
+ 
+}
+
+.business-checkbox-list {
+    height: unset !important;
+    overflow: visible;
+  .ant-checkbox-wrapper {
+    padding: 8px !important;
+   
+  }
+
+  > div:first-child .ant-checkbox-wrapper {
+    margin-top: 0;
+  }
+
+  > div:last-child .ant-checkbox-wrapper {
+    margin-bottom: 0;
+  }
+
+}
+
+.tags-container{
+    gap:12px !important;
+}
+
+.filter-data{
+    padding: 4px 8px !important;
+    margin-right: 0px !important;
+    margin: 0px !important;
+}
+
+.tag-box{
+    position: relative;
+    border: 1px solid #6B717D;
+    padding: 16px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-bottom: 36px;
+    flex-wrap: wrap;
+
+       @include mixin.breakpoint (sm){
+        margin-bottom: 8px;
+         .apply-top {
+    margin-bottom: 22px;}
+       }
+
+    .filter-btn-container{
+        position: unset;
+         @include mixin.breakpoint (sm){
+           position:absolute;
+ }
+    }
+}
+.inner-tag{
+    margin-top: 5px !important;
+     @include mixin.breakpoint (sm){
+        margin-top: 0px !important;
+     }
+
+}
+
+.filter-data{ 
+    gap:8px !important;
+     @include mixin.breakpoint (sm){
+        gap:0px !important;
+     }
+    .type{
+        gap:8px !important;
+        @include mixin.breakpoint (sm){
+             margin-top: 8px !important;
+             gap:8px !important;    
+        }
+     
+    }
+}
+
+.table-pop{
+    margin: 0px !important;
+}
+
+}
+
+
+
+
+// .tax-invoice {
+//     display: flex;
+//     // justify-content: center;
+//     // align-items: center;
+//     min-height: 100vh;
+//     position: relative;
+    
+//     .watermark {
+//         position: absolute;
+//         top: 50%;
+//         left: 50%;
+//         transform: translate(-50%, -50%);
+//         pointer-events: none;
+
+//         img {
+//             width: auto;
+//             height: auto;
+//         }
+//     }
+// }
+
+.tax-invoice {
+    display: flex;
+    // justify-content: center;
+    // align-items: center;
+    min-height: 100vh;
+    position: relative;
+    gap:24px;
+    padding-top: 32px ;
+    padding-bottom: 32px;
+    
+    .header{
+        margin-top: 0px !important;
+    }
+    .invoice-to{
+        padding-top: 20px !important;
+    }
+    .watermark {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+
+        img {
+            width: 280px;
+            height: 264px;
+        }
+    }
+
+    .back-page{
+        gap:10px !important;
+    }
+
+    .tech-view-edit-btn{
+        gap: 10px !important;
+    }
+
+    .tech-view-edit-btn{
+        padding: 8px 12px !important;
+    }
+
+    .section-sub{
+        padding:8px 0px !important;
+        height: 36px;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+
+    }
+    .quote-title{
+        padding:8px 0px !important;
+        height: 36px;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+    }
+    .quote-detail{
+        .header {
+            p{
+                margin-bottom: 0px !important;
+            }
+
+            .logo-container{
+                @include mixin.breakpoint (sm){
+                    max-width: 100px;
+                }
+            }
+        }
+    
+        .box-info{
+            gap: 20px !important;
+            margin-top: 20px !important;
+
+        }
+        .footer{
+            height: 24px;
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            margin-top: 34px;
+        }
+        .table-info{
+            margin-top: 20px !important;
+        }
+        .total span{
+            margin-left: 2px !important;
+        }
+        .invoice-box{
+            display: flex;
+            gap: 8px;
+            flex-direction: column;
+            p{
+                margin: 0px !important;
+            }
+        }
+        .payment-box{
+            display: flex;
+            gap: 12px;
+            flex-direction: column;
+            p{
+                margin: 0px !important;
+            }
+            h4{
+                margin: 0px !important;
+            }
+        }
+        .thank{
+            margin-top: 0px !important;
+        }
+        .notes{
+            margin-top: 0px !important;
+        }
+    }
+    @include mixin.breakpoint (sm){
+      gap:16px !important;
+      padding: 0px;
+    
+        .table-info{
+            margin-top: 20px !important;
+        }
+        .details{
+            .invoice-to{
+                padding-top: 20px !important;
+            }
+        }
+        .total span{
+            margin-left: 2px !important;
+        }
+
+        .invoice-box{
+            display: flex;
+            gap: 8px;
+            flex-direction: column;
+            p{
+                margin: 0px !important;
+            }
+        }
+        .payment-box{
+            display: flex;
+            gap: 12px;
+            flex-direction: column;
+            p{
+                margin: 0px !important;
+            }
+            h4{
+                margin: 0px !important;
+            }
+        }
+        .notes{
+            margin-top: 0px !important;
+        }
+        .thank{
+            margin-top: 0px !important;
+        }
+        .footer{
+            margin-top: 24px !important;
+            @include mixin.breakpoint (sm){
+                margin-top: 40px;
+            }
+        }
+    }
+    
+}
+
+.finance-sparepart{
+    .rdt_TableCol:last-child{
+        max-width: 60px !important;
+    }
+    .rdt_TableCell:last-child{
+        max-width: 60px !important;
+    }
+}
+
+.finance-sats{
+    .position-relative {
+    .react-datepicker{
+        right: 4.5rem !important;
+        @include mixin.breakpoint(sm){
+            right: 2.6rem !important;
+        }
+    }
+}
+
+}
+
+.finance-edit{
+.radio-option-dropdown{
+    .css-1nmdiq5-menu{
+    .radio-option{
+        padding:8px !important;
+    }}
+}
+@include mixin.breakpoint (sm){
+    .form-row{
+        gap:16px !important;
+    }
+    }
+
+    .react-datepicker-popper{
+        z-index: 24 !important;
+    
+    }
+}
+
+
+.finance-spare-modal{
+
+            gap:24px !important;
+            .footer{
+                margin-top: 0px !important;
+            }
+
+             .finance-add-part{
+                gap: 8px  !important;
+                display: flex;
+            flex-direction: column;
+            }
+             .form-row{
+        gap:16px !important;
+    }
+
+            @include mixin.breakpoint (sm){
+    .form-row{
+        gap:16px !important;
+    }
+    }
+    
+    .finance-add-modal{
+        gap: 16px;
+        display: flex;
+        flex-direction: column;
+    }
+    
+ }
+
+// Invoice Details Summary Section Styles (New Design)
+.tax-invoice {
+    .invoice-summary-section {
+        display: flex;
+        gap: 24px;
+        margin-top: 24px;
+        padding: 0 40px;
+        align-items: center;
+
+        @include mixin.breakpoint(sm) {
+            flex-direction: column;
+            padding: 0 24px;
+        }
+
+        .invoice-thanks-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            min-width: 0;
+
+            @include mixin.breakpoint(sm) {
+                gap: 24px;
+                order: 2;
+            }
+
+            .invoice-thanks-content {
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+            }
+
+            .invoice-thanks-title {
+                font-size: 16px;
+                font-weight: 600;
+                color: #0B1426;
+                line-height: 24px;
+                margin: 0;
+                @include mixin.breakpoint(sm) {
+                    font-size: 10px;
+                    line-height: 20px;
+                }
+            }
+
+            .invoice-thanks-message {
+                font-size: 14px;
+                font-weight: 500;
+                color: #6b717d;
+                line-height: 20px;
+                margin: 0;
+                @include mixin.breakpoint(sm) {
+                    font-size: 8px;
+                    line-height: 12px;
+                    color: #0B1426;
+                }
+            }
+
+            .invoice-signature-section {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                width: 90px;
+
+                @include mixin.breakpoint(sm) {
+                    padding-right: 0;
+                }
+
+                .invoice-signature-line {
+                    width: 100%;
+                    height: 0;
+                    border-top: 1px dashed #183571;
+                    padding-top: 4px;
+                }
+
+                .invoice-signature-label {
+                    font-size: 14px;
+                    font-weight: 500;
+                    color: #0B1426;
+                    line-height: 20px;
+                    text-align: center;
+                    width: 100%;
+                    margin-bottom: 0 !important;
+                    @include mixin.breakpoint(sm) {
+                        font-size: 8px;
+                        line-height: 16px;
+                    }
+                }
+            }
+        }
+
+        .invoice-summary-right {
+            display: flex;
+            flex-direction: column;
+            min-width: 274px;
+            flex-shrink: 0;
+
+            @include mixin.breakpoint(sm) {
+                width: 100%;
+                order: 1;
+            }
+        }
+
+        .invoice-summary-box {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            width: 100%;
+            border-radius: 8px;
+            padding: 12px;
+
+            @include mixin.breakpoint(sm) {
+                width: 100%;
+                padding-bottom: 0;
+                padding-top: 0;
+            }
+
+            &.invoice-summary-box-payment {
+                padding-top: 0 !important;
+            }
+
+            .invoice-summary-row {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                font-size: 14px;
+                line-height: 20px;
+                padding: 0;
+                @include mixin.breakpoint(sm) {
+                    font-size: 8px;
+                    line-height: 12px;
+                }
+
+                .invoice-summary-label {
+                    font-weight: 500;
+                    color: #0B1426;
+                    display: flex;
+                    gap: 2px;
+                    align-items: center;
+
+                    .invoice-summary-percent {
+                        font-weight: 600;
+                        @include mixin.breakpoint(sm) {
+                            font-weight: 700;
+                        }
+                    }
+                }
+
+                .invoice-summary-value {
+                    font-size: 14px;
+                    font-weight: 500;
+                    color: #0B1426;
+                    text-align: right;
+                    @include mixin.breakpoint(sm) {
+                        font-size: 10px;
+                        line-height: 12px;
+                    }
+                }
+            }
+
+            .invoice-summary-final {
+                background-color: #F1F4F8;
+                padding: 4px 12px;
+                margin: 0 -12px;
+                gap: 20px;
+                .invoice-summary-label-final {
+                    font-size: 16px;
+                    font-weight: 700;
+                    color: #0B1426;
+                    line-height: 20px;
+                    @include mixin.breakpoint(sm) {
+                        font-size: 8px;
+                        line-height: 12px;
+                    }
+                }
+
+                .invoice-summary-value-final {
+                    font-size: 16px;
+                    font-weight: 700;
+                    color: #0B1426;
+                    text-align: right;
+                    line-height: 20px;
+                    @include mixin.breakpoint(sm) {
+                        font-size: 12px;
+                        line-height: 14px;
+                    }
+                }
+            }
+        }
+    }
+}
+ 

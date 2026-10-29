@@ -1,0 +1,1298 @@
+@use "../../abstracts/variable";
+@use "../../abstracts/mixin";
+
+.job-managements {
+  display: flex;
+  gap: 24px;
+  flex-direction: column;
+
+  @include mixin.breakpoint(sm) {
+
+    padding: unset;
+    border: none;
+    background-color: inherit;
+    gap: 16px;
+  }
+
+  @include mixin.breakpoint(lmd) {
+    padding: 1rem 5rem !important;
+  }
+
+  @include mixin.breakpoint(md) {
+    padding: 1rem 1rem !important;
+    border: none;
+  }
+
+  @media (min-width: 1500px) and (max-width: 1515px) {
+    .react-datepicker-popper {
+      transform:translate(-18.4286px, 49.9048px) !important;
+    }
+  }
+ 
+
+  .job-widgets {
+    padding: 32px 16px;
+    background-color: #FFFFFF;
+    border: 1px solid variable.$primary-100;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    .date-container {
+      display: flex;
+      justify-content: flex-end;
+
+      // margin-bottom: 16px;
+      .date {
+        padding: 8px 12px;
+        border: 1px solid variable.$gray-200;
+        border-radius: 6px;
+        font-size: 16px;
+        font-weight: 600;
+        color: #0B1426;
+        line-height: 24px;
+      }
+
+      input[type="date"] {
+        border: unset !important;
+        padding: 0px;
+        height: unset;
+      }
+
+      input[type="date"]:focus {
+        border: unset !important;
+        padding: 0px;
+        box-shadow: unset;
+      }
+
+      .datepicker .react-datepicker__day--selected {
+        background-color: #183571 !important;
+        color: #FFFFFF !important;
+        border-radius: 4px !important;
+      }
+
+      .react-datepicker__day--in-range{
+        background-color: #183571 !important;
+        color: #FFFFFF !important;
+        border-radius: 4px !important;
+      }
+      @include mixin.breakpoint(sm) {
+        gap: 10px;
+      }
+
+      .react-datepicker {
+        right: 1rem;
+
+        .react-datepicker__day {
+          box-shadow: none !important;
+          color: #222;
+          margin: 1px !important;
+          line-height: 33px !important;
+          width: 33px !important;
+          height: 33px;
+          border-radius: 0.313rem;
+        }
+      }
+
+      @media (min-width: 1600px)  {
+      .react-datepicker-popper{
+        transform: translate(-78.333px, 50px) !important;
+      }
+      }
+
+    }
+
+    .jobs-container {
+      display: block;
+      overflow-x: auto;
+      white-space: nowrap;
+
+      @include mixin.breakpoint(sm) {
+        //   display: block;
+        //   overflow-x: auto;
+        //   white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      @include mixin.breakpoint(xxl) {
+        //   margin: 0 auto;
+        //   width: 80%;
+      }
+
+      .job-summary {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        align-items: flex-start;
+        justify-content: space-between;
+
+        @include mixin.breakpoint(sm) {
+          flex-wrap: nowrap;
+          min-width: max-content;
+        }
+
+        p {
+          color: #353F59;
+          font-size: 14px;
+          font-weight: 400;
+          margin-bottom: 0px;
+          white-space: nowrap;
+        }
+
+        .span {
+          white-space: nowrap;
+          font-size: 24px;
+          font-weight: 700;
+        }
+
+        .seperator {
+          width: 1px;
+          height: 70px;
+          background-color: variable.$gray-100;
+          margin: auto;
+          align-self: stretch;
+          min-width: 1px;
+        }
+
+        .summary-box {
+          width: 200.8000030517578px;
+          height: 80px;
+          padding: 12px;
+          border-radius: 12px;
+          text-align: center;
+          font-size: 24px;
+          font-weight: 700;
+          background: #f8f9fa;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          gap: 8px;
+          flex: 1 1;
+
+          @include mixin.breakpoint(sm) {
+            width: 152px;
+          }
+
+          @include mixin.breakpoint(xxl) {
+            flex: 1 1;
+          }
+        }
+
+        .total-jobs {
+          background-color: #F1F1FF;
+          border: 1px solid #C7C3F9;
+        }
+
+        .in-progress {
+          background-color: #FFFAE0;
+          border: 1px solid #FAE9BF;
+        }
+
+        .completed {
+          background-color: #EEFFF1;
+          ;
+          border: 1px solid #C6D5CB;
+        }
+
+        .pending-jobs {
+          background: #E9F3FF;
+          border: 1px solid variable.$primary-100;
+        }
+
+        .on-hold-jobs {
+          background: variable.$gray-50;
+          border: 1px solid variable.$gray-100;
+        }
+
+        @include mixin.breakpoint(sm) {
+          .job-summary-wrapper {
+            display: block;
+            overflow-x: auto;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch; // Smooth scrolling on iOS
+          }
+
+          .job-summary {
+            flex-wrap: nowrap;
+            min-width: max-content;
+          }
+        }
+      }
+    }
+
+    .tab-head {
+      display: block;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+    .jobs-search-container {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 16px;
+      align-items: center;
+
+      @include mixin.breakpoint(sm) {
+        flex-direction: column;
+        justify-content: flex-start;
+        margin-bottom: 8px;
+        gap: 24px;
+        align-items: start;
+      }
+      .table-title-section{
+        margin-top: 0 !important;
+      }
+      .search-box {
+        width: 264px;
+        input {
+          height: 36px;
+        }
+        @include mixin.breakpoint(sm) {
+          width: 100% !important;
+        }
+      }
+    }
+    .my-jobs-tab-header {
+      display: flex;
+      gap: 0.25rem;
+      margin: 0.5rem 0 1rem 0;
+      border-bottom: 1px solid #e4eaf2;
+
+      .unassigned {
+        padding-left: 0px !important;
+      }
+
+      .tab-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        padding: 0rem 0.5rem 0.5rem 0.625rem;
+        border-bottom: 4px solid transparent;
+        transition: border-bottom 0.3s ease-in-out;
+        cursor: pointer;
+
+        h2 {
+          margin: 0;
+          font-weight: 400;
+          color: variable.$black;
+          font-size: 20px;
+
+          @include mixin.breakpoint(sm) {
+            font-size: 20px;
+            line-height: 1.5rem;
+          }
+        }
+
+        h4 {
+          margin: 0;
+          font-weight: 600;
+          color: variable.$black;
+
+          @include mixin.breakpoint(sm) {
+            font-size: 0.875rem;
+          }
+        }
+
+        .tab-count {
+          min-width: 24px;
+          height: 24px;
+          text-align: center;
+          padding-inline: 0.25rem;
+          border-radius: 0.25rem;
+          background-color: variable.$primary-300;
+          color: variable.$white;
+        }
+
+        &:hover,
+        &.active {
+          border-bottom: 4px solid variable.$primary;
+        }
+
+        &.active {
+          h2 {
+            font-weight: 600;
+          }
+        }
+      }
+
+      .tab-separator {
+        height: 24px;
+        border-right: 1px solid #8d8d8d;
+
+        @include mixin.breakpoint(sm) {}
+      }
+    }
+
+    .tabs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+
+      .tab {
+        padding: 8px 12px;
+        font-weight: bold;
+        cursor: pointer;
+        border-radius: 5px;
+        background: #f0f0f0;
+        transition: background 0.3s;
+
+        &.active {
+          background: #003366;
+          color: white;
+        }
+      }
+    }
+
+    .job-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 15px;
+
+      .job-card {
+        background: white;
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+        .job-title {
+          font-size: 16px;
+          font-weight: bold;
+          margin-bottom: 8px;
+        }
+
+        .job-detail {
+          font-size: 14px;
+          margin-bottom: 5px;
+        }
+
+        .priority {
+          color: red;
+          font-weight: bold;
+        }
+
+        .view-button {
+          display: block;
+          text-align: center;
+          background: #003366;
+          color: white;
+          padding: 8px;
+          border-radius: 5px;
+          text-decoration: none;
+          margin-top: 10px;
+        }
+      }
+    }
+
+
+
+
+    .content-separator {
+      border-bottom: 1px solid #e4eaf2;
+    }
+
+    .tab-content {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      overflow-y: auto;
+      max-height: 614px;
+      scrollbar-color: #183571 #fff;
+
+
+      @include mixin.breakpoint(lg) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      @include mixin.breakpoint(lmd) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      @include mixin.breakpoint(md) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      @include mixin.breakpoint(sm) {
+        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+        padding-right: 8px;
+      }
+    }
+
+    .box {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 1rem;
+      border: 1px solid variable.$primary-100;
+      border-radius: 0.5rem;
+      background-color: #f8f8ff;
+      width: 32%;
+
+      @include mixin.breakpoint(xxl) {
+        width: 24%;
+      }
+
+
+      .box-top {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .box-header {
+          display: flex;
+          align-items: flex-start;
+          justify-content: space-between;
+          margin-bottom: 0.75rem;
+        
+
+          .box-header-left {
+            display: flex;
+            flex-direction: column;
+
+            .box-title {
+              margin: 0;
+              color: variable.$primary;
+            }
+
+            .box-job-number {
+              line-height: 1.25rem;
+              color: variable.$black;
+            }
+          }
+
+          .box-date {
+            height: 36px;
+            min-width: fit-content;
+            border-radius: 4px;
+            padding: 0.5rem 0.75rem;
+            background-color: #e4eaf2;
+
+            .label {
+              font-weight: 600;
+              color: variable.$black;
+              font-size: 12px;
+            }
+          }
+          .deadline-passed {
+            background-color: #FEE9E9;
+
+            .label {
+              color: variable.$danger;
+            }
+          }
+        }
+
+        .box-body {
+          margin-bottom: 1rem;
+
+          .entity {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 500;
+            line-height: 1.25rem;
+            color: variable.$black;
+
+            &:first-child {
+              margin-bottom: 0.5rem;
+            }
+
+            &:not(:first-child) {
+              margin-bottom: 0.75rem;
+            }
+          }
+
+          .description {
+            font-weight: 500;
+            line-height: 1.25rem;
+            color: #6b717d;
+          }
+
+          // My jobs card styles
+          .my-entity {
+            border: unset;
+
+            @include mixin.breakpoint(sm) {
+              display: flex;
+              flex-direction: row;
+            }
+
+            .entity-badge {
+
+
+              h6 {
+                margin: 0;
+                font-weight: 700 !important;
+                color: #A20000;
+                font-size: 14px;
+              }
+
+
+
+            }
+
+            &:not(:last-child) {
+              margin-bottom: 0.5rem;
+            }
+
+            &:last-child {
+              margin-bottom: 0rem;
+
+            }
+          }
+
+          @include mixin.breakpoint(sm) {
+            display: flex;
+            flex-direction: column;
+          }
+        }
+
+        .box:nth-last-child(-n+2) {
+          flex-grow: 0;
+          /* Prevent the last 1 or 2 items from growing */
+          width: 290px;
+          /* Force the same width */
+        }
+      }
+
+      .separator {
+        border-bottom: 0.5px dashed #6B717D;
+        margin-bottom: 1rem;
+      }
+
+      .box-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1.25rem;
+
+        .tag {
+          font-size: 0.875rem;
+          font-weight: 600;
+          margin: 0;
+          color: variable.$primary;
+          cursor: pointer;
+          white-space: nowrap;
+          text-decoration: underline;
+        }
+
+        .button {
+
+          padding: 8px 12px;
+          height: 36px;
+          border-radius: 4px;
+
+          // @include breakpoint(sm) {
+          //   width: 266px;
+          // }
+          // @include breakpoint(md) {
+          //   width: 266px;
+          // }
+        }
+
+      }
+
+      @include mixin.breakpoint(sm) {
+        width: 96%;
+      }
+
+      @include mixin.breakpoint(md) {
+        width: 96%;
+      }
+    }
+
+  }
+
+  .job-detail-view {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 0.75rem;
+
+    @include mixin.breakpoint(lg) {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    @include mixin.breakpoint(lmd) {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    @include mixin.breakpoint(md) {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    @include mixin.breakpoint(sm) {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .job-list-content {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      padding-right: 0.5rem;
+      overflow-y: auto;
+
+      @include mixin.breakpoint(lg) {
+        height: auto !important;
+        padding-right: 0;
+      }
+
+      @include mixin.breakpoint(lmd) {
+        height: auto !important;
+        padding-right: 0;
+      }
+
+      @include mixin.breakpoint(md) {
+        height: auto !important;
+        padding-right: 0;
+      }
+
+      @include mixin.breakpoint(sm) {
+        height: auto !important;
+        padding-right: 0;
+      }
+
+      .job-box-selected {
+        border: 1px solid variable.$primary;
+        background-color: variable.$primary-100;
+        transition: all 0.3s ease;
+      }
+
+      .slick-active .box {
+        width: calc(100% - 0.5rem);
+
+        &:nth-child(1) .box {
+          width: calc(100% - 0.5rem);
+        }
+      }
+
+      .job-carousel {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.25rem;
+
+        .carousel-nav {
+          width: 24px;
+          height: 4px;
+          border-radius: 4px;
+          background-color: variable.$primary;
+        }
+      }
+    }
+
+    .job-detail-content {
+      width: 100%;
+      height: fit-content;
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+      padding: 1rem;
+      gap: 1rem;
+      border: 1px solid variable.$primary-100;
+      border-radius: 0.5rem;
+      background-color: variable.$white;
+
+      .job-detail-top-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .back-button {
+          width: auto;
+          display: flex;
+          align-items: center;
+          gap: 0.25rem;
+          border: none;
+          background-color: transparent;
+          cursor: pointer;
+
+          .back-icon {
+            width: 20px;
+            height: 20px;
+          }
+
+          h5 {
+            margin: 0;
+            font-weight: 600;
+            color: variable.$primary;
+          }
+        }
+
+        // Available jobs detail view deadline badge
+        .job-date {
+          height: 36px;
+          border-radius: 0.5rem;
+          padding: 0.5rem 0.75rem;
+          background-color: #e4eaf2;
+
+          .label {
+            font-weight: 600;
+            color: variable.$black;
+          }
+        }
+
+        // My jobs detail view status badge
+        .job-status {
+          padding: 0.25rem 1rem;
+          border-radius: 1rem;
+
+          h6 {
+            margin: 0;
+            font-weight: 600;
+            color: variable.$white;
+          }
+
+          &.todo {
+            background-color: #6b717d;
+          }
+
+          &.in-progress {
+            background-color: #1d4fd6;
+          }
+
+          &.completed {
+            padding: 0.25rem 1.5rem;
+            background-color: #1d684f;
+          }
+
+          &.suggest-feedback {
+            background-color: #e08302;
+          }
+        }
+      }
+
+      .job-detail-box {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        border: 1px dashed variable.$black;
+
+        .job-detail-header {
+          display: flex;
+          align-items: center;
+          gap: 0.25rem;
+
+          h4 {
+            margin: 0;
+            color: variable.$primary;
+            font-weight: 600;
+          }
+
+          img {
+            width: 24px;
+            height: 24px;
+          }
+        }
+
+        // My jobs detail view job details collapse button
+        .my-job-detail-header {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          .collapse-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+
+            img {
+              width: 16px;
+              height: 8px;
+              transition: all 0.3s ease;
+              filter: brightness(0) saturate(100%) invert(15%) sepia(49%) saturate(3009%) hue-rotate(208deg) brightness(90%) contrast(89%);
+
+              &.collapsed {
+                transform: rotate(180deg);
+              }
+            }
+          }
+        }
+
+        .entity {
+          display: flex;
+          align-items: center;
+          padding-bottom: 0.75rem;
+          border-bottom: unset !important;
+
+          @include mixin.breakpoint(sm) {
+            flex-direction: column;
+            align-items: flex-start;
+          }
+
+          &:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+          }
+
+          .entity-label {
+            min-width: 205px !important;
+            font-weight: 600;
+
+          }
+
+
+          .entity-value {
+            font-weight: 600;
+            color: variable.$black;
+          }
+        }
+
+        .service {
+          padding: 0rem 0.75rem 0.75rem 0.75rem;
+          border-bottom: 1px solid #e4eaf2;
+          background-color: transparent;
+
+          &:last-child {
+            border-bottom: none;
+          }
+
+          &.active {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            padding-block: 1rem;
+            border-radius: 0.5rem;
+            border: 1px solid #e4eaf2;
+            background-color: #e9f3ff;
+          }
+
+          .service-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            .service-title {
+              margin: 0;
+              font-weight: 600;
+            }
+
+            .service-toggle {
+              width: 24px;
+              height: 24px;
+              border: 0;
+              padding: 0;
+              font-size: 1rem;
+              border-radius: 50%;
+              background-color: transparent;
+              cursor: pointer;
+            }
+          }
+
+          .service-list li {
+            color: variable.$black;
+            font-weight: 500;
+            line-height: 20px;
+            margin-bottom: 0.5rem;
+          }
+
+          // My jobs detail view checkbox styles
+          .service-checklist {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding-left: 1.5rem;
+
+            .service-checkbox {
+              width: 20px;
+              height: 20px;
+              position: relative;
+              appearance: none;
+              padding: 0;
+              border-radius: 0.25rem;
+              border: 1px solid variable.$primary;
+              background-color: variable.$white;
+              cursor: pointer;
+
+              &:checked::after {
+                content: "";
+                display: block;
+                background-image: url(#{variable.$assetsPath}/check.svg);
+                background-size: contain;
+                background-repeat: no-repeat;
+                width: 12px;
+                height: 9px;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                filter: brightness(0) saturate(100%) invert(15%) sepia(49%) saturate(3009%) hue-rotate(208deg) brightness(90%) contrast(89%);
+              }
+            }
+
+            .service-label {
+              color: variable.$black;
+              font-weight: 500;
+            }
+          }
+        }
+
+        .products-list {
+          display: flex;
+          flex-direction: column;
+          gap: 0.625rem;
+          margin-bottom: 0;
+          padding-left: 1.5rem;
+
+          h4 {
+            margin: 0;
+            font-weight: 600;
+            color: variable.$black;
+          }
+        }
+
+        .job-status-update {
+          display: flex;
+          flex-direction: column;
+          gap: 0.75rem;
+          padding-block: 1rem;
+          margin-bottom: 1.25rem;
+          border-radius: 0.5rem;
+          border: 1px solid #e4eaf2;
+          background-color: #f8f8ff;
+
+          .job-status-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-inline: 0.75rem;
+
+            h4 {
+              margin: 0;
+              font-weight: 600;
+              color: variable.$black;
+            }
+          }
+
+          .job-status-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+
+            .job-status-option {
+              display: flex;
+              align-items: center;
+              gap: 0.5rem;
+              padding-inline: 1rem;
+
+              input[type="radio"] {
+                content: "";
+                display: block;
+                background-image: url(#{variable.$assetsPath}/radio-button.svg);
+                background-size: contain;
+                background-repeat: no-repeat;
+                width: 20px;
+                height: 20px;
+                position: relative;
+                appearance: none;
+                padding: 0;
+                border: none;
+                border-radius: 50%;
+                cursor: pointer;
+                filter: brightness(0) saturate(100%) invert(15%) sepia(49%) saturate(3009%) hue-rotate(208deg) brightness(90%) contrast(89%);
+
+                &:checked::after {
+                  content: "";
+                  display: block;
+                  background-image: url(#{variable.$assetsPath}/radio-button-checked.svg);
+                  background-size: contain;
+                  background-repeat: no-repeat;
+                  width: 20px;
+                  height: 20px;
+                  position: absolute;
+                  top: 50%;
+                  left: 50%;
+                  transform: translate(-50%, -50%);
+                }
+              }
+
+              label {
+                margin: 0;
+                font-weight: 500;
+                color: variable.$black;
+              }
+            }
+
+            .job-status-feedback {
+              display: flex;
+              flex-direction: column;
+              gap: 0.5rem;
+              margin-top: -0.25rem;
+              padding-inline: 1rem;
+
+              .job-status-feedback-box {
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+
+                .job-status-feedback-label {
+                  margin: 0;
+                  font-weight: 600;
+                  color: variable.$black;
+                }
+
+                input[type="number"] {
+                  width: 500px;
+                }
+              }
+
+              textarea {
+                max-width: 500px;
+                min-height: 80px;
+              }
+            }
+          }
+        }
+      }
+
+      .box-footer {}
+    }
+
+    .popup-dropdown {
+      position: absolute;
+      top: 17rem;
+      right: 6rem;
+      padding: 12px 12px 24px 12px;
+      width: 350px;
+      height: 324px;
+      background-color: variable.$primary-50;
+      border-radius: 8px;
+      box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2),
+        0px 30px 70px rgba(26, 34, 64, 0.15);
+      z-index: 1000;
+      box-shadow: #1a224026;
+
+      @include mixin.breakpoint(xxl) {
+        top: 15rem;
+        right: 8rem;
+      }
+
+      @include mixin.breakpoint(md) {
+        top: 47rem;
+        height: 364px;
+      }
+
+      @include mixin.breakpoint(sm) {
+        width: 254px;
+        height: 404px;
+        right: 3.8rem;
+      }
+
+      @include mixin.breakpoint(xs) {
+        top: 13rem;
+      }
+    }
+
+    .popup-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid variable.$gray-200;
+      padding-bottom: 12px;
+      margin-bottom: 16px;
+    }
+
+    .popup-header h2 {
+      font-size: 16px;
+      font-weight: variable.$font-weight-600;
+      line-height: 24px;
+      color: #000000;
+      margin: 0;
+    }
+
+    .close-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: contents;
+    }
+
+    .feedback-list {
+      padding-left: 4px;
+      padding-right: 4px;
+    }
+
+    .feedback-card {
+      width: 318px;
+      height: 110px;
+      background-color: #ffffff;
+      padding: 10px;
+      margin-bottom: 16px;
+      border-top-right-radius: 16px;
+      border-bottom-left-radius: 16px;
+
+      @include mixin.breakpoint(sm) {
+        width: 194px;
+        height: 150px;
+        left: 27.5px;
+        position: relative;
+      }
+
+      @include mixin.breakpoint(md) {
+        width: 290px;
+        height: 130px;
+        left: 27.6px;
+        position: relative;
+      }
+    }
+
+    .feedback-image {
+      display: none;
+
+      @include mixin.breakpoint(sm) {
+        display: flex;
+        width: 24px;
+        height: 24px;
+        position: fixed;
+      }
+
+      @include mixin.breakpoint(md) {
+        display: flex;
+        width: 24px;
+        height: 24px;
+        position: fixed;
+      }
+    }
+
+    .feedback-card h3 {
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 20px;
+      color: #000000;
+    }
+
+    .feedback-card p {
+      font-size: 12px;
+      color: variable.$gray-500;
+      font-weight: 400;
+      line-height: 20px;
+      margin-bottom: unset;
+    }
+
+    .feedback-time {
+      font-size: 10px;
+      color: #000000;
+      line-height: 16px;
+      font-weight: 500;
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+
+  .tab-widget {
+    height: 100%;
+
+  }
+
+  .position-relative {
+    width: 139px;
+
+   
+
+    .input-icon {
+      width: 20px;
+      height: 20px;
+      filter: brightness(0.5) sepia(1) hue-rotate(200deg) saturate(4) brightness(0.4);
+      @include mixin.breakpoint(sm) {
+        right: 12px;
+      }
+      
+    }
+
+    .px-4 {
+      padding: 8px 12px !important;
+      height: 40px;
+      font-weight: 600;
+    }
+
+    .react-datepicker {
+      right: 4rem;
+      @include mixin.breakpoint(sm) {
+        right: 0.5rem !important;
+      }
+    }
+  }
+
+  input[type="date"] {
+    cursor: pointer !important;
+  }
+
+
+
+  a {
+    text-decoration: none;
+  }
+
+  .jobentity {
+    color: #0B1426 !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    line-height: 20px;
+    min-width: unset !important;
+  }
+
+  .job-empty {
+    left: unset !important;
+    transform: unset !important;
+    z-index: unset;
+  }
+
+  .no-data-container p {
+
+    @include mixin.breakpoint(sm) {
+      padding: 0px;
+      margin: 0px;
+    }
+  }
+
+  ::-webkit-scrollbar {
+    display: none !important;
+  }
+  .date-container {
+    .react-datepicker-wrapper {
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+  
+    .px-4 {
+      
+      padding-right: 2.5rem; 
+      box-sizing: border-box;
+    }
+  
+    .input-icon {
+      position: absolute;
+      right: 0.48rem;
+      display: flex;
+      align-items: center;
+      height: 100%;
+      pointer-events: none; 
+    }
+  }
+  .default {
+    .datepicker {
+        width: 260px !important;
+    }
+}
+
+.chrome  {
+    .datepicker {
+        width: 248px !important;
+    }
+}
+}

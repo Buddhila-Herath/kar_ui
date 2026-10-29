@@ -1,0 +1,117 @@
+/*===== GOOGLE FONTS =====*/
+@import url('https://fonts.googleapis.com/css2?family=Figtree&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+
+/*------------------------------------*\
+    #COLORS
+\*------------------------------------*/
+
+$primary: #183571;
+$white: #FFFFFF;
+$black: #0B1426;
+$danger:#A20000;
+$success: #0AC074;
+$info: #0099FB;
+$warning: #FFB821;
+
+// ========== Primary Color Shades: 
+$primary-50: #E9F3FF;
+$primary-100: #C3DCF9;
+$primary-200: #8BB5ED;
+$primary-300: #5D88CC;
+$primary-400: #30579D;
+$primary-500: #183571;
+$primary-600: #112861;
+$primary-700: #0C1E51;
+$primary-800: #071441;
+$primary-900: #040E36;
+
+// ========== Gray Color Shades:
+$gray-50: #F1F4F8;
+$gray-100: #E4EAF2;
+$gray-200: #C5CCD8;
+$gray-300: #9DA4B1;
+$gray-400: #999FAC;
+$gray-500: #6B717D;
+$gray-600: #676E7E;
+$gray-700: #626A7E;
+$gray-800: #4E5569;
+$gray-900: #353F59;
+
+// ========== Blue Color Shades:
+$blue-50: #E9F3FF;
+$blue-100: #C3DCF9;
+$blue-200: #8BB5ED;
+$blue-300: #5D88CC;
+$blue-400: #30579D;
+$blue-500: #183571;
+$blue-600: #112861;
+$blue-700: #0C1E51;
+$blue-800: #071441;
+$blue-900: #040E36;
+
+/*------------------------------------*\
+    #TYPOGRAPHY
+\*------------------------------------*/
+
+// ========== Font Family: 
+$font-family-figtree: 'Figtree', sans-serif;
+$font-family-roboto: 'Roboto', sans-serif;
+
+// ========== Font Weight: 
+$font-weight-100: 100 !default;
+$font-weight-200: 200 !default;
+$font-weight-300: 300 !default;
+$font-weight-400: 400 !default;
+$font-weight-500: 500 !default;
+$font-weight-600: 600 !default;
+$font-weight-700: 700 !default;
+$font-weight-bold: bold !default;
+$font-weight-bolder: bolder !default;
+
+/* ========== Font Sizes:
+ .75rem = 12px , .875rem = 14px, 1rem = 16px, 1.25rem = 20px  ... */
+$font-size-xs: 0.75rem; 
+$font-size-sm: 0.875rem; 
+$font-size-md: 1rem;
+$font-size-lg: 1.25rem; 
+$font-size-xl: 1.5rem;
+$font-size-xxl: 2rem; 
+
+/* ========== Margins:
+ .25rem = 4px, .5rem = 8px, .75rem = 12px ... */
+ $mg-0-25: 0.25rem;
+ $mg-0-5: 0.5rem;
+ $mg-0-75: 0.75rem;
+ $mg-1: 1rem;
+ $mg-1-5: 1.5rem;
+ $mg-1-75: 1.75rem;
+ $mg-2: 2rem;
+ $mg-2-5: 2.5rem;
+ $mg-2-75: 2.75rem;
+ $mg-3: 3rem;
+
+ // ========== Padding:
+$pd-0-25: 0.25rem;
+$pd-0-5: 0.5rem;
+$pd-0-75: 0.75rem;
+$pd-1: 1rem;
+$pd-1-5: 1.5rem;
+$pg-1-75: 1.75rem;
+$pd-2: 2rem;
+$pd-2-5: 2.5rem;
+$pg-2-75: 2.75rem;
+$pd-3: 3rem;
+
+ /* ========== Border Radius:
+ .25rem = 4px, .5rem = 8px, .75rem = 12px ... */
+$border-radius-0-25: 0.25rem;
+$border-radius-0-5: 0.5rem;
+$border-radius-0-75: 0.75rem;
+$border-radius-circle: 50%;
+
+/*------------------------------------*\
+    #ASSETS PATH
+\*------------------------------------*/
+$assetsPath: "../../assets/images";

@@ -1,0 +1,854 @@
+@use "../../abstracts/mixin";
+@use "../../abstracts/variable";
+
+.profile-settings-container,
+.profile-edit-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 1rem;
+  padding: 2rem 12rem 2rem 12rem;
+  background-color: variable.$white;
+  border: 1px solid variable.$primary-100;
+  border-radius: 0.5rem;
+  min-height: calc(100% - 4.625rem);
+  height: auto;
+
+  a {
+    text-decoration: none;
+  }
+
+  @include mixin.breakpoint(md) {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  @include mixin.breakpoint(sm) {
+    height: auto;
+    border: unset;
+    padding-left: unset;
+    padding-right: unset;
+    padding-block: unset;
+    background-color: unset;
+    margin-top: unset;
+    padding-top: 8px;
+  }
+}
+
+.profile-header {
+  .back {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    text-decoration: none;
+
+    img {
+      width: 24px;
+      height: 24px;
+    }
+
+    h3 {
+      margin: 0;
+      font-weight: 600;
+      color: variable.$primary;
+    }
+  }
+
+  @include mixin.breakpoint(sm) {
+    left: -1rem;
+  }
+
+  @include mixin.breakpoint(md) {
+    left: 0px;
+  }
+}
+
+.profile-settings-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+
+  a {
+    text-decoration: none;
+  }
+
+  .profile-settings-card {
+    border-radius: 0.75rem;
+    border: 1px solid variable.$primary-100;
+    transition: border 0.3s;
+    cursor: pointer;
+
+    .profile-settings-card-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.5rem;
+      border-radius: 0.688rem; // 11px
+      border: 1px solid transparent;
+      transition: border 0.3s;
+
+      .profile-settings-card-details {
+        display: flex;
+        flex-direction: column;
+
+        h4 {
+          margin: 0;
+          font-weight: 600;
+          color: variable.$black;
+        }
+
+        span {
+          font-size: 0.875rem; // 14px
+          line-height: 1.25rem; // 20px
+          font-weight: 400;
+          color: #676e7e;
+        }
+      }
+
+      .profile-settings-card-button {
+        width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        border: 1.5px solid variable.$primary;
+
+        img {
+          width: 8px;
+          height: 6px;
+          transform: rotate(180deg);
+        }
+      }
+    }
+
+    &:hover,
+    .profile-settings-card-content:hover {
+      border: 1px solid variable.$primary;
+    }
+  }
+}
+
+.profile-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.5rem;
+  border: 1px solid variable.$primary-100;
+  padding: 24px 1.5rem;
+  background-color: variable.$white;
+
+  @include mixin.breakpoint(sm) {
+    padding: 1.5rem 1rem;
+  }
+}
+
+.profile-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+
+  @include mixin.breakpoint(sm) {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    background-color: unset;
+  }
+
+  .profile-photo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    @include mixin.breakpoint(sm) {
+      display: block;
+      margin-bottom: 1.5rem;
+    }
+
+    img {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+    }
+
+    .profile-info {
+      display: flex;
+      flex-direction: column;
+
+      h4 {
+        margin: 0;
+        font-weight: 700;
+        color: variable.$primary;
+      }
+
+      h5 {
+        margin: 0;
+        font-weight: 600;
+        color: #6b717d;
+      }
+    }
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  .edit-details-link {
+    @include mixin.breakpoint(sm) {
+      width: 100%;
+    }
+  }
+
+  .edit-details-button {
+    width: fit-content;
+    height: 36px;
+    border-radius: 0.25rem;
+    padding: 0.5rem 1rem;
+
+    h5 {
+      margin: 0;
+      font-weight: 600;
+      color: variable.$white;
+    }
+
+    &:hover {
+      h5 {
+        color: variable.$primary;
+      }
+    }
+
+    @include mixin.breakpoint(sm) {
+      width: 100%;
+    }
+  }
+
+  .update-photo {
+    display: flex;
+    align-items: center;
+    height: fit-content;
+    gap: 0.25rem;
+    padding-block: 0.5rem;
+
+    img {
+      width: 20px;
+      height: 20px;
+    }
+
+    h5 {
+      margin: 0;
+      font-weight: 600;
+      color: variable.$primary;
+    }
+
+    @include mixin.breakpoint(md) {
+      right: 0px;
+    }
+
+    @include mixin.breakpoint(sm) {
+      display: none;
+    }
+  }
+}
+
+.profile-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+
+  .profile-item {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid #e4eaf2;
+
+    @include mixin.breakpoint(sm) {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    h5 {
+      margin: 0;
+      font-weight: 600;
+      color: #6b717d;
+    }
+
+    h4 {
+      margin: 0;
+      font-weight: 600;
+      color: variable.$black;
+
+      @include mixin.breakpoint(sm) {
+        text-align: left;
+      }
+    }
+
+    &:last-child {
+      padding-bottom: 0;
+      border-bottom: unset;
+    }
+  }
+}
+
+/* Below is the CSS for the profile edit page */
+
+.profile-card-edit {
+  padding: 16px 24px 24px 24px;
+  border-radius: 8px;
+  border: 1px dotted variable.$primary-100;
+
+  @include mixin.breakpoint(sm) {
+    padding: unset;
+    padding-bottom: 24px;
+  }
+}
+
+.profile-edit-avatar {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  top: 1rem;
+  border-radius: 10px;
+  background-color: #fff;
+}
+
+.profile-edit-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  line-height: 20px;
+  flex-direction: column;
+
+  @include mixin.breakpoint(sm) {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+.profile-edit-item label {
+  font-weight: variable.$font-weight-600;
+  color: variable.$black;
+  font-size: variable.$font-size-sm;
+}
+
+.profile-edit-item input {
+  width: 60%;
+  height: 56px;
+  font-weight: variable.$font-weight-500;
+  color: variable.$gray-900;
+  font-size: variable.$font-size-md;
+  line-height: 24px;
+  border: 1px solid variable.$gray-500;
+  margin: 0;
+  text-align: left;
+
+  @include mixin.breakpoint(sm) {
+    text-align: left;
+    width: 100%;
+  }
+}
+
+.profile-edit-details {
+  width: 100%;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.profile-photo-edit {
+  display: flex;
+  align-items: center;
+
+  @include mixin.breakpoint(sm) {
+    display: block;
+  }
+}
+
+.profile-info-edit {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-info-edit h4 {
+  margin: 0;
+  font-size: variable.$font-size-md;
+  color: variable.$primary;
+}
+
+.profile-info-edit p {
+  margin: 0;
+  font-size: 12px;
+  color: variable.$gray-500;
+}
+
+.profile-photo-edit img {
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  margin-right: 15px;
+}
+
+.edit-update-photo {
+  display: inline-flex;
+  font-size: variable.$font-size-sm;
+  font-weight: variable.$font-weight-600;
+  line-height: 20px;
+  color: variable.$primary;
+  align-items: center;
+  justify-content: center;
+
+  @include mixin.breakpoint(md) {
+    right: 0px;
+  }
+}
+
+.edit-update-photo a {
+  position: relative;
+  top: 2px;
+}
+
+.edit-update-photo img {
+  margin-right: variable.$mg-0-25;
+}
+
+.profile-edit-button {
+  margin-top: 20px;
+  padding: 0.75rem 1rem;
+  line-height: 20px;
+
+  @include mixin.breakpoint(sm) {
+    margin-left: 24px;
+    margin-right: 24px;
+    width: 86%;
+  }
+}
+
+.profile-cancel-button {
+  margin-top: 20px;
+  padding: 0.75rem 1rem;
+  line-height: 20px;
+  color: variable.$primary;
+  background: variable.$white;
+
+  @include mixin.breakpoint(sm) {
+    margin-left: 24px;
+    margin-right: 24px;
+    width: 86%;
+  }
+}
+
+.profile-cancel-button:hover {
+  color: variable.$white;
+  background: variable.$primary;
+}
+
+/* Below is the CSS for the NEW profile edit page */
+
+.profile-edit-container {
+  .profile-card {
+    .profile-edit-avatar {
+      position: unset;
+      margin-bottom: 1.5rem;
+
+      & > img {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      .edit-update-photo {
+        cursor: pointer;
+
+        h5 {
+          margin: 0;
+          font-weight: 700;
+          color: variable.$primary;
+        }
+      }
+    }
+
+    .profile-edit-details-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-bottom: 2.25rem;
+
+      .form-row {
+        gap: 1.5rem;
+      }
+    }
+
+    .save-details-button {
+      height: 40px;
+      padding: 0.5rem 1rem;
+      border-radius: 0.25rem;
+
+      h5 {
+        margin: 0;
+        font-weight: 600;
+        color: variable.$white;
+      }
+
+      &:hover {
+        h5 {
+          color: variable.$primary;
+        }
+      }
+    }
+  }
+}
+
+.profile-reset-password {
+  .right-side {
+    .logo-container {
+      @include mixin.breakpoint(sm) {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      }
+    }
+
+    .profile-header {
+      display: flex;
+      align-items: flex-start;
+      width: 100%;
+      max-width: 398px;
+      margin-bottom: 1.5rem;
+      z-index: 9;
+
+      @include mixin.breakpoint(sm) {
+        display: none;
+      }
+    }
+
+    .reset-password {
+      @include mixin.breakpoint(sm) {
+        padding: 3rem 1.5rem;
+      }
+
+      h1 {
+        margin-block: 0.75rem;
+      }
+
+      p {
+        color: #626a7e;
+        margin-bottom: 2rem;
+      }
+    }
+  }
+}
+
+/* Below is the CSS for the upload profile picture modal */
+
+.upload-profile-picture-modal {
+  width: 600px !important;
+
+  @include mixin.breakpoint(sm) {
+    width: 350px !important;
+  }
+
+  .ant-modal-content {
+    padding: 2.5rem 2rem;
+    border-radius: 0.5rem;
+
+    @include mixin.breakpoint(sm) {
+      padding: 2.5rem 1rem;
+    }
+
+    .ant-modal-close {
+      width: 24px;
+      height: 24px;
+
+      svg {
+        color: variable.$black;
+      }
+    }
+
+    .ant-modal-body {
+      .upload-profile-picture-content {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+
+        .upload-profile-picture-tab-header {
+          display: flex;
+          align-items: center;
+          border-radius: 0.5rem;
+          border: 1px solid #999fac;
+
+          .tab-item {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+
+            img {
+              width: 20px;
+              height: 20px;
+              filter: brightness(0) saturate(100%) invert(6%) sepia(71%)
+                saturate(630%) hue-rotate(182deg) brightness(95%) contrast(99%);
+            }
+
+            h5 {
+              margin: 0;
+              font-weight: 700;
+              color: variable.$black;
+            }
+
+            &.active {
+              background-color: variable.$primary;
+
+              img {
+                filter: brightness(0) saturate(100%) invert(100%) sepia(0%)
+                  saturate(24%) hue-rotate(114deg) brightness(108%)
+                  contrast(108%);
+              }
+
+              h5 {
+                color: variable.$white;
+              }
+            }
+          }
+        }
+
+        .profile-picture-view {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 1.25rem; // 20px
+
+          figure {
+            margin: 0;
+            width: 342px;
+            height: 342px;
+
+            @include mixin.breakpoint(sm) {
+              width: 318px;
+              height: 318px;
+            }
+
+            img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              border-radius: 0.75rem;
+            }
+          }
+
+          .action-button-remove {
+            width: 342px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+
+            @include mixin.breakpoint(sm) {
+              width: 318px;
+            }
+
+            img {
+              width: 24px;
+              height: 24px;
+              filter: brightness(0) saturate(100%) invert(12%) sepia(93%)
+                saturate(2938%) hue-rotate(355deg) brightness(97%)
+                contrast(126%);
+            }
+
+            h5 {
+              margin: 0;
+              font-weight: 700;
+              color: #a20000;
+              line-height: 1.5rem;
+            }
+
+            &:hover {
+              background-color: variable.$primary-50;
+            }
+          }
+        }
+
+        .profile-picture-upload {
+          display: flex;
+          justify-content: center;
+
+          .upload-profile-picture-container {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1rem 6.5rem;
+            border-radius: 0.5rem;
+            border: 1px dashed variable.$primary-200;
+            background-color: variable.$primary-50;
+
+            @include mixin.breakpoint(sm) {
+              width: 100%;
+              padding: 1rem 1rem;
+            }
+
+            h5 {
+              margin-bottom: 0.75rem;
+              font-weight: 700;
+              color: variable.$black;
+            }
+
+            & > img {
+              width: 24px;
+              height: 24px;
+              margin-bottom: 0.75rem;
+            }
+
+            h6 {
+              margin-bottom: 0.5rem;
+              font-weight: 600;
+              color: variable.$black;
+            }
+
+            span {
+              font-size: 0.75rem;
+              line-height: 1.25rem;
+              font-weight: 400;
+              color: #4e5569;
+            }
+
+            label {
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              margin-bottom: 0;
+              cursor: pointer;
+            }
+          }
+
+          .upload-profile-picture-container--active {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .upload-profile-picture-preview {
+              margin-bottom: 1.5rem;
+
+              figure {
+                margin: 0;
+                width: 342px;
+                height: 342px;
+
+                @include mixin.breakpoint(sm) {
+                  width: 318px;
+                  height: 318px;
+                }
+
+                img {
+                  width: 100%;
+                  height: 100%;
+                  object-fit: cover;
+                  border-radius: 0.75rem;
+                  border: 1px solid variable.$primary;
+                }
+              }
+            }
+
+            .action-button-reupload {
+              width: 342px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              gap: 0.5rem;
+              padding: 0.75rem;
+              margin-bottom: 1.5rem;
+              border-radius: 0.5rem;
+              cursor: pointer;
+              transition: background-color 0.3s;
+
+              @include mixin.breakpoint(sm) {
+                width: 318px;
+              }
+
+              img {
+                width: 20px;
+                height: 20px;
+                filter: brightness(0) saturate(100%) invert(17%) sepia(38%)
+                  saturate(2786%) hue-rotate(202deg) brightness(94%)
+                  contrast(94%);
+              }
+
+              h5 {
+                margin: 0;
+                font-weight: 700;
+                color: variable.$primary;
+              }
+
+              &:hover {
+                background-color: variable.$primary-50;
+              }
+            }
+
+            .upload-profile-picture-footer {
+              display: flex;
+              gap: 1.25rem;
+              width: calc(100% - 2rem);
+
+              .button {
+                height: 40px;
+                padding-block: 0.5rem;
+                border-radius: 0.25rem;
+
+                h5 {
+                  margin: 0;
+                  font-weight: 700;
+                }
+              }
+
+              .button--cancel {
+                border: 1px solid variable.$primary;
+                background-color: variable.$white;
+
+                h5 {
+                  color: #003557;
+                }
+                &:hover {
+                  background-color: #071441;
+
+                  h5 {
+                    color: variable.$primary;
+                  }
+                }
+              }
+
+              .button--save {
+                h5 {
+                  color: variable.$white;
+                }
+
+                &:hover {
+                  background-color: #071441;
+
+                  h5 {
+                    color: variable.$primary;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+

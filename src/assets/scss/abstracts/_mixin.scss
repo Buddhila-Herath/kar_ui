@@ -1,0 +1,53 @@
+//Mixin for Responsive
+@mixin breakpoint($class) {
+  @if $class == xxl {
+        @media (min-width: 1600px) {
+            @content;
+        } 
+  } @else if $class == xl {
+      @media (min-width: 1200px) and (max-width: 1599px) {
+          @content;
+      }
+  } @else if $class == lg {
+      @media (min-width: 1151px) and (max-width: 1199px) {
+          @content;
+      }
+  } @else if $class == lmd {
+      @media (min-width: 992px) and (max-width: 1150px) {
+          @content;
+      }
+  } @else if $class == md {
+      @media (min-width: 768px) and (max-width: 991px) {
+          @content;
+      }
+  } @else if $class == sm {
+      @media (max-width: 767px) {
+          @content;
+      }
+  } @else if $class == xs {
+      @media (max-width: 375px) {
+          @content;
+      }
+  } @else if $class == xxs {
+      @media (min-width: 320px) and (max-width: 374px) {
+          @content;
+      }
+  } @else if $class == iphone-p-5 { /* ---- iPhone 5, 5S, 5C and 5SE ----- Portrait */
+        @media only screen 
+            and (min-device-width: 320px) 
+            and (max-device-width: 568px)
+            and (-webkit-min-device-pixel-ratio: 2)
+            and (orientation: portrait) {
+                @content;
+            }
+  } @else if $class == iphone-p-6-plus { /* ---- iPhone 6+, 7+ and 8+ ----- Portrait */
+        @media only screen 
+            and (min-device-width: 414px) 
+            and (max-device-width: 736px)
+            and (-webkit-min-device-pixel-ratio: 2)
+            and (orientation: portrait) {
+                @content;
+            }
+    }
+
+}

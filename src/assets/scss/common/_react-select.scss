@@ -1,0 +1,1871 @@
+@use "../abstracts/mixin";
+@use "../abstracts/variable";
+
+.dropdown {
+  order: 2;
+  position: relative;
+
+  span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width:  214px;
+  }
+}
+
+// Ant Design button for dropdown
+.dropdown-button {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 16px !important;
+  font-size: 1rem !important;
+  font-weight: 400 !important;
+  color: #6b717d !important;
+  background-color: variable.$white !important;
+  border-radius: 0.5rem !important;
+  border: 1px solid #6B717D !important;
+  outline: 1px solid transparent !important;
+  // transition: border-color 0.15s ease-in-out, outline-color 0.15s ease-in-out,
+  // box-shadow 0.3s ease-in-out;
+
+  // Override any Ant Design button styles
+  &.ant-btn {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 16px !important;
+    font-size: 1rem !important;
+    font-weight: 400 !important;
+    color: #6b717d !important;
+    background-color: variable.$white !important;
+    border-radius: 0.5rem !important;
+    border: 1px solid #6B717D !important;
+    outline: 1px solid transparent !important;
+    height: auto !important;
+    line-height: normal !important;
+    box-shadow: none !important;
+  }
+
+  &.ant-btn:hover,
+  &.ant-btn:focus,
+  &.ant-btn:active {
+    color: #6b717d !important;
+    border: 1px solid #6B717D !important;
+    outline: none !important;
+    background-color: variable.$white !important;
+    box-shadow: none !important;
+  }
+
+  // Only apply 12px padding when there are actual selected items with content
+  &:has(.selected-options .tag-container),
+  &.has-selected-items {
+    padding: 12px !important;
+    
+    &.ant-btn {
+      padding: 12px !important;
+    }
+  }
+
+  .selected-value {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 300px;
+
+    @include mixin.breakpoint(md) {
+      max-width: 250px;
+    }
+
+    @include mixin.breakpoint(sm) {
+      max-width: 270px;
+    }
+
+    @include mixin.breakpoint(xs) {
+      max-width: 250px;
+    }
+
+    @include mixin.breakpoint(xxs) {
+      max-width: 200px;
+    }
+  }
+
+  .ant-btn-icon img {
+    width: 16px;
+    height: 10px;
+    transition: transform 0.3s ease-in-out;
+
+    &.rotate {
+      transform: rotate(180deg);
+    }
+  }
+
+  &:hover {
+    color: #6b717d !important;
+    border: 1px solid #6B717D !important;
+    outline: none !important;
+  }
+
+  // &:focus,
+  // &.opened {
+  //   // border: 1px solid $primary-300 !important;
+  //   // outline: 1px solid $primary-300 !important;
+  // }
+
+  &.selected {
+    color: variable.$black !important;
+    border-color: #6b717d !important;
+    cursor: auto !important;
+
+    &:hover {
+      color: variable.$black !important;
+    }
+
+    .ant-btn-icon img,
+    .selected-options .tag-container .tag-remove-icon {
+      cursor: pointer;
+    }
+  }
+
+  // Ensure dropdown content is not affected by Ant Design
+  .dropdown-content,
+  .dropdown-modal {
+    z-index: 9999 !important;
+    position: relative !important;
+    
+    // Override any Ant Design modal styles
+    &.ant-modal,
+    &.ant-dropdown {
+      z-index: 9999 !important;
+      position: relative !important;
+    }
+  }
+
+  .selected-options {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 0.5rem;
+    // max-width: 200px;
+    overflow: hidden;
+
+    .tag-container {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 4px 12px;
+      border-radius: 0.75rem;
+      border: 1px solid #e0ebff;
+      max-width: 120px;
+
+      @include mixin.breakpoint(sm) {}
+
+      .tag-label {
+        font-size: 0.875rem;
+        font-weight: 500;
+        line-height: 1.25rem;
+        color: variable.$black;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .tag-remove-icon {
+        width: 10px;
+        height: 10px;
+        filter: brightness(0) saturate(100%) invert(45%) sepia(16%) saturate(279%) hue-rotate(182deg) brightness(93%) contrast(89%);
+      }
+    }
+  }
+}
+
+// Dropdown container
+.dropdown-menu {
+  // position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  height: fit-content;
+  z-index: 9;
+  padding: 1rem;
+  margin-top: 0.25rem;
+  border-radius: 0.5rem;
+  border: 1px solid #6b717d;
+  background-color: variable.$white;
+}
+
+label{
+  margin-bottom: 0 !important;
+}
+
+// Dropdown overlay area
+.dropdown-blanket {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.dropdown-header {
+  display: flex;
+  justify-content: flex-end;
+
+  .add-option-button {
+    gap: 0.25rem;
+    width: fit-content;
+    height: 1.5rem;
+    padding: 0.125rem 0.5rem;
+    border-radius: 0.25rem;
+    background-color: variable.$white;
+    border: 0.5px solid variable.$primary;
+
+    img {
+      width: 16px;
+      height: 16px;
+      filter: brightness(0) saturate(100%) invert(19%) sepia(57%) saturate(1774%) hue-rotate(202deg) brightness(80%) contrast(97%);
+     
+      &:hover {
+        filter: brightness(0) invert(1); 
+      }
+
+    }
+
+    span {
+      font-size: 0.875rem;
+      font-weight: 600;
+      line-height: 1.25rem;
+      color: variable.$primary;
+      &:hover {
+        color: white;
+      }
+    }
+  }
+  .add-option-button-light{
+    &:hover{
+      color: variable.$primary !important;
+       background-color: #071441 !important;
+    }
+   
+     span {
+      font-size: 0.875rem;
+      font-weight: 600;
+      line-height: 1.25rem;
+      color: variable.$primary;
+      &:hover {
+        color: #ffff !important;
+      }
+
+      .button{
+        &:hover {
+          .span{
+            color: variable.$primary !important;
+          }
+
+        }
+      }
+
+      .img{
+        &:hover {
+          filter: brightness(0) invert(1); 
+        }
+      }
+    }
+    }
+    
+  }
+
+
+// Some common styles for dropdown options
+.dropdown-menu {
+  .separator {
+    width: 100%;
+    border-bottom: 1px solid #e4eaf2;
+    max-width: 100%;
+    &:last-child {
+      display: none;
+    }
+
+    &.expanded {
+      display: none;
+    }
+  }
+
+  input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+  }
+
+  .single-option:hover,
+  .single-option__selected,
+  .radio-option:hover,
+  .radio-option__selected,
+  .checkbox-option:hover,
+  .checkbox-option__selected,
+  .sub-group-title:hover {
+    background-color: #e4eaf2 !important;
+  }
+}
+
+.business-checkbox-list {
+  >div:last-child .separator {
+    display: none;
+  }
+
+  .separator {
+    width: 100%;
+    border-bottom: 1px solid #e4eaf2;
+
+    &.expanded {
+      display: none;
+    }
+  }
+}
+
+.multi-checkbox-opts {
+  border-bottom: 1px solid #e4eaf2;
+  padding: 8px 0px !important;
+  margin: 0px !important;
+ 
+   &:hover {
+    background-color: unset !important;
+    border-radius: 0px !important;
+  }
+
+  &:last-child:not(.group .multi-checkbox-opts) {
+    border-bottom: none;
+  }
+
+  >div:last-child .separator {
+    display: none;
+  }
+
+  .separator {
+    width: 100%;
+    border-bottom: 1px solid #e4eaf2;
+
+    &.expanded {
+      display: none;
+    }
+  }
+
+  .group-option-dropdown {
+    padding: 0;
+  }
+
+  span {
+    font-weight: 500;
+    font-size: 16px;
+    overflow: visible;
+  }
+
+  .checkbox-option {
+    label {
+      padding: 8px;
+      margin: 0 !important;
+    }
+
+    &hover{
+      border-radius: 4px !important;
+    }
+  }
+
+  .select-option__selected{
+    background-color: #E4EAF2;
+    border-radius: 4px;
+    
+  }
+  .ant-checkbox-wrapper {
+    display: flex;
+    align-items: center;
+    padding: 8px 0;
+    width: 100%;
+    .ant-checkbox {
+      margin-right: 4px;
+    }
+  }
+  
+  .ant-checkbox-wrapper-checked {
+    background-color: #E4EAF2;
+    border-radius: 4px;
+    margin: 8px 0;
+  }
+  
+}
+
+// Dropdown with radio buttons for single select
+.radio-option-dropdown {
+ .dropdown-button{
+  span{
+    padding-right: 6px;
+  }
+ }
+  .css-13cymwt-control,
+  .css-t3ipsp-control {
+    display: none;
+  }
+
+  .css-1nmdiq5-menu {
+    margin: unset;
+    position: unset;
+    border-radius: unset;
+    background-color: unset;
+    box-shadow: unset;
+
+    .css-qr46ko {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem !important;
+      padding: unset;
+      max-height: 168px !important;
+
+      .radio-option {
+        padding: 8px !important;
+        font-size: 1rem;
+        line-height: 1.5rem;
+        font-weight: 500;
+        color: variable.$black;
+        border-radius: 0.25rem;
+        cursor: pointer;
+        transition: all 0.1s ease-in-out;
+        overflow-wrap: anywhere;
+      }
+    }
+  }
+}
+
+// Dropdown with grouped options for single select
+.group-option-dropdown {
+
+  &:hover{
+    background-color: unset !important;
+  
+  }
+
+  .dropdown-button  {
+    &:hover{
+      background-color: unset !important;
+    }
+  }
+  .css-13cymwt-control,
+  .css-t3ipsp-control {
+    display: none;
+  }
+
+  @include mixin.breakpoint(sm) {
+    scrollbar-color: #183571 transparent;
+    scrollbar-width: thin;
+  }
+
+  .css-1nmdiq5-menu {
+    margin: unset;
+    position: unset;
+    border-radius: unset;
+    background-color: unset;
+    box-shadow: unset;
+
+    .css-qr46ko {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      padding: 0;
+
+      &>div {
+        padding:8px;
+        border-radius: 0px;
+        font-size: 1rem;
+        font-weight: 500;
+        line-height: 1.5rem;
+        color: variable.$black;
+        background-color: variable.$white;
+        cursor: pointer;
+        transition: background-color 0.1s ease-in-out;
+
+        .group-selected {
+          padding: unset !important;
+        }
+
+        &:hover {
+          background-color: #f1f4f8;
+          padding:8px;
+          border-radius: 4px !important;
+        }
+
+        &.css-tr4s17-option {
+          background-color: #E4EAF2;
+          color: #0B1426;
+        }
+      }
+
+      .group {
+        &:hover {
+          background-color: #e4eaf2;
+        }
+
+        &.expanded {
+          cursor: auto;
+          padding: unset !important;
+
+          &:hover {
+            background-color: unset;
+          }
+
+          @include mixin.breakpoint(sm) {
+            padding-right: 10px !important;
+          }
+        }
+
+        &:not(.expanded) {
+          &.selected-group {
+            background-color: variable.$primary-400;
+
+            .group-title {
+              span {
+                color: variable.$white;
+              }
+
+              img {
+                filter: brightness(0) saturate(100%) invert(100%) sepia(100%) saturate(0%) hue-rotate(255deg) brightness(103%) contrast(102%);
+              }
+            }
+          }
+        }
+
+        .group-title {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          transition: margin-bottom 0.3s ease-in-out;
+
+          &.expanded {
+            margin-bottom: 0.5rem;
+            padding:8px;
+            border-radius: 0.25rem;
+            background-color: #30579d;
+            cursor: pointer;
+
+            span {
+              color: #fff;
+            }
+
+            img {
+              filter: brightness(0) saturate(100%) invert(100%) sepia(100%) saturate(0%) hue-rotate(255deg) brightness(103%) contrast(102%);
+            }
+          }
+
+          &.selected-group {
+            background-color: variable.$primary-400;
+          }
+
+          span {
+            font-size: 1rem;
+            font-weight: 500;
+            line-height: 1.5rem;
+            color: variable.$black;
+          }
+
+          img {
+            width: 16px;
+            height: 10px;
+            filter: brightness(0) saturate(100%) invert(7%) sepia(38%) saturate(1013%) hue-rotate(182deg) brightness(99%) contrast(99%);
+            transition: transform 0.3s ease-in-out;
+
+            &.rotate {
+              transform: rotate(180deg);
+            }
+          }
+        }
+
+        .group-list {
+          padding-inline-start: 1rem;
+
+          .css-1s9izoc {
+            padding: 0;
+
+            .select-option__selected{
+              background-color: #E4EAF2;
+              border-radius: 4px !important;
+            }
+
+            .css-jtaw72-group {
+              display: none;
+            }
+
+            &>div {
+              display: flex;
+              flex-direction: column;
+              gap: 0.5rem;
+              
+              div {
+                padding: 8px;
+                border-radius: 0.25rem;
+                font-size: 1rem;
+                font-weight: 500;
+                line-height: 1.5rem;
+                color: variable.$black;
+                background-color: variable.$white;
+                cursor: pointer;
+                transition: background-color 0.1s ease-in-out;
+                 border-radius: 0px !important;
+
+                &:hover {
+                  background-color: #f1f4f8;
+                  padding: 8px;
+                  border-radius: 4px !important;
+                  
+                }
+
+                &.css-tr4s17-option {
+                  background-color: #E4EAF2;
+                  border-radius: 4px !important;
+                }
+
+                @include mixin.breakpoint(sm) {
+                  padding-left: 32px !important;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.group-multiple-dropdown {
+  .css-qr46ko {
+    gap: 0rem !important;
+
+    .group.expanded {
+      .group-title.expanded {
+        margin-bottom: 0.5rem !important;
+      }
+
+      .group-list {
+        margin-inline-start: 1rem;
+
+        .css-1s9izoc>div {
+          gap: 0rem !important;
+          padding: unset !important;
+
+          div.checkbox-option {
+            padding:0px 0px !important;
+            transition: all 0.1s ease-in-out;
+
+            &:hover {
+              background-color: variable.$primary-100;
+             
+            }
+          }
+        }
+      }
+    }
+
+    .checkbox-option {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      transition: all 0.1s ease-in-out;
+
+      input {
+        width: 24px;
+        height: 24px;
+      }
+
+      label {
+        margin-bottom: unset;
+        font-size: 1rem;
+        font-weight: 500;
+        line-height: 1.5rem;
+        color: variable.$black;
+      }
+
+      &:hover {
+        background-color: variable.$primary-100 ;
+        border-radius: 4px !important;
+      }
+
+      &,
+      input,
+      label {
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+// Dropdown for single select with search
+.dropdown-select {
+
+  .css-13cymwt-control,
+  .css-t3ipsp-control {
+    min-height: unset;
+    margin: unset;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.5rem;
+    border: 1px solid variable.$primary-100;
+    background-color: variable.$white;
+    cursor: text;
+
+    &.css-17h53pk-control {
+      border-color: variable.$primary-300;
+      box-shadow: 0 0 0 0.1rem rgba(0, 123, 255, 0.25);
+    }
+
+    .css-hlgwow {
+      padding: unset;
+
+      .css-1jqq78o-placeholder {
+        margin: unset;
+        line-height: 1.25rem;
+        font-weight: 500;
+        color: #6b717d;
+      }
+
+      .css-19bb58m,
+      .css-1cfo1cf {
+        margin: unset;
+        padding: unset;
+
+        input {
+          height: 20px;
+        }
+
+        input[type="text"] {
+          box-shadow: unset;
+        }
+      }
+    }
+
+    .css-1wy0on6 {
+      img {
+        width: 16px;
+        height: 16px;
+        filter: brightness(0) saturate(100%) invert(14%) sepia(26%) saturate(5145%) hue-rotate(208deg) brightness(96%) contrast(91%);
+      }
+    }
+  }
+
+  .css-ik6y5r,
+  .css-1nmdiq5-menu {
+    margin: unset;
+    position: unset;
+    border-radius: unset;
+    background-color: unset;
+    box-shadow: unset;
+    margin-top: 0.75rem;
+
+    .css-qr46ko {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      padding: 0;
+      max-height: 188px;
+
+      div {
+        padding: 0;
+        padding-bottom: 0.25rem;
+        // border-bottom: 1px solid #c5ccd8;
+        font-size: 1rem;
+        font-weight: 500;
+        line-height: 1.5rem;
+        color: variable.$black;
+        background-color: unset;
+        cursor: pointer;
+
+        &:last-child {
+          border-bottom: none;
+        }
+
+        &:hover {
+          background-color: unset;
+        }
+      }
+    }
+  }
+}
+
+// Dropdown for custom options, grouped, multi-select with search
+.custom-group-dropdown {
+
+  .css-13cymwt-control,
+  .css-t3ipsp-control {
+    display: none;
+  }
+
+  .dropdown-search {
+    position: relative;
+
+    input {
+      height: 40px;
+      padding-right: 40px;
+    }
+
+    img {
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+    }
+  }
+
+  .css-1nmdiq5-menu {
+    margin: unset;
+    position: unset;
+    border-radius: unset;
+    background-color: unset;
+    box-shadow: unset;
+
+    .css-qr46ko {
+      gap: 0.5rem;
+      max-height: 500px;
+
+      .group {
+        .group-title {
+          &.expanded {
+            margin-bottom: 0.5rem;
+          }
+        }
+
+        .group-list {
+          padding-inline: unset;
+
+          .css-1s9izoc {
+            div {
+              gap: 0.5rem;
+
+              .checkbox-option {
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+
+                label {
+                  margin-bottom: unset;
+                  font-size: 1rem;
+                  font-weight: 500;
+                  line-height: 1.5rem;
+                  color: variable.$black;
+                }
+
+                .ant-checkbox-wrapper {
+                  padding: 0px !important;
+                }
+                
+              }
+
+              .checkbox-option__selected{
+                border-radius: 4px !important ;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// Dropdown for custom options, multi-select
+.custom-multi-dropdown {
+
+  .css-13cymwt-control,
+  .css-t3ipsp-control {
+    display: none;
+  }
+
+  .css-1nmdiq5-menu {
+    margin: unset;
+    position: unset;
+    border-radius: unset;
+    background-color: unset;
+    box-shadow: unset;
+
+    .css-qr46ko {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem !important;
+      padding: unset;
+
+      .checkbox-option {
+        display: flex;
+        align-items: center;
+        // padding: 8px;
+        border-radius: 0.25rem;
+        cursor: pointer;
+        transition: all 0.1s ease-in-out;
+
+        label {
+          margin-bottom: unset;
+          font-size: 1rem;
+          font-weight: 500;
+          line-height: 1.5rem;
+          color: variable.$black;
+        }
+
+        input[type='checkbox'] {
+          &:checked {
+            background-color: #183571 !important;
+            border-color: #183571 !important;
+          }
+        }
+      }
+    }
+  }
+  
+  .dropdown-search {
+    position: relative;
+
+    input {
+      height: 40px;
+      padding-right: 40px;
+    }
+
+    img {
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+    }
+  }
+  
+  .dropdown-footer {
+    display: flex;
+    justify-content: flex-end;
+
+    .add-option-button {
+      width: fit-content;
+      height: 2.25rem;
+      padding: 0.5rem 1rem;
+      border-radius: 0.25rem;
+    }
+  }
+}
+
+// Dropdown for custom options, single select
+.custom-option-dropdown {
+
+  .css-13cymwt-control,
+  .css-t3ipsp-control {
+    display: none;
+  }
+
+  .css-1nmdiq5-menu {
+    margin: unset;
+    position: unset;
+    border-radius: unset;
+    background-color: unset;
+    box-shadow: unset;
+
+    .css-qr46ko {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem !important;
+      padding: unset;
+
+      .single-option {
+        padding: 8px !important;
+        font-size: 1rem;
+        line-height: 1.5rem;
+        font-weight: 500;
+        color: variable.$black;
+        border-radius: 0.25rem;
+        cursor: pointer;
+        transition: all 0.1s ease-in-out;
+        word-wrap: anywhere;
+        overflow: visible;
+      }
+    }
+  }
+  .dropdown-button{
+    span{
+      max-width: 120px !important;
+    }
+  }
+}
+
+// Dropdown for custom options, sub-grouped, multi-select with search
+.sub-group-dropdown {
+  .css-1nmdiq5-menu .css-qr46ko .group .group-list .css-1s9izoc>div .sub-group {
+    padding: unset !important;
+
+    &:hover {
+      background-color: unset !important;
+    }
+
+    .sub-group-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.5rem !important;
+
+      &.expanded {
+        margin-bottom: 0.5rem;
+      }
+
+      span {
+        font-size: 1rem;
+        font-weight: 500;
+        line-height: 1.5rem;
+        color: variable.$primary;
+      }
+
+      img {
+        width: 16px;
+        height: 10px;
+        filter: brightness(0) saturate(100%) invert(14%) sepia(26%) saturate(5145%) hue-rotate(208deg) brightness(96%) contrast(91%);
+
+        &.rotate {
+          transform: rotate(180deg);
+        }
+      }
+    }
+
+    .sub-options {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      padding: unset !important;
+
+      &:hover {
+        background-color: unset !important;
+        cursor: auto;
+      }
+
+      .select-option__selected{
+        background-color: #E4EAF2;
+        border-radius: 4px;
+       
+      }
+    }
+  }
+}
+
+// Model for add new options (unit, vehicle model, vehicle make)
+// AddModalInput, AddModalSelect
+.add-modal {
+  .ant-modal-content {
+    padding: 24px 2rem;
+    border-radius: 0.75rem;
+    background-color: #f8f8ff;
+
+    @include mixin.breakpoint(sm) {
+      padding: 1.5rem 1rem;
+    }
+
+    .ant-modal-close {
+      top: 20px;
+      right: 32px;
+
+      @include mixin.breakpoint(sm) {
+        right: 16px;
+      }
+
+      svg {
+        color: variable.$primary;
+      }
+    }
+
+    .ant-modal-header {
+      height: 32px;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid #c5ccd8;
+      background-color: inherit;
+
+      h3 {
+        margin: 0;
+        font-weight: 600;
+        color: variable.$primary;
+      }
+    }
+
+    .ant-modal-body {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+
+      @include mixin.breakpoint(sm) {
+        flex-direction: column;
+      }
+
+      .separator {
+        border-left: 1px solid #c5ccd8;
+
+        @include mixin.breakpoint(sm) {
+          border-bottom: 1px solid #c5ccd8;
+        }
+      }
+
+      .add-modal-section-container {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        height: fit-content;
+      }
+
+      .add-modal-section {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        height: fit-content;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        border: 1px solid #e4eaf2;
+        background-color: variable.$white;
+
+        .dropdown {
+          .dropdown-menu {
+            // position: unset;
+
+            .css-qr46ko {
+              // max-height: 330px !important;
+            }
+          }
+
+          .dropdown-blanket {
+            display: none;
+          }
+        }
+
+        .add-modal-button {
+          display: flex;
+          justify-content: flex-end;
+          gap:12px;
+
+          .button {
+            width: fit-content;
+            height: 2.25rem;
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.25rem;
+            font-size: 1rem;
+            line-height: 1.5rem;
+            font-weight: 500;
+            color: variable.$white;
+
+            @include mixin.breakpoint(sm) {
+              width: 100%;
+            }
+
+            &:hover {
+              color: variable.$primary;
+            }
+          }
+          // @include breakpoint(sm) {
+          //   display: none ;
+          // }
+        }
+
+        &.add-modal-section__list {
+          gap: unset;
+
+          .add-modal-list-container {
+            .add-modal-list-heading {
+              display: flex;
+              align-items: center;
+              gap: 0.5rem;
+              margin-bottom: 1rem;
+
+              h4 {
+                margin: 0;
+                font-weight: 600;
+                color: variable.$primary-400;
+                overflow-wrap: anywhere;
+              }
+
+              .add-modal-list-count {
+                padding: 0.25rem 1rem;
+                border-radius: 0.75rem;
+                border: 1px solid #c5ccd8;
+                background-color: #f1f4f8;
+
+                h6 {
+                  margin: 0;
+                  font-weight: 600;
+                  color: variable.$primary;
+                  white-space: nowrap;
+                }
+              }
+            }
+
+            .add-modal-search-container {
+              position: relative;
+              margin-bottom: 0.75rem;
+
+              .add-modal-search {
+                height: 40px;
+                padding: 0.5rem 2.5rem 0.5rem 0.75rem;
+                border-radius: 0.25rem;
+                border: 1px solid variable.$primary-100;
+                font-size: 0.875rem;
+                line-height: 1.25rem;
+                font-weight: 500;
+              }
+
+              .add-modal-search-icon {
+                position: absolute;
+                width: 16px;
+                height: 16px;
+                right: 12px;
+                top: 50%;
+                transform: translateY(-50%);
+                pointer-events: none;
+              }
+            }
+
+            .add-modal-list {
+              display: flex;
+              flex-direction: column;
+              gap: 0.5rem;
+              height: 300px;
+              overflow-y: auto;
+              scrollbar-color: #112861 transparent;
+
+              @include mixin.breakpoint(sm) {
+                height: unset;
+                max-height: 270px;
+              }
+
+              &.add-modal-list__input {
+                max-height: 216px;
+              }
+
+              .add-modal-list-item {
+                // display: flex;
+                // align-items: center;
+                // justify-content: space-between;
+                padding: 0.5rem 0.5rem 0.5rem 1rem;
+                border-radius: 0.25rem;
+                cursor: pointer;
+                transition: all 0.1s ease-in-out;
+                text-align: left;
+
+                &:hover {
+                  background-color: #e4eaf2;
+                }
+
+                span {
+                  font-size: 1rem;
+                  line-height: 1.5rem;
+                  font-weight: 500;
+                  color: variable.$black;
+                  overflow-wrap: anywhere;
+                }
+
+                img {
+                  width: 24px;
+                  height: 24px;
+                  filter: brightness(0) saturate(100%) invert(14%) sepia(75%) saturate(5177%) hue-rotate(14deg) brightness(73%) contrast(128%);
+                }
+              }
+              .separator {
+                border-bottom: 1px solid #e4eaf2;
+
+                &:last-child {
+                  display: none;
+                }
+              }
+            }
+            .add-modal-main-list {
+              display: flex;
+              flex-direction: column;
+              gap: 0.5rem;
+              
+              .add-modal-main-list-item {
+                padding: 0 0 8px 8px;
+                text-align: left;
+
+                span {
+                  font-size: 1rem;
+                  line-height: 1.5rem;
+                  font-weight: 500;
+                  color: #0B1426;
+                }
+              }
+            }
+          }
+
+          .add-modal-no-data-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            min-height: 390px;
+
+            @include mixin.breakpoint(sm) {
+              min-height: 360px;
+            }
+
+            img {
+              width: 64px;
+              height: 64px;
+              filter: brightness(0) saturate(100%) invert(66%) sepia(12%) saturate(293%) hue-rotate(183deg) brightness(95%) contrast(87%);
+            }
+
+            .no-data-message {
+              text-align: center;
+
+              h2 {
+                margin-bottom: 0.25rem;
+                font-weight: 600;
+                color: variable.$black;
+              }
+
+              span {
+                font-size: 0.75rem;
+                line-height: 1.25rem;
+                font-weight: 500;
+                color: #6b717d;
+              }
+            }
+          }
+        }
+      }
+
+      .add-service-section {
+        .form-item__full {
+          .form-label {
+            font-size: 16px !important;
+          }
+          .dropdown {
+            .dropdown-menu {
+              // position: unset;
+  
+              .css-1nmdiq5-menu,.css-qr46ko{
+                height: 102px;
+              }
+            }
+  
+          
+          }
+  
+        }
+      }
+    }
+    }
+  }
+
+.custom-select {
+  .dropdown-search {
+    input[type="text"] {
+      border-color: #C3DCF9;
+    }
+  }
+
+  .custom-options {
+    span {
+      font-weight: 500 !important;
+      font-size: 16px;
+      word-wrap: anywhere;
+      overflow: visible;
+    }
+
+    input[type="checkbox"] {
+      color: #183571;
+    }
+  }
+
+}
+
+.custom-radio-select {
+  .dropdown-search {
+    position: relative;
+
+    input[type="text"] {
+      border-color: #C3DCF9;
+      height: 40px;
+      padding:8px 12px;
+    }
+
+    img {
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+    }
+  }
+}
+
+.single-input {
+  .ant-modal-content {
+    background-color: variable.$white;
+    padding: 24px 16px;
+    border-radius: 8px;
+
+    .ant-modal-close {
+      right: 15px !important;
+    }
+  }
+
+  .add-modal-section {
+    border: unset !important;
+    gap: 24px;
+    padding: 0.5rem 0rem !important;
+
+    .form-item__full {
+      padding-bottom: 24px;
+      border-bottom: 1px solid variable.$gray-200;
+
+      .form-label {
+        font-size: 16px !important;
+        font-weight: 600 !important;
+        color: variable.$black !important;
+      }
+    }
+
+    .add-modal-cancel {
+      background-color: variable.$gray-50;
+      border: unset;
+      color: variable.$gray-500;
+      font-weight: 600;
+    }
+  }
+}
+
+.custome-drop {
+
+  .drop-down {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: #4a4a4a;
+    gap: 16px;
+
+    img {
+      width: 16.5px;
+      height: 9px;
+      transition: transform 0.2s ease;
+    }
+  }
+
+}
+
+.qoute {
+  .ant-dropdown {
+    z-index: 5 !important;
+
+    @include mixin.breakpoint(sm) {
+      left: 27px !important;
+    }
+  }
+}
+
+.table-dropdown {
+  overflow: visible;
+
+  .ant-dropdown-menu {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 300px;
+    z-index: 2;
+    padding: 10px;
+    margin-top: 0.25rem;
+    border-radius: 0.5rem;
+    border: 1px solid variable.$gray-500;
+    background-color: variable.$white !important;
+    max-height: 250px;
+    overflow-y: auto;
+    padding: 1rem;
+
+    .ant-dropdown-menu-item {
+      padding: 0rem !important;
+      border-bottom: 1px solid variable.$gray-100;
+      border-radius: 0px !important;
+      background-color: variable.$white !important;
+      white-space: nowrap;
+
+      &:hover {
+        background-color: unset !important;
+      }
+
+      &:last-child {
+        border-bottom: none !important; 
+      }
+    }
+
+    .ant-dropdown-menu-title-content:has(input[type="checkbox"]:checked) {
+      background-color: #E4EAF2; 
+    }
+    
+    .ant-dropdown-menu-title-content {
+      font-size: 16px !important;
+      padding: 0.5rem !important;
+      font-weight: 500 !important;
+      color: #0B1426 !important;
+      border-radius: 0.25rem !important;
+      cursor: pointer;
+      transition: all 0.1s ease-in-out !important;
+      margin-bottom: 8px !important;
+
+      &:hover {
+        background-color: #E4EAF2 !important;
+      }
+    }
+
+    label{
+      font-weight: 500;
+      font-size: 16px;
+      .ant-checkbox{
+        overflow: unset;
+      }
+
+      span{
+      max-width: 220px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+   
+  }
+  }
+}
+
+.add-modal {
+  &.quote {
+    .selected-options {
+      max-width: 100%;
+
+      @include mixin.breakpoint(sm) {
+        max-width: 200px
+      }
+
+      .tag-container {
+        max-width: fit-content;
+
+        @include mixin.breakpoint(sm) {
+          max-width: 80px
+        }
+
+        .tag-label {
+          overflow: inherit;
+
+          @include mixin.breakpoint(sm) {
+            overflow: hidden;
+          }
+        }
+      }
+    }
+  }
+}
+
+.ant-checkbox-wrapper {
+  padding: 8px !important;
+}
+
+.group{
+
+}
+// .group-selected {
+
+//   padding: 0px !important;
+
+//   .checkbox-option:hover {
+//     background-color: unset !important;
+//   }
+
+//   &:hover {
+//     background-color: unset !important;
+//   }
+
+//   .separator {
+//     display: block !important;
+//     border-radius: unset !important;
+
+//     &:hover {
+//       background-color: unset !important;
+//     }
+
+
+//   }
+
+//   &:last-child {
+//     .separator {
+//       display: none !important;
+//     }
+//   }
+
+//   .ant-checkbox-wrapper {
+//     display: flex;
+//     align-items: center;
+//     padding: 8px;
+//     width: 100%;
+//   }
+
+//   .ant-checkbox-wrapper-checked {
+//     background-color: #E4EAF2;
+//     border-radius: 4px;
+//   }
+
+//   .checkbox-option {
+//     padding: 12px !important;
+//     //   label{
+//     //   margin: 8px 0 !important;
+//     // }
+//   }
+
+//   .group {
+//     .group-list {
+//       div {
+//         border-radius: 0.25rem;
+//       }
+//     }
+//   }
+
+//   .group-option-dropdown {
+//     .css-1nmdiq5-menu {
+//       .group {
+//         .group-list {
+//           >div {
+//             div {
+//               padding: unset !important;
+//             }
+//           }
+//         }
+//       }
+//     }
+
+//   }
+// }
+
+// .multi-group {
+
+//   .css-13cymwt-control,
+//   .css-t3ipsp-control {
+//     display: none;
+//   }
+
+//   @include breakpoint(sm) {
+//     scrollbar-color: #183571 transparent;
+//     scrollbar-width: thin;
+//   }
+
+//   .css-1nmdiq5-menu {
+//     margin: unset;
+//     position: unset;
+//     border-radius: unset;
+//     background-color: unset;
+//     box-shadow: unset;
+
+//     .css-qr46ko, .css-1s9izoc {
+//       display: flex;
+//       flex-direction: column;
+//       gap: unset !important;
+//       padding: 0;
+//       overflow-y: scroll !important;
+//       max-height: 300px !important;
+//       scrollbar-color: #183571 transparent;
+//       padding-right: 10px !important;
+
+//       &>div {
+
+//         border-radius: 0.25rem;
+//         font-size: 1rem;
+//         font-weight: 500;
+//         line-height: 1.5rem;
+//         color: $black;
+//         background-color: $white;
+//         cursor: pointer;
+//         transition: background-color 0.1s ease-in-out;
+
+//         .group-selected {
+//           padding: unset !important;
+//         }
+
+//         &:hover {
+//           background-color: #f1f4f8;
+//         }
+
+//         &.css-tr4s17-option {
+//           background-color: $primary-400;
+//           color: #fff;
+//         }
+//       }
+
+//       .group {
+
+//         color: #fff;
+
+//         &:hover {
+//           background-color: #e4eaf2;
+//         }
+
+//         &.expanded {
+//           cursor: auto;
+//           padding: unset !important;
+
+//           &:hover {
+//             background-color: unset;
+//           }
+
+//           @include breakpoint(sm) {
+//             padding-right: 10px !important;
+//           }
+//         }
+
+//         &:not(.expanded) {
+//           background-color: #30579d;
+
+//           &.selected-group {
+//             background-color: $primary-400;
+
+//             .group-title {
+//               span {
+//                 color: $white !important;
+//               }
+
+//               img {
+//                 filter: brightness(0) saturate(100%) invert(100%) sepia(100%) saturate(0%) hue-rotate(255deg) brightness(103%) contrast(102%);
+//               }
+//             }
+//           }
+//         }
+
+//         .group-title {
+//           display: flex;
+//           align-items: center;
+//           justify-content: space-between;
+//           transition: margin-bottom 0.3s ease-in-out;
+//           color: #fff !important;
+
+//           &.expanded {
+//             margin-bottom: 0.5rem;
+//             padding: 0.25rem 0.5rem;
+//             border-radius: 0.25rem;
+//             background-color: #30579d;
+//             cursor: pointer;
+
+//             span {
+//               color: #fff !important;
+//             }
+
+//             img {
+//               filter: brightness(0) saturate(100%) invert(100%) sepia(100%) saturate(0%) hue-rotate(255deg) brightness(103%) contrast(102%);
+//             }
+//           }
+
+//           &.selected-group {
+//             background-color: $primary-400;
+//           }
+
+//           span {
+//             font-size: 1rem;
+//             font-weight: 500;
+//             line-height: 1.5rem;
+//             color: #fff !important;
+//           }
+
+//           img {
+//             width: 16px;
+//             height: 10px;
+//             filter: brightness(0) invert(100%);
+//             transition: transform 0.3s ease-in-out;
+
+//             &.rotate {
+//               transform: rotate(180deg);
+//             }
+//           }
+//         }
+
+//         .group-list {
+//           padding-inline: unset;
+//           margin-inline-start: unset;
+
+//           .css-1s9izoc, .css-4o2hlo, .css-192qfiq, .css-41sogl {
+//             padding: 0;
+
+//             .css-jtaw72-group {
+//               display: none;
+//             }
+
+//             &>div {
+//               display: flex;
+//               flex-direction: column;
+//               gap: unset !important;
+
+//               div {
+//                 padding: unset !important;
+//                 border-radius: 0.25rem;
+//                 font-size: 1rem;
+//                 font-weight: 500;
+//                 line-height: 1.5rem;
+//                 color: $black;
+//                 background-color: $white;
+//                 cursor: pointer;
+//                 transition: background-color 0.1s ease-in-out;
+
+//                 &:hover {
+//                   background-color: #f1f4f8;
+//                 }
+
+//                 &.css-tr4s17-option {
+//                   background-color: $primary-100;
+//                 }
+
+//                 //  @include breakpoint(sm) {
+//                 //   padding-left: 32px !important; 
+//                 // }
+
+//                 &:last-child {
+//                   .separator {
+//                     display: block !important;
+//                   }
+//                 }
+
+//                 .checkbox-option {
+//                   padding: 12px 12px 12px 32px !important;
+//                 }
+
+//                 gap: unset !important;
+//               }
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+
+// }
+
+.spare-part-ad-modal{
+
+}
+
+.select-expand{
+  margin-bottom: 0px !important;
+}
+
+.group-option-dropdown{
+  .ant-checkbox-wrapper{
+  padding-left: 32px !important;
+}
+}
+
+.api-search-option{
+  .ant-checkbox-wrapper{
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    padding-left: 0 !important;
+  }
+
+  .checkbox-option__selected{
+    border-radius: 4px !important;
+  }
+.group-option-dropdown{
+  .css-qr46ko > div{
+    border-radius: 4px !important;
+  }
+}
+  
+}
+

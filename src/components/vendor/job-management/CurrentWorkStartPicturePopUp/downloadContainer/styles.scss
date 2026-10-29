@@ -1,0 +1,23 @@
+.download-image {
+  width: 30px;
+  display: flex;
+  gap: 10px;
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .image-name {
+    font-family: Figtree;
+    font-weight: 500;
+    font-size: 14px;
+    color: #0b1426;
+  }
+
+  .download-icon {
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+  }
+}

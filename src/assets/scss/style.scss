@@ -1,0 +1,75 @@
+$assetsPath :"../../assets/images";
+
+@use "abstracts/variable";
+@use "abstracts/mixin";
+
+//Base
+@use "base/base";
+
+//Layout
+@use "layout/master_layout";
+@use "layout/header";
+@use "layout/footer";
+@use "layout/sidebar";
+
+//Common    
+@use "common/error";
+@use "common/toast";
+@use "common/loader";
+@use "common/breadcrumb";
+@use "common/react-datatable";
+@use "common/react-datepicker";
+@use "common/react-phone-input";
+@use "common/react-select";
+@use "common/field-selection-dropdown";
+
+//Auth
+@use "pages/auth";
+
+//Dashboard
+@use "pages/dashboard/dashboard";
+@use "pages/dashboard/jobs";
+@use "pages/dashboard/recently_joined_vendors";
+@use "pages/dashboard/notifications";
+@use "pages/dashboard/recent_activities";
+@use "pages/dashboard/range_tabs";
+@use "pages/dashboard/service_completion_rate";
+@use "pages/dashboard/sales_overview";
+@use "pages/dashboard/comparison_chart";
+@use "pages/dashboard/inventory_updates_widget";
+
+//Profile
+@use "pages/profile/profile";
+
+//Vendor
+@use "pages/vendor/vendor";
+@use "pages/vendor/form";
+@use "pages/vendor/view_vendor";
+@use "pages/vendor/system_configurations";
+
+//Ratecard
+@use "pages/ratecard/rate_card";
+@use "pages/ratecard/edit_rate_card";
+
+//Services
+@use "pages/services/services";
+
+//Spare parts
+@use "pages/spareparts/spare_parts";
+@use "pages/spareparts/view_spare_parts";
+
+//Quotes
+@use "pages/quotes/view_quotes";
+
+//jobs
+@use "pages/jobs/view_job";
+@use "pages/jobs/jobs" as jobs2;
+
+//Technician
+@use "pages/technician/technician_job";
+//Inventory
+@use "pages/inventory/inventory_updates";
+@use "pages/inventory/view_inventory";
+
+//Finance
+@use "pages/finance/finance"

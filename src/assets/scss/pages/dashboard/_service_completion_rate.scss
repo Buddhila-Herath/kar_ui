@@ -1,0 +1,279 @@
+@use "../../abstracts/mixin";
+@use "../../abstracts/variable";
+
+// Service Completion Rate Donut Chart Styles
+.service-completion-rate {
+  background: variable.$white;
+  border: 1px solid #E4EAF2;
+  border-radius: 12px;
+  padding: 24px;
+  width: 42%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  // Service completion rate chart colors
+  --chart-started-color: #5D88CC;
+  --chart-paused-color: #F5C463;
+  --chart-completed-color: #80D6A0;
+  --chart-empty-color: #F1F4F8;
+  --chart-text-color: #0B1426;
+  --chart-background-color: #F8F8FF;
+
+  @include mixin.breakpoint(sm) {
+    width: 100%;
+    height: 332px;
+  }
+
+  .chart-header {
+    text-align: left;
+
+    .chart-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #0B1426;
+      margin-bottom: 0px;
+    }
+  }
+
+  .chart-legend-container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    @include mixin.breakpoint(sm) {
+      height: 322px;
+      gap: 24px;
+    }
+
+    .chart-container {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .recharts-responsive-container {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+
+        .recharts-wrapper {
+          height: 220px !important;
+          margin-top: -12px;
+
+          // @include breakpoint(sm) {
+          //     margin-top: -10px;
+          // }
+        }
+
+        .recharts-surface {
+          @include mixin.breakpoint(sm) {
+            height: 100% !important;
+          }
+        }
+      }
+
+      .chart-center-text {
+        position: absolute;
+        top: 32%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        pointer-events: none;
+
+        @include mixin.breakpoint(sm) {
+          top: 33%;
+        }
+
+        .center-label {
+          font-size: 14px;
+          font-weight: 500;
+          color: #0B1426;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+
+          div {
+            display: block;
+            white-space: nowrap;
+          }
+        }
+      }
+    }
+
+    .chart-legend {
+      display: flex;
+      gap: 4px;
+      justify-content: center;
+
+      .legend-item {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        width: 79px;
+
+        .legend-color {
+          width: 4px;
+          height: 12px;
+          border-radius: 4px;
+          flex-shrink: 0;
+        }
+
+        .legend-label {
+          flex: 1;
+          font-size: 14px;
+          font-weight: 500;
+          color:  #0B1426;
+        }
+
+        .legend-value {
+          font-size: 14px;
+          font-weight: 600;
+          color: variable.$primary;
+          line-height: 1.4;
+          min-width: 40px;
+          text-align: right;
+        }
+      }
+    }
+
+    @include mixin.breakpoint(sm) {
+      .chart-header {
+        .chart-title {
+          font-size: 18px;
+        }
+      }
+
+      .chart-container {
+        .chart-center-text {
+          .center-label {
+            font-size: 14px;
+          }
+        }
+      }
+
+      .chart-legend {
+        .legend-item {
+          .legend-label,
+          .legend-value {
+            font-size: 14px;
+          }
+        }
+      }
+    }
+
+    // Remove focus outlines and disable hover effects for chart segments
+    .recharts-pie-sector {
+      outline: none !important;
+
+      &:focus {
+        outline: none !important;
+        -webkit-focus-ring-color: transparent !important;
+      }
+
+      &:focus-visible {
+        outline: none !important;
+        -webkit-focus-ring-color: transparent !important;
+      }
+    }
+
+    // Additional selectors to remove Chrome focus outlines
+    .recharts-wrapper {
+      * {
+        outline: none !important;
+        -webkit-focus-ring-color: transparent !important;
+
+        &:focus {
+          outline: none !important;
+          -webkit-focus-ring-color: transparent !important;
+        }
+
+        &:focus-visible {
+          outline: none !important;
+          -webkit-focus-ring-color: transparent !important;
+        }
+      }
+    }
+
+    .recharts-pie-sector,
+    .recharts-pie-sector *,
+    svg .recharts-pie-sector,
+    svg .recharts-pie-sector * {
+      outline: none !important;
+      -webkit-focus-ring-color: transparent !important;
+
+      &:focus {
+        outline: none !important;
+        -webkit-focus-ring-color: transparent !important;
+      }
+
+      &:focus-visible {
+        outline: none !important;
+        -webkit-focus-ring-color: transparent !important;
+      }
+    }
+
+    .recharts-wrapper text {
+      fill: #0B1426 !important;
+    }
+
+    .chart-container {
+      * {
+        outline: none !important;
+        -webkit-focus-ring-color: transparent !important;
+
+        &:focus {
+          outline: none !important;
+          -webkit-focus-ring-color: transparent !important;
+        }
+
+        &:focus-visible {
+          outline: none !important;
+          -webkit-focus-ring-color: transparent !important;
+        }
+      }
+    }
+
+    svg,
+    svg *,
+    path,
+    path *,
+    g,
+    g * {
+      outline: none !important;
+      -webkit-focus-ring-color: transparent !important;
+
+      &:focus {
+        outline: none !important;
+        -webkit-focus-ring-color: transparent !important;
+      }
+
+      &:focus-visible {
+        outline: none !important;
+        -webkit-focus-ring-color: transparent !important;
+      }
+    }
+
+    .recharts-responsive-container,
+    .recharts-responsive-container * {
+      outline: none !important;
+      -webkit-focus-ring-color: transparent !important;
+
+      &:focus {
+        outline: none !important;
+        -webkit-focus-ring-color: transparent !important;
+      }
+
+      &:focus-visible {
+        outline: none !important;
+        -webkit-focus-ring-color: transparent !important;
+      }
+    }
+
+  }
+}
+
+.ant-layout-content {
+  color: #0B1426 !important;
+}

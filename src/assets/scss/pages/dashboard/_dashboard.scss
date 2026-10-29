@@ -1,0 +1,550 @@
+@use "../../abstracts/mixin";
+@use "../../abstracts/variable";
+
+.dashboard-widget {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 2rem 1rem;
+  // background-color: $white;
+  border: 1px solid variable.$primary-100;
+  border-radius: 0.5rem;
+
+  @include mixin.breakpoint(xl) {
+    flex-wrap: wrap;
+  }
+
+  @include mixin.breakpoint(lg) {
+    flex-wrap: wrap;
+  }
+
+  @include mixin.breakpoint(lmd) {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.5rem 1.25rem;
+  }
+
+  @include mixin.breakpoint(md) {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.5rem 1.25rem;
+  }
+
+  @include mixin.breakpoint(sm) {
+    padding: 1.5rem 1rem;
+  }
+}
+
+.card {
+  &.no-border {
+    min-width: 265px;
+
+    @include mixin.breakpoint(xl) {
+      flex: 1 1 100%;
+    }
+
+    @include mixin.breakpoint(lmd) {
+      width: 100%;
+    }
+
+    @include mixin.breakpoint(sm) {
+      display: none;
+    }
+
+    .greeting {
+      .greeting-time {
+        color: variable.$black;
+        margin: 0;
+      }
+
+      .greeting-name {
+        color: variable.$primary;
+        margin: 0;
+      }
+
+      @include mixin.breakpoint(xl) {
+        display: flex;
+      }
+
+      @include mixin.breakpoint(lg) {
+        display: flex;
+      }
+
+      @include mixin.breakpoint(lmd) {
+        display: flex;
+      }
+
+      @include mixin.breakpoint(md) {
+        display: flex;
+      }
+    }
+
+    .message {
+      margin: 0;
+      font-size: 0.75rem;
+      line-height: 1.25rem;
+      color: #353f59;
+    }
+  }
+
+  &.widget-card-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    flex-wrap: wrap;
+
+    @include mixin.breakpoint(xl) {
+      justify-content: space-between;
+    }
+
+    @include mixin.breakpoint(lmd) {
+      justify-content: flex-start;
+    }
+
+    @include mixin.breakpoint(md) {
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+
+    @include mixin.breakpoint(sm) {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+  }
+
+  &.widget-card {
+    flex: 1;
+    padding: 0.875rem 1rem;
+    box-shadow: inset 0 0 0 0.5px variable.$primary-300;
+    border-radius: 0.5rem;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 236px;
+
+    @include mixin.breakpoint(xl) {
+      width: 236px;
+    }
+
+    @include mixin.breakpoint(lmd) {
+      width: 210px;
+    }
+
+    @include mixin.breakpoint(md) {
+      width: 210px;
+    }
+
+    @include mixin.breakpoint(sm) {
+      width: 100%;
+    }
+
+    .card-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .left-content {
+        .row-container-title-arrow {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-around;
+          min-width: 90px;
+          gap: 4px;
+
+          .widget-title {
+            font-weight: 600;
+            color: variable.$primary;
+            margin-bottom: 0rem;
+            font-size: 16px;
+
+            @include mixin.breakpoint(md) {
+              font-size: 15px;
+            }
+          }
+
+          .arrow-wrapper {
+            max-width: 24px;
+
+            .arrow-icon-style {
+              width: 100%;
+              height: 100%;
+            }
+          }
+        }
+
+        .widget-count {
+          color: variable.$primary;
+          margin: 0;
+        }
+      }
+
+      .right-content {
+        .widget-icon {
+          width: 37px;
+          height: 42px;
+        }
+      }
+    }
+
+    &:last-child {
+
+      .widget-title,
+      .widget-count {
+        color: #ffffff !important;
+      }
+    }
+  }
+
+  .separator {
+    height: 72px;
+    border-left: 1px solid #e4eaf2;
+
+    @include mixin.breakpoint(sm) {
+      display: none;
+    }
+  }
+}
+
+.admin-portal-dashboard-widget {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  margin-top: 8px;
+
+  @include mixin.breakpoint(xl) {
+    flex-wrap: nowrap;
+  }
+
+  @include mixin.breakpoint(md) {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+  }
+
+  .first-content {
+    max-width: 279px;
+
+    @include mixin.breakpoint(xl) {
+      max-width: 279px;
+    }
+
+    .admin-greeting {
+      @include mixin.breakpoint(xl) {
+        display: grid;
+      }
+    }
+  }
+
+  .admin-widget-card-container {
+    max-width: 774px;
+    gap: 16px;
+
+    @include mixin.breakpoint(sm) {
+      gap: 8px;
+    }
+  }
+}
+
+.vendor-dashboard-widget {
+  background-color: unset;
+  border: none;
+  margin-top: 0px;
+  padding: 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px !important;
+
+  .first-content {
+    @include mixin.breakpoint(sm) {
+      display: flex;
+    }
+
+    .greeting {
+
+      @include mixin.breakpoint(md) {
+        flex-direction: column;
+      }
+
+      .dashboard-greeting {
+        display: flex;
+
+        .greeting-time {
+          white-space: nowrap;
+        }
+
+        .greeting-name {
+          white-space: nowrap;
+          align-items: center;
+          display: flex;
+
+          .greeting-name-text {
+            max-width: 200px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: inline-block;
+
+            @include mixin.breakpoint(sm) {
+              max-width: 80px;
+            }
+
+
+
+          }
+
+          .proclamation {
+            margin-left: -6px !important;
+          }
+        }
+
+
+      }
+
+      .message {
+        line-height: 20px;
+        white-space: nowrap;
+      }
+    }
+  }
+
+  .job-managements {
+    width: 100%;
+
+    @include mixin.breakpoint(md) {
+      padding: 0px !important;
+    }
+
+    .job-widgets {
+      padding: 24px 16px;
+      border: 1px solid variable.$primary-50;
+
+      .date-container {
+        .px-4 {
+          border-color: #C5CCD8 !important;
+        }
+        
+        input[type="text"]{
+          border-radius: 6px;
+        }
+      }
+
+      .jobs-container {
+        .job-summary {
+          gap:12px;
+          .summary-box {
+            width: 100%;
+            height: 116px;
+            justify-content: normal;
+            align-items: normal;
+
+
+            @include mixin.breakpoint(sm) {
+              width: 100%;
+              height: 116px;
+              min-width: 270px;
+            }
+
+            .summary-box-content {
+              justify-content: space-between;
+              display: flex;
+              gap: 10px;
+
+              .icon {
+                border: 0.5px solid #30579D;
+                background-color: #ffff;
+                display: flex;
+                align-items: center;
+                border-radius: 4px;
+                padding: 8px;
+                width: 28px;
+                height: 28px;
+                justify-content: center;
+
+                img {
+                  width: 16px;
+                  height: 16px;
+
+
+                }
+              }
+
+              .content {
+                gap: 8px;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+
+                h1 {
+                  margin-bottom: 0px !important;
+                  font-size: 24px;
+                  font-weight: 700;
+                  text-align: right;
+                }
+
+                .title {
+                  font-size: 12px;
+                  color: #353F59;
+                  text-align: right;
+                }
+              }
+            }
+
+            .lower-content {
+              p {
+                font-size: 10px;
+                color: #000000;
+                font-weight: 500;
+              }
+            }
+
+            .progress-bar {
+              width: 100%;
+              height: 8px;
+              background-color: #D9D9D9;
+              border-radius: 4px;
+              overflow: hidden;
+              position: relative;
+              display: block;
+              flex-shrink: 0;
+              min-height: 8px;
+
+              &::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: var(--progress-width);
+                height: 100%;
+                background-color: #9888FF;
+                border-radius: 4px;
+                display: block;
+              }
+
+              &.pending::before {
+                background-color: #5D88CC;
+              }
+
+              &.on-hold::before {
+                background-color: #4FD1C5;
+              }
+            }
+          }
+
+          .total-jobs {
+            background-color: #F1F4F8;
+            border: 1px solid #E4EAF2;
+
+          }
+
+          .pending-jobs {
+            background-color: #E9F3FF;
+            border: 1px solid #C3DCF9;
+
+          }
+
+          .on-hold-jobs {
+            background-color: #E9E9E9;
+            border: 1px solid #C5CCD8;
+          }
+        }
+      }
+    }
+
+    @media (min-width: 1500px) and (max-width: 1515px) {
+      .react-datepicker-popper {
+        transform: translate(-18.4286px, 49.9048px) !important;
+      }
+    }
+  }
+}
+
+.vendor-dashboard-container {
+  display: flex;
+  align-items: flex-start;
+  padding-right: 270px; // Add padding to prevent overlap with fixed sidebar
+
+  // Adjust padding when sidebar is collapsed
+  &.sidebar-collapsed {
+    padding-right: 78px; 
+    
+    @include mixin.breakpoint(md) {
+      padding-right: 0px;
+    }
+
+    @include mixin.breakpoint(sm) {
+      padding-right: 0px;
+    }
+  }
+
+  @include mixin.breakpoint(md) {
+    display: block;
+    padding-right: 0; // Remove padding on mobile
+  }
+
+  @include mixin.breakpoint(sm) {
+    display: block;
+    padding-right: 0; // Remove padding on mobile
+  }
+
+  .dashboard-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .dashboard-sidebar {
+    flex-shrink: 0;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    z-index: 1000;
+
+    @include mixin.breakpoint(sm) {
+      display: none;
+    }
+
+    @include mixin.breakpoint(md) {
+      z-index: 1000;
+      position: fixed;
+      top: 0;
+      right: 0;
+      height: 100vh;
+    }
+
+    @include mixin.breakpoint(xxl){
+      top: 0;
+      right: 0;
+      height: 100vh;
+    }
+  }
+
+  .mobile-recent-activities {
+    display: none;
+
+    @include mixin.breakpoint(sm) {
+      display: block;
+      order: 1;
+    }
+  }
+
+  .dashboard-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include mixin.breakpoint(sm) {
+      .date-navigation-tabs {
+        order: 2;
+      }
+    }
+  }
+}

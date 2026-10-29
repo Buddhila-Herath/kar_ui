@@ -1,0 +1,5 @@
+{
+  "apiUrl": "https://qakargateway.itaffix.com/",
+  "environment": "QA",
+  "portal": "ADMIN"
+}

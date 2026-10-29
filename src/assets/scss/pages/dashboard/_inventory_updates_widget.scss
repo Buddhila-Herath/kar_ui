@@ -1,0 +1,101 @@
+.inventory-widget-container{
+    height: auto;
+    .job-container{
+        background-color: transparent;
+        border: none;
+        padding: 0;
+        margin: 0;
+        .job-tab-header{
+            border-radius: 12px;
+            border: 0.5px solid #C3DCF9;
+            gap: 0;
+            padding: 2px;
+            .tab-item{
+                padding: 4px 8px !important;
+                border-radius: 10px;
+                span{
+                    color: var(--Primary-500, #183571);
+                    text-align: center;
+                    font-size: 8px;
+                    font-style: normal;
+                    font-weight: 500;
+                    text-wrap: nowrap;
+                    line-height: 16px;
+                }
+            }
+            .tab-item.active{
+                span{
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+    .vendor-list{
+        min-height: 430px;
+        .vendor-slide{
+            margin-bottom: 8px;
+            .vendor-item{
+                cursor: pointer;
+            }
+            .vendor-details{
+                max-width: unset;
+                white-space: break-spaces;
+                .vendor-name{
+                    white-space: break-spaces;
+                    margin-bottom: 4px;
+                    word-break: break-word;
+                }
+                .vendor-email{
+                    font-weight: 500;
+                    @media (max-width: 768px){
+                        max-width: unset !important;
+                    }
+                }
+            }
+        }
+        .slick-dots{
+            top: 0 !important;
+            margin-bottom: 8px !important;
+        }
+    }
+    .no-slide{
+        .slick-dots{
+            display: none !important;
+        }
+    }
+    .widget-no-data{
+        width: 100%;
+        border-radius: 8px;
+        background:  #FFF;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 0 16px;
+        @media (max-width: 768px){
+            height: 420px;
+            margin: 6px 0;
+        }
+        img{
+            height: 32px;
+            margin-bottom: 16px;
+        }
+        .no-data-text{
+            color:  #183571;
+            text-align: center;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 24px;
+        }
+        .no-data-message{
+            color: #6B717D;
+            text-align: center;
+            font-size: 12px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 20px;
+        }
+    }
+}

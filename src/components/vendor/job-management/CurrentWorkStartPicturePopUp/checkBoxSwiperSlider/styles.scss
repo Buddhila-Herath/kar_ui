@@ -1,0 +1,59 @@
+.swiper {
+  margin-bottom: 0 !important
+}
+
+.check-box-main-swiper {
+  width: 100%;
+
+  .swiper-slide.first-slide,
+  .swiper-slide.second-slide,
+  .swiper-slide.third-slide {
+    width: 581px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .first-swiper-slider-container {
+    cursor: pointer;
+    padding: 0  !important;
+    margin: 0 !important;
+    width: 124px;
+    flex: 0 0 124px; // prevent collapsing in flex row
+    
+    &:hover {
+      opacity: 0.4;
+    }
+
+    &.active {
+      opacity: 1;
+      background: #E9F3FF;
+      border-radius: 4px;
+    }
+  }
+}
+
+.new-divider-line {
+  width: 1px;
+  height: 60px;
+  background-color: #C5CCD8;
+  &:last-child {
+  display: none;
+  }
+}
+
+.slide-grid {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.image-wrapper {
+  position: relative;
+  width: 10px;
+  height: 30px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+}

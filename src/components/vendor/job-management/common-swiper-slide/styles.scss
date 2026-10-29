@@ -1,0 +1,235 @@
+.swiper {
+  width: 100%;
+  height: 120px;
+  margin-bottom: 10px;
+}
+
+.common-main-swiper {
+  .swiper-button-prev {
+    left: -0px !important;
+  }
+}
+
+.scroller-new {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+.SwiperSlideComponent {
+  width: 100%;
+  margin: auto;
+  border: 1px solid #183571;
+}
+
+/* Desktop View */
+.swiper-wrapper {
+  margin: 0 3px;
+  justify-content: center;
+  gap: 0px;
+}
+
+.swiper-slide {
+  flex-shrink: 0;
+  margin-right: 0;
+}
+
+.job-detail-container .thumbnail-item {
+  margin-top: 1.8rem;
+  width: 72px !important;
+  height: 48px !important;
+  overflow: visible;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  color: #000 !important;
+}
+
+.swiper-button-prev:after,
+.swiper-button-next:after {
+  font-size: 18px !important;
+  font-weight: bold;
+}
+.common-main-swiper .swiper-button-prev {
+  left: -13px !important;
+}
+.first-swiper-container {
+  padding-right: 0px !important;
+  margin-right: 10px;
+}
+.car-image-container-new {
+  width: 100%;
+  position: relative;
+  display: flex;
+  top: 12px;
+}
+
+.job-detail-container.after-save .swiper-wrapper {
+  gap: 25px !important;
+}
+
+.job-detail-container .swiper-slide {
+  width: 80px;
+  margin: 0;
+  position: relative;
+  top: -12px;
+  border-radius: 55%;
+}
+
+@media screen and (max-width: 600px) {
+  .job-detail-container .swiper-slide {
+    margin: 0;
+    position: relative;
+    top: -10px !important;
+    // right: -5px !important;
+    border-radius: 55%;
+  }
+}
+
+.swiper-button-prev:after,
+.swiper-button-next:after {
+  color: #000 !important;
+  font-size: 16px !important;
+}
+
+// .swiper-button-disabled {
+// //   background: #c3dcf9 !important;
+// }
+
+.swiper-pagination {
+  bottom: 0 !important;
+  top: unset !important;
+  color: #9da4b1 !important;
+}
+
+.swiper-pagination-bullet {
+  width: 16px !important;
+  height: 4px !important;
+  border-radius: 2px !important;
+  background: #c3dcf9 !important;
+}
+
+.swiper-pagination-bullet-active {
+  background: #183571 !important;
+}
+
+.swiper-slide {
+  display: flex !important;
+}
+
+.parallax-bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-background-size: cover;
+  background-size: cover;
+  background-position: center;
+}
+
+.first-swiper-container {
+  padding-right: 15px;
+  margin-right: 15px;
+}
+
+.first-swiper-container:last-child {
+  border-right: none;
+  margin-right: none;
+}
+
+.first-swiper-container::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%; /* Start from middle */
+  transform: translateY(-50%); /* Center vertically */
+  height: 76%; /* Adjust this value for height (60% of parent) */
+  width: 1px;
+  background: #c5ccd8; /* Your border color */
+}
+.first-swiper-container:nth-child(4n)::after {
+  display: none;
+}
+
+.first-swiper-container:last-child::after {
+  display: none;
+}
+
+.car-image-container-new {
+  width: 100%;
+  position: relative;
+  display: flex;
+}
+
+.car-image-container-new .title {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 12px;
+  z-index: 1;
+  color: #000000;
+}
+
+.first-swiper-container .car-image-new {
+  width: 100%;
+  object-fit: contain;
+  height: 78px;
+  // margin-left: 20px;
+  mix-blend-mode: color-burn;
+}
+
+.swiper-with-edit-button {
+  .swiper-wrapper-relative {
+    position: relative;
+
+    .edit-images-button {
+      position: absolute;
+      top: 1px;
+      right: 10px;
+      background-color: #fff;
+      border: 1px solid #183571;
+      border-radius: 4px;
+      padding: 2px 8px;
+      font-size: 14px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      z-index: 10;
+      width: 60px;
+      height: 24px;
+      color: #183571;
+
+      .pr-comments-input-edit-icon {
+        width: 16px;
+        height: 16px;
+      }
+
+      &:hover {
+        background-color: #ffff;
+      }
+    }
+  }
+}
+
+.job-img-save {
+  display: flex;
+
+  gap: 8px;
+  button {
+    height: 36px;
+    border-radius: 4px;
+  }
+  margin: 8px 0px;
+  border-radius: 4px;
+  .button-cancel {
+    background: #fff;
+    border: 1px solid #183571;
+
+    h5 {
+      color: #183571 !important;
+    }
+  }
+}

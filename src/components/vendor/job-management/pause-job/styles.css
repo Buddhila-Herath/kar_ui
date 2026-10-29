@@ -1,0 +1,97 @@
+.paused-reason-dialog-container {
+    flex: 1;
+    padding-top: 20px;
+}
+
+.paused-reason-dialog-title {
+    color: rgba(0, 0, 0, 0.88);
+    font-family: Figtree;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0%;
+}
+
+.paused-reason-dialog-require {
+    content: url(../../../../assets/images/asterisk.svg);
+    color: #A20000;
+    margin-top: -6px;
+}
+
+.pause-modal .ant-modal-content {
+    padding: 16px !important;
+}
+
+.pause-modal .ant-checkbox-inner {
+    border-color: #183571 !important;
+}
+
+.pause-modal .add-modal-button {
+    display: block !important;
+}
+
+.pause-footer {
+    display: block;
+    justify-content: flex-end;
+}
+
+.pr-footer-buttons {
+    display: flex;
+    gap: 12px;
+}
+
+.pr-footer-cancel-btn {
+    width: 50%;
+    height: 36px;
+    background-color: #F1F4F8;
+    color: #6B717D;
+    padding: 8px 6px;
+    border-radius: 4px;
+    display: grid;
+    align-content: center;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 600;
+    text-align: center;
+    border: none;
+}
+
+.pr-footer-save-btn {
+    width: 50%;
+    height: 36px;
+    background-color: #183571;
+    color: white;
+    padding: 8px 6px;
+    border-radius: 4px;
+    display: grid;
+    align-content: center;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 600;
+    text-align: center;
+    border: none;
+}
+
+
+@media (min-width: 769px) {
+    .pause-footer {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        display: flex;
+    }
+
+    .footer {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .pr-footer-cancel-btn {
+        width: 76px;
+    }
+
+    .pr-footer-save-btn {
+        width: 100px;
+    }
+}

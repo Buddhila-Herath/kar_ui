@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tax Invoice</title>
+    <style>
+      @font-face {
+        font-family: "Figtree";
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url(https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap)
+          format("woff2");
+      }
+
+      @font-face {
+        font-family: "Figtree";
+        font-style: normal;
+        font-weight: 500;
+        font-display: swap;
+        src: url(https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap)
+          format("woff2");
+      }
+
+      @font-face {
+        font-family: "Figtree";
+        font-style: normal;
+        font-weight: 600;
+        font-display: swap;
+        src: url(https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap)
+          format("woff2");
+      }
+
+      @font-face {
+        font-family: "Figtree";
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: url(https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap)
+          format("woff2");
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: "Figtree", Arial, sans-serif;
+        background-color: #ffffff;
+      }
+
+      .email-wrapper {
+        width: 100%;
+        background-color: #ffffff;
+        padding: 0;
+      }
+
+      .document-container {
+        width: 595px;
+        margin: 0 auto;
+        background-color: #ffffff;
+        position: relative;
+      }
+
+      /* Background Watermark */
+      .watermark {
+        position: absolute;
+        top: 54%;
+        left: 52%;
+        transform: translate(-50%, -50%) rotate(0deg);
+        z-index: 2;
+        pointer-events: none;
+        opacity: 1.05;
+        mix-blend-mode: hard-light;
+        width: 344.823px;
+        height: 355.725px;
+      }
+
+      .watermark img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+
+      /* Header Section */
+      .header-section {
+        background-color: #f1f4f8;
+        padding: 12px 24px;
+        display: table;
+        width: 100%;
+        position: relative;
+        z-index: 1;
+      }
+
+      .header-content {
+        display: table-row;
+      }
+
+      .header-left {
+        display: table-cell;
+        vertical-align: middle;
+        width: 69px;
+      }
+
+      .logo-text {
+        font-family: "Figtree", Arial, sans-serif;
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 32px;
+        color: #0b1426;
+      }
+
+      .header-right {
+        display: table-cell;
+        vertical-align: top;
+        text-align: right;
+      }
+
+      .invoice-title {
+        font-family: "Figtree", Arial, sans-serif;
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 32px;
+        color: #183571;
+        margin-bottom: 4px;
+      }
+
+      .company-info {
+        font-family: "Figtree", Arial, sans-serif;
+        font-size: 10px;
+        line-height: 12px;
+        color: #0b1426;
+        text-align: right;
+      }
+
+      .company-name {
+        font-weight: 600;
+        font-size: 10px;
+      }
+
+      .company-detail {
+        font-weight: 400;
+        font-size: 8px;
+      }
+
+      /* Details Section */
+      .details-section {
+        padding: 12px 24px;
+        width: 100%;
+        position: relative;
+        z-index: 1;
+      }
+
+      .details-row {
+        display: table;
+        width: 100%;
+        margin-bottom: 0;
+      }
+
+      .details-column {
+        display: table-cell;
+        vertical-align: middle;
+        position: relative;
+      }
+
+      .details-column.has-divider {
+        padding-right: 12px;
+        padding-left: 12px;
+      }
+
+      .details-column.has-divider:first-child {
+        padding-left: 0;
+        vertical-align: top;
+      }
+
+      .details-column.has-divider::after {
+        content: "";
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        width: 1px;
+        background-color: #c3dcf9;
+      }
+
+      .details-column:not(.has-divider):not(.invoice-details) {
+        padding-left: 12px;
+        padding-right: 12px;
+      }
+
+      .details-column.invoice-details {
+        padding-left: 12px;
+        padding-right: 0;
+      }
+
+      .section-label {
+        font-family: "Figtree", Arial, sans-serif;
+        font-size: 10px;
+        font-weight: 600;
+        line-height: 14px;
+        color: #183571;
+        margin-bottom: 0;
+        padding-bottom: 4px;
+      }
+
+      .section-value {
+        font-family: "Figtree", Arial, sans-serif;
+        font-size: 8px;
+        font-weight: 400;
+        line-height: 12px;
+        color: #0b1426;
+        word-break: break-word;
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+      }
+
+      .section-value > div {
+        margin-bottom: 0;
+        display: block;
+      }
+
+      .vehicle-details-item {
+        display: table;
+        width: 100%;
+        margin-bottom: 0;
+      }
+
+      .vehicle-details-wrapper {
+        display: block;
+        word-break: break-word;
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+      }
+
+      .vehicle-details-wrapper .vehicle-details-item:not(:last-child) {
+        margin-bottom: 0;
+      }
+
+      .vehicle-label {
+        display: table-cell;
+        font-family: "Figtree", Arial, sans-serif;
+        font-size: 8px;
+        font-weight: 700;
+        line-height: 12px;
+        color: #0b1426;
+        width: 41px;
+      }
+
+      .vehicle-colon {
+        display: table-cell;
+        font-family: "Figtree", Arial, sans-serif;
+        font-size: 8px;
+        font-weight: 700;
+        line-height: 12px;
+        color: #0b1426;
+        width: 8px;
+      }
+
+      .vehicle-value {
+        display: table-cell;
+        font-family: "Figtree", Arial, sans-serif;
+        font-size: 8px;
+        font-weight: 400;
+        line-height: 12px;
+        color: #0b1426;
+      }
+
+      .invoice-details {
+        width: 114px;
+      }
+
+      .invoice-detail-item {
+        display: table;
+        width: 100%;
+        margin-bottom: 0;
+      }
+
+      .invoice-details-wrapper {
+        display: block;
+      }
+
+      .invoice-details-wrapper .invoice-detail-item {
+        margin-bottom: 0;
+      }
+
+      .invoice-details-wrapper .invoice-detail-item:not(:last-child) {
+        margin-bottom: 0;
+        padding-bottom: 0;
+      }
+
+      .invoice-label {
+        display: table-cell;
+        font-family: "Figtree", Arial, sans-serif;
+        font-size: 8px;
+        font-weight: 700;
+        line-height: 12px;
+        color: #0b1426;
+        width: 60px;
+      }
+
+      .invoice-colon {
+        display: table-cell;
+        font-family: "Figtree", Arial, sans-serif;
+        font-size: 8px;
+        font-weight: 700;
+        line-height: 12px;
+        color: #0b1426;
+        width: 8px;
+      }
+
+      .invoice-value {
+        display: table-cell;
+        font-family: "Figtree", Arial, sans-serif;
+        font-size: 8px;
+        font-weight: 400;
+        line-height: 12px;
+        color: #0b1426;
+        text-align: right;
+        word-break: break-word;
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+      }
+
+      /* Table Section */
+      .table-section {
+        padding: 0 24px;
+        width: 100%;
+        position: relative;
+        z-index: 1;
+      }
+
+      .table-header {
+        background-color: #3e5587;
+        padding: 4px 12px;
+        display: table;
+        width: 100%;
+        margin-bottom: 4px;
+      }
+
+      .table-header-row {
+        display: table-row;
+      }
+
+      .table-header-cell {
+        display: table-cell;
+        font-family: "Figtree", Arial, sans-serif;
+        font-size: 10px;
+        font-weight: 600;
+        line-height: 14px;
+        color: #ffffff;
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+
+      .table-header-cell.col-no {
+        width: 20px;
+        padding-right: 12px;
+      }
+
+      .table-header-cell.col-desc {
+        width: 200px;
+      }
+
+      .table-header-cell.col-qty {
+        width: 53px;
+        text-align: center;
+        padding-right: 24px;
+      }
+
+      .table-header-cell.col-price {
+        width: 72px;
+        text-align: center;
+      }
+
+      .table-header-cell.col-total {
+        width: 80px;
+        text-align: right;
+      }
+
+      .category-row {
+        background-color: #f1f4f8;
+        padding: 4px 12px;
+        display: table;
+        width: 100%;
+      }
+
+      .category-label {
+        display: table-cell;
+        font-family: "Figtree", Arial, sans-serif;
+        font-size: 8px;
+        font-weight: 500;
+        line-height: 12px;
+        color: #0b1426;
+        width: 20px;
+      }
+
+      .category-name {
+        display: table-cell;
+        font-family: "Figtree", Arial, sans-serif;
+        font-size: 8px;
+        font-weight: 600;
+        line-height: 12px;
+        color: #0b1426;
+        text-transform: uppercase;
+        width: 310px;
+      }
+
+      .item-row {
+        padding: 0 12px;
+        display: table;
+        width: 100%;
+        word-break: break-word;
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+      }
+
+      .item-cell {
+        display: table-cell;
+        font-family: "Figtree", Arial, sans-serif;
+        font-size: 8px;
+        font-weight: 500;
+        line-height: 12px;
+        color: #0b1426;
+        padding: 2px 4px;
+        vertical-align: middle;
+      }
+
+      .item-cell.col-no {
+        width: 20px;
+        padding: 2px 0;
+      }
+
+      .item-cell.col-desc {
+        width: 200px;
+        padding: 2px 8px;
+      }
+
+      .item-cell.col-qty {
+        width: 53px;
+        text-align: center;
+        padding: 2px 0;
+      }
+
+      .item-cell.col-price {
+        width: 80px;
+        text-align: right;
+        padding: 2px 0;
+      }
+
+      .item-cell.col-total {
+        width: 80px;
+        text-align: right;
+        padding: 2px 0;
+      }
+
+      /* Summary Section */
+      .summary-section {
+        padding: 24px 24px 16px 24px;
+        width: 100%;
+        position: relative;
+        z-index: 1;
+      }
+
+      .summary-content {
+        display: table;
+        width: 100%;
+        margin-bottom: 8px;
+      }
+
+      .summary-left {
+        display: table-cell;
+        vertical-align: top;
+        width: auto;
+      }
+
+      .summary-right {
+        display: table-cell;
+        vertical-align: top;
+        width: 274px;
+      }
+
+      .thanks-title {
+        font-family: "Figtree", Arial, sans-serif;
+        font-size: 10px;
+        font-weight: 600;
+        line-height: 20px;
+        color: #0b1426;
+        margin-bottom: 4px;
+      }
+
+      .thanks-message {
+        font-family: "Figtree", Arial, sans-serif;
+        font-size: 8px;
+        font-weight: 500;
+        line-height: 12px;
+        color: #0b1426;
+      }
+
+      .summary-panel {
+        border-radius: 8px;
+      }
+
+      .summary-row {
+        display: table;
+        width: 100%;
+        padding: 0 12px;
+        margin-bottom: 2px;
+      }
+
+      .summary-row.final {
+        background-color: #f1f4f8;
+        padding: 4px 12px;
+      }
+
+      .summary-label {
+        display: table-cell;
+        font-family: "Figtree", Arial, sans-serif;
+        font-size: 8px;
+        font-weight: 500;
+        line-height: 12px;
+        color: #0b1426;
+        vertical-align: middle;
+      }
+
+      .summary-label.final {
+        font-weight: 700;
+      }
+
+      .summary-value {
+        display: table-cell;
+        font-family: "Figtree", Arial, sans-serif;
+        font-size: 10px;
+        font-weight: 500;
+        line-height: 12px;
+        color: #0b1426;
+        text-align: right;
+        vertical-align: middle;
+      }
+
+      .summary-value.final {
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 14px;
+      }
+
+      .discount-percent {
+        font-weight: 700;
+      }
+
+      /* Signature Section */
+      .signature-section {
+        margin-top: 40px;
+        padding: 4px 0 0 0;
+        border-top: 1px dashed #183571;
+        width: 90px;
+      }
+
+      .signature-label {
+        font-family: "Figtree", Arial, sans-serif;
+        font-size: 8px;
+        font-weight: 500;
+        line-height: 16px;
+        color: #0b1426;
+        text-align: center;
+      }
+
+      /* Footer */
+      .footer-section {
+        background-color: #f1f4f8;
+        padding: 4px 10px;
+        text-align: center;
+        width: 100%;
+        position: relative;
+        z-index: 1;
+      }
+
+      .footer-copyright {
+        font-family: "Figtree", Arial, sans-serif;
+        font-size: 8px;
+        font-weight: 400;
+        line-height: 12px;
+        color: #0b1426;
+      }
+
+      .page-number {
+        font-family: "Figtree", Arial, sans-serif;
+        font-size: 10px;
+        font-weight: 400;
+        line-height: 16px;
+        color: #000000;
+        text-align: center;
+        opacity: 0;
+        margin-bottom: 4px;
+      }
+
+      @media only screen and (max-width: 600px) {
+        .document-container {
+          width: 100%;
+          max-width: 595px;
+        }
+
+        .header-section,
+        .details-section,
+        .table-section,
+        .summary-section {
+          padding-left: 16px;
+          padding-right: 16px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="email-wrapper">
+      <div class="document-container">
+        <!-- Page Number (hidden) -->
+        <p class="page-number">Page 1 of 2</p>
+
+        <!-- Header -->
+        <div class="header-section">
+          <div class="header-content">
+            <div class="header-left">
+              <img
+                src="logo.svg"
+                alt="garage logo"
+                style="width: 100%; height: auto"
+              />
+            </div>
+            <div class="header-right">
+              <div class="invoice-title">INVOICE</div>
+              <div class="company-info">
+                <div class="company-name">Motor Link (Pvt) Ltd</div>
+                <div class="company-detail">21, Lucien J Silva Mawatha</div>
+                <div class="company-detail">Lunawa, Moratuwa</div>
+                <div class="company-detail">0112641327</div>
+                <div class="company-detail">info@motor-link.com</div>
+                <div class="company-detail">VAT Reg Number: 000345</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Details Section -->
+        <div class="details-section">
+          <div class="details-row">
+            <div class="details-column has-divider" style="width: 119px">
+              <div class="section-label">Invoice To</div>
+              <div class="section-value">
+                <div th:text="${ccName}">Praneeth Rodrigo</div>
+                <div th:text="${ccAddress}">No 34, Peris Ln, Moratuwa</div>
+                <div th:text="${ccPhone}">+94 77 999 9999</div>
+                <div th:text="'CX VAT Number: ' + ${ccVatNumber}">
+                  CX VAT Number: 000123
+                </div>
+              </div>
+            </div>
+            <div class="details-column" style="width: auto">
+              <div class="section-label">Vehicle Details</div>
+              <div class="vehicle-details-wrapper">
+                <div class="vehicle-details-item">
+                  <div class="vehicle-label">Vehicle</div>
+                  <div class="vehicle-colon">:</div>
+                  <div class="vehicle-value" th:text="${vehicleName}">
+                    Toyota Corolla
+                  </div>
+                </div>
+                <div class="vehicle-details-item">
+                  <div class="vehicle-label">Reg No</div>
+                  <div class="vehicle-colon">:</div>
+                  <div class="vehicle-value" th:text="${vehicleRegNo}">
+                    ABC - 1234
+                  </div>
+                </div>
+                <div class="vehicle-details-item">
+                  <div class="vehicle-label">Mileage</div>
+                  <div class="vehicle-colon">:</div>
+                  <div class="vehicle-value" th:text="${vehicleMileage}">
+                    21,567 Km
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="details-column invoice-details" style="width: 126px">
+              <div class="invoice-details-wrapper">
+                <div class="invoice-detail-item">
+                  <div class="invoice-label">Invoice ID</div>
+                  <div class="invoice-colon">:</div>
+                  <div class="invoice-value" th:text="${invoiceId}">
+                    I000001
+                  </div>
+                </div>
+                <div class="invoice-detail-item">
+                  <div class="invoice-label">Created Date</div>
+                  <div class="invoice-colon">:</div>
+                  <div class="invoice-value" th:text="${createdDate}">
+                    2024-10-08
+                  </div>
+                </div>
+                <div class="invoice-detail-item">
+                  <div class="invoice-label">Due Date</div>
+                  <div class="invoice-colon">:</div>
+                  <div class="invoice-value" th:text="${dueDate}">
+                    2024-10-08
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Table Section -->
+        <div class="table-section">
+          <div class="table-header">
+            <div class="table-header-row">
+              <div class="table-header-cell col-no">No</div>
+              <div class="table-header-cell col-desc">Description</div>
+              <div class="table-header-cell col-qty">L Hur/Qty</div>
+              <div class="table-header-cell col-price">Unit Price (Rs.)</div>
+              <div class="table-header-cell col-total">Total (Rs.)</div>
+            </div>
+          </div>
+          <!-- Sample data (Figma reference) -->
+          <div
+            class="table-body"
+            th:if="${categories == null or #lists.isEmpty(categories)}"
+          >
+            <div class="category-row">
+              <div class="category-label">A</div>
+              <div class="category-name">Spare Parts</div>
+            </div>
+            <div class="item-row">
+              <div class="item-cell col-no">01</div>
+              <div class="item-cell col-desc">FRT Bumper</div>
+              <div class="item-cell col-qty">1</div>
+              <div class="item-cell col-price">1,800.00</div>
+              <div class="item-cell col-total">1,800.00</div>
+            </div>
+            <div class="item-row">
+              <div class="item-cell col-no">01</div>
+              <div class="item-cell col-desc">FRT-LFT Brake Pads</div>
+              <div class="item-cell col-qty">1</div>
+              <div class="item-cell col-price">1,800.00</div>
+              <div class="item-cell col-total">1,800.00</div>
+            </div>
+
+            <div class="category-row">
+              <div class="category-label">B</div>
+              <div class="category-name">Consumables</div>
+            </div>
+            <div class="item-row">
+              <div class="item-cell col-no">02</div>
+              <div class="item-cell col-desc">RER Tyre</div>
+              <div class="item-cell col-qty">1</div>
+              <div class="item-cell col-price">500.00</div>
+              <div class="item-cell col-total">500.00</div>
+            </div>
+            <div class="item-row">
+              <div class="item-cell col-no">02</div>
+              <div class="item-cell col-desc">RER-RHT Tyre</div>
+              <div class="item-cell col-qty">1</div>
+              <div class="item-cell col-price">500.00</div>
+              <div class="item-cell col-total">500.00</div>
+            </div>
+
+            <div class="category-row">
+              <div class="category-label">C</div>
+              <div class="category-name">STD Remove and Replace Labour</div>
+            </div>
+            <div class="item-row">
+              <div class="item-cell col-no">03</div>
+              <div class="item-cell col-desc">Minor Scratches</div>
+              <div class="item-cell col-qty">1</div>
+              <div class="item-cell col-price">200.00</div>
+              <div class="item-cell col-total">200.00</div>
+            </div>
+            <div class="item-row">
+              <div class="item-cell col-no">03</div>
+              <div class="item-cell col-desc">Major Scratches</div>
+              <div class="item-cell col-qty">1</div>
+              <div class="item-cell col-price">600.00</div>
+              <div class="item-cell col-total">600.00</div>
+            </div>
+
+            <div class="category-row">
+              <div class="category-label">D</div>
+              <div class="category-name">STD Remove and Reinstall Labour</div>
+            </div>
+            <div class="item-row">
+              <div class="item-cell col-no">04</div>
+              <div class="item-cell col-desc">Basic Cleaning</div>
+              <div class="item-cell col-qty">1</div>
+              <div class="item-cell col-price">150.00</div>
+              <div class="item-cell col-total">150.00</div>
+            </div>
+            <div class="item-row">
+              <div class="item-cell col-no">04</div>
+              <div class="item-cell col-desc">Deep Cleaning</div>
+              <div class="item-cell col-qty">1</div>
+              <div class="item-cell col-price">400.00</div>
+              <div class="item-cell col-total">400.00</div>
+            </div>
+
+            <div class="category-row">
+              <div class="category-label">E</div>
+              <div class="category-name">STD Paint Process</div>
+            </div>
+            <div class="item-row">
+              <div class="item-cell col-no">05</div>
+              <div class="item-cell col-desc">Standard Oil Change</div>
+              <div class="item-cell col-qty">1</div>
+              <div class="item-cell col-price">100.00</div>
+              <div class="item-cell col-total">100.00</div>
+            </div>
+            <div class="item-row">
+              <div class="item-cell col-no">05</div>
+              <div class="item-cell col-desc">Synthetic Oil Change</div>
+              <div class="item-cell col-qty">1</div>
+              <div class="item-cell col-price">120.00</div>
+              <div class="item-cell col-total">120.00</div>
+            </div>
+
+            <div class="category-row">
+              <div class="category-label">F</div>
+              <div class="category-name">Non Standard Repair</div>
+            </div>
+            <div class="item-row">
+              <div class="item-cell col-no">06</div>
+              <div class="item-cell col-desc">Standard Tire Rotation</div>
+              <div class="item-cell col-qty">1</div>
+              <div class="item-cell col-price">80.00</div>
+              <div class="item-cell col-total">80.00</div>
+            </div>
+            <div class="item-row">
+              <div class="item-cell col-no">06</div>
+              <div class="item-cell col-desc">Premium Tire Rotation</div>
+              <div class="item-cell col-qty">1</div>
+              <div class="item-cell col-price">100.00</div>
+              <div class="item-cell col-total">100.00</div>
+            </div>
+
+            <div class="category-row">
+              <div class="category-label">G</div>
+              <div class="category-name">STD Paint Process</div>
+            </div>
+            <div class="item-row">
+              <div class="item-cell col-no">07</div>
+              <div class="item-cell col-desc">Front Brake Pads Replacement</div>
+              <div class="item-cell col-qty">1</div>
+              <div class="item-cell col-price">250.00</div>
+              <div class="item-cell col-total">250.00</div>
+            </div>
+            <div class="item-row">
+              <div class="item-cell col-no">07</div>
+              <div class="item-cell col-desc">Rear Brake Pads Replacement</div>
+              <div class="item-cell col-qty">1</div>
+              <div class="item-cell col-price">250.00</div>
+              <div class="item-cell col-total">250.00</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Summary Section -->
+        <div class="summary-section">
+          <div class="summary-content">
+            <div class="summary-left">
+              <div class="thanks-title">THANKS FOR YOUR BUSINESS!</div>
+              <div class="thanks-message">
+                Thank you for trusting us with your vehicle's parts and
+                services. We appreciate your business and look forward to
+                serving you again!
+              </div>
+              <div class="signature-section">
+                <div class="signature-label">Signature</div>
+              </div>
+            </div>
+            <div class="summary-right">
+              <div class="summary-panel">
+                <div class="summary-row">
+                  <div class="summary-label">SUBTOTAL (Rs.)</div>
+                  <div
+                    class="summary-value"
+                    th:text="${#numbers.formatDecimal(subtotal, 1, 2)}"
+                  >
+                    5,000.00
+                  </div>
+                </div>
+                <div class="summary-row">
+                  <div class="summary-label">
+                    DISCOUNT
+                    <span
+                      class="discount-percent"
+                      th:text="'(' + ${discountPercent} + '%)'"
+                      >(2%)</span
+                    >
+                  </div>
+                  <div
+                    class="summary-value"
+                    th:text="'- ' + ${#numbers.formatDecimal(discount, 1, 2)}"
+                  >
+                    - 100.00
+                  </div>
+                </div>
+                <div class="summary-row">
+                  <div class="summary-label">
+                    TAX
+                    <span
+                      class="discount-percent"
+                      th:text="'(' + ${taxPercent} + '%)'"
+                      >(2%)</span
+                    >
+                  </div>
+                  <div
+                    class="summary-value"
+                    th:text="'+ ' + ${#numbers.formatDecimal(tax, 1, 2)}"
+                  >
+                    + 100.00
+                  </div>
+                </div>
+                <div class="summary-row final">
+                  <div class="summary-label final">FINAL TOTAL (Rs.)</div>
+                  <div
+                    class="summary-value final"
+                    th:text="${#numbers.formatDecimal(finalTotal, 1, 2)}"
+                  >
+                    5,100.00
+                  </div>
+                </div>
+              </div>
+              <div class="summary-panel" style="margin-top: 12px">
+                <div class="summary-row">
+                  <div class="summary-label">AMOUNT PAID (Rs.)</div>
+                  <div
+                    class="summary-value"
+                    th:text="${#numbers.formatDecimal(subtotal, 1, 2)}"
+                  >
+                    5,000.00
+                  </div>
+                </div>
+                <div class="summary-row final">
+                  <div class="summary-label final">REMAINING AMOUNT (Rs.)</div>
+                  <div
+                    class="summary-value final"
+                    th:text="${#numbers.formatDecimal(finalTotal, 1, 2)}"
+                  >
+                    100.00
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer-section">
+          <div class="footer-copyright">
+            Copyrights©<span
+              th:text="${#dates.format(#dates.createNow(), 'yyyy')}"
+              >2025</span
+            >
+            KARSTATION.COM All Rights Reserved
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

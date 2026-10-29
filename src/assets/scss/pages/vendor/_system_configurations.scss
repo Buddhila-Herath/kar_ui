@@ -1,0 +1,258 @@
+@use "../../abstracts/mixin";
+@use "../../abstracts/variable";
+
+.system-configurations-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 1rem;
+  padding: 2rem 1rem;
+  background-color: variable.$white;
+  border-radius: 0.75rem;
+  border: 1px solid variable.$primary-100;
+  height: auto;
+  max-height: fit-content;
+  min-height: calc(100% - 4.625rem);
+
+  @include mixin.breakpoint(sm) {
+    padding: unset;
+    background-color: unset;
+    border-radius: unset;
+    border: none;
+  }
+}
+
+.system-configurations-tab-header {
+  display: flex;
+  gap: 0.5rem;
+  padding-bottom: 0.5rem;
+
+  @include mixin.breakpoint(sm) {
+    padding-bottom: unset;
+  }
+
+  .tab-item {
+    padding: 0rem 0.5rem 0.5rem 0.5rem;
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s;
+    cursor: pointer;
+
+    h3 {
+      margin: 0;
+      font-weight: 600;
+      color: variable.$black;
+
+      @include mixin.breakpoint(sm) {
+        font-size: 1rem;
+      }
+    }
+
+    &:hover,
+    &.active {
+      border-bottom: 3px solid variable.$primary;
+    }
+
+    &.active {
+      h3 {
+        color: variable.$primary;
+      }
+    }
+  }
+
+  .tab-separator {
+    height: 24px;
+    border-right: 1.5px solid #999fac;
+  }
+}
+
+.global-settings-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 558px;
+  padding: 1rem;
+  background-color: #fbfdff;
+  border-radius: 0.75rem;
+  border: 1px solid variable.$primary-100;
+
+  .global-settings-switch {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    border-radius: 0.25rem;
+    padding: 1rem 0.75rem;
+    background-color: variable.$primary-50;
+
+    h3 {
+      margin: 0;
+      font-weight: 600;
+      color: variable.$black;
+    }
+  }
+}
+
+// Style for custom switch
+.custom-switch {
+  position: relative;
+  display: inline-block;
+  width: 36px;
+  height: 20px;
+  margin-bottom: 0;
+
+  input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #6b717d;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+
+    &:before {
+      position: absolute;
+      content: "";
+      height: 14px;
+      width: 14px;
+      left: 4px;
+      bottom: 3px;
+      background-color: variable.$primary-50;
+      -webkit-transition: 0.4s;
+      transition: 0.4s;
+    }
+  }
+
+  .slider.round {
+    border-radius: 36px;
+
+    &:before {
+      border-radius: 50%;
+    }
+  }
+
+  input:checked + .slider {
+    background-color: #287956;
+
+    &:before {
+      -webkit-transform: translateX(14px);
+      -ms-transform: translateX(14px);
+      transform: translateX(14px);
+    }
+  }
+}
+
+.rate-card-configuration-container {
+  padding: unset !important;
+  background-color: unset !important;
+  border-radius: unset !important;
+  border: none !important;
+
+  .rate-cards-wrapper {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr);
+    margin-top: unset !important;
+
+    @include mixin.breakpoint(sm) {
+      display: flex !important;
+      flex-direction: column;
+    }
+
+    .rate-card {
+      max-width: 100% !important;
+
+      .rate-card-header {
+        .rate-card-title {
+          font-size: 1.25rem !important;
+          line-height: 1.75rem !important;
+        }
+      }
+    }
+  }
+}
+
+.rate-card-configuration-edit-modal {
+  &.ant-modal {
+    // gap:16px !important;
+    // display: grid !important;
+    @include mixin.breakpoint(sm) {
+      width: 350px !important;
+    }
+  }
+
+  .ant-modal-content {
+    padding: 1.5rem 1rem !important;
+
+    .ant-modal-close {
+      width: 24px !important;
+      height: 24px !important;
+    }
+
+    .ant-modal-header {
+      border-bottom: 1px solid #c5ccd8 !important;
+      padding-bottom: 0.75rem !important;
+      margin-bottom: 1.5rem !important;
+
+      .ant-modal-title {
+        font-size: 1.125rem !important;
+        line-height: 1.5rem !important;
+      }
+    }
+
+    .ant-modal-body {
+      padding-bottom: 1.5rem !important;
+      border-bottom: 1px solid #c5ccd8 !important;
+
+      .rate-edit-form {
+        gap: 1.5rem !important;
+        margin-top: unset !important;
+
+        .custom-input-error {
+          border-color: #a20000;
+        }
+
+        .error-message {
+          margin-top: 0.5rem !important;
+        }
+
+        .disabled-form-item {
+          .form-label {
+            color: #6b717d;
+          }
+
+          input {
+            color: #6b717d;
+            border-color: #6b717d;
+            cursor: not-allowed;
+          }
+        }
+      }
+    }
+
+    .ant-modal-footer {
+      margin-top: 1.5rem !important;
+
+      button {
+        width: fit-content !important;
+        transition: all 0.3s !important;
+      }
+
+      .save-btn {
+        border: 1px solid transparent !important;
+
+        &:hover {
+          border: 1px solid #071441 !important;
+          background-color: #071441 !important;
+          color: variable.$white !important;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,426 @@
+@use "../../abstracts/mixin";
+
+.comparison-chart {
+    width: 100%;
+    padding: 24px;
+    border: 1px solid #E4EAF2;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    .chart-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        @include mixin.breakpoint(sm) {
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        @media screen and (max-width: 360px) {
+            flex-direction: column;
+            gap: 16px;
+            align-items: flex-start;
+        }
+
+        .chart-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #0B1426;
+            margin: 0;
+        }
+    }
+
+    .recharts-responsive-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .recharts-cartesian-grid-horizontal line {
+        stroke: #E4EAF2;
+        stroke-width: 1;
+        opacity: 0.8;
+    }
+
+    .recharts-wrapper {
+        flex-direction: column-reverse;
+    }
+
+    .recharts-legend-wrapper {
+        top: -25px !important;
+
+        .recharts-default-legend {
+            text-align: right !important;
+
+            .recharts-legend-item-text {
+                color: #0B1426 !important;
+            }
+
+            .recharts-legend-icon {
+                width: 4px !important;
+                height: 12px !important;
+                border-radius: 4px !important;
+            }
+        }
+    }
+
+    .custom-legend {
+        display: flex;
+        gap: 10px;
+
+        @media screen and (max-width: 360px) {
+            flex-direction: column;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            padding: 4px 12px;
+            border: 1px solid #E4EAF2;
+            border-radius: 12px;
+            background: white;
+            gap: 4px;
+
+            .legend-color-bar {
+                width: 4px;
+                height: 12px;
+                border-radius: 4px;
+            }
+
+            .legend-text {
+                font-size: 14px;
+                font-weight: 500;
+                color: #0B1426;
+                white-space: nowrap;
+            }
+        }
+    }
+
+    .chart-container {
+        position: relative;
+        background: #FFFFFF;
+        border-radius: 8px;
+
+        @include mixin.breakpoint(sm) {
+            overflow-x: auto;
+            overflow-y: hidden;
+            width: 100%;
+
+            &::-webkit-scrollbar {
+                height: 6px;
+            }
+
+            &::-webkit-scrollbar-track {
+                background: #f1f1f1;
+                border-radius: 3px;
+            }
+
+            &::-webkit-scrollbar-thumb {
+                background: #c1c1c1;
+                border-radius: 3px;
+
+                &:hover {
+                    background: #a8a8a8;
+                }
+            }
+
+            .recharts-responsive-container {
+                min-width: 100%;
+                width: 100% !important;
+            }
+
+            .recharts-bar-rectangle {
+                width: 20px !important;
+                min-width: 20px !important;
+            }
+
+            .recharts-bar {
+                width: 20px !important;
+                min-width: 20px !important;
+            }
+        }
+
+        .recharts-surface {
+            overflow: visible;
+        }
+
+        .recharts-bar-rectangle {
+            &:hover {
+                fill-opacity: 1 !important;
+                fill: inherit !important;
+            }
+        }
+
+        .recharts-bar {
+            &:hover {
+                fill-opacity: 1 !important;
+                fill: inherit !important;
+            }
+        }
+
+        .recharts-tooltip-wrapper {
+            &:hover {
+                background: transparent !important;
+            }
+        }
+
+        .recharts-bar-rectangle:hover,
+        .recharts-bar:hover {
+            fill-opacity: 1 !important;
+            fill: inherit !important;
+            background: transparent !important;
+            box-shadow: none !important;
+        }
+
+        .recharts-bar-rectangle:focus,
+        .recharts-bar:focus {
+            outline: none !important;
+            -webkit-focus-ring-color: none !important;
+        }
+
+        .recharts-tooltip-wrapper {
+            background: transparent !important;
+
+            &:hover {
+                background: transparent !important;
+            }
+        }
+
+        .recharts-wrapper {
+            .recharts-tooltip-wrapper {
+                background: transparent !important;
+            }
+        }
+
+        .recharts-active-bar,
+        .recharts-active-shape,
+        .recharts-active-dot {
+            background: transparent !important;
+            fill: transparent !important;
+        }
+
+        .recharts-tooltip-wrapper::before,
+        .recharts-tooltip-wrapper::after {
+            display: none !important;
+        }
+
+        .recharts-wrapper>div {
+            &:hover {
+                background: transparent !important;
+            }
+        }
+
+        .recharts-surface {
+            &:hover {
+                background: transparent !important;
+            }
+        }
+
+        .comparison-tooltip {
+            background: #F8F8FF !important;
+            background-color: #F8F8FF !important;
+            border: 1px solid #888FAA1A;
+            border-radius: 8px;
+            box-shadow: 0px 10px 30px 0px #00000033, 0px 30px 70px 0px #1A224026, 0px 0px 0px 1px #888FAA1A;
+            padding: 16px;
+            width: 250px;
+        }
+
+        .recharts-tooltip-wrapper {
+            .comparison-tooltip {
+                background: #F8F8FF !important;
+                background-color: #F8F8FF !important;
+            }
+        }
+
+        .recharts-wrapper {
+            .recharts-tooltip-wrapper {
+                .comparison-tooltip {
+                    background: #F8F8FF !important;
+                    background-color: #F8F8FF !important;
+                }
+            }
+        }
+
+        .comparison-tooltip {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+
+            .tooltip-header {
+                position: relative;
+
+                .tooltip-label {
+                    font-size: 14px;
+                    font-weight: 600;
+                    color: #183571;
+                    margin: 0;
+                    text-align: left;
+                    display: inline-block;
+                    background: #F8F8FF;
+                    padding-right: 8px;
+                    position: relative;
+                    z-index: 1;
+                }
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    top: 50%;
+                    left: 0;
+                    right: 0;
+                    height: 1px;
+                    background: #C5CCD8;
+                    z-index: 0;
+                    margin-left: 2.5rem;
+                }
+            }
+
+
+            .tooltip-content {
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+
+                .tooltip-item {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    background: #ECF1FF !important;
+                    padding: 8px 12px;
+                    border-radius: 6px;
+
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+
+                    .tooltip-item-left {
+                        display: flex;
+                        align-items: center;
+                        gap: 8px;
+
+                        .tooltip-dot {
+                            width: 8px;
+                            height: 8px;
+                            border-radius: 50%;
+                        }
+
+                        .tooltip-name {
+                            font-size: 14px;
+                            font-weight: 500;
+                            color: #0B1426;
+                        }
+                    }
+
+                    .tooltip-value {
+                        font-size: 16px;
+                        font-weight: 700;
+                        color: #183571;
+                    }
+
+                    &:nth-child(1) {
+                        .tooltip-dot {
+                            background-color: #C0D8F0 !important;
+                        }
+                    }
+
+                    &:nth-child(2) {
+                        .tooltip-dot {
+                            background-color: #7288E2 !important;
+                        }
+                    }
+                }
+            }
+        }
+
+        .recharts-tooltip-wrapper,
+        .recharts-tooltip-wrapper * {
+            background: transparent !important;
+            background-color: transparent !important;
+        }
+
+        .recharts-wrapper {
+            .recharts-tooltip-wrapper {
+                background: transparent !important;
+                background-color: transparent !important;
+
+                &::before,
+                &::after {
+                    display: none !important;
+                    background: transparent !important;
+                }
+            }
+        }
+
+        .recharts-cartesian-axis,
+        .recharts-cartesian-grid,
+        .recharts-bar {
+            &:hover {
+                background: transparent !important;
+                background-color: transparent !important;
+            }
+        }
+    }
+
+    .empty-state {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 60px 20px;
+        text-align: center;
+        min-height: 300px;
+
+        .empty-icon {
+            margin-bottom: 16px;
+            opacity: 0.6;
+        }
+
+        .empty-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #183571;
+            margin-bottom: 8px;
+        }
+
+        .empty-description {
+            font-size: 14px;
+            color: #6C757D;
+            max-width: 300px;
+            line-height: 1.5;
+        }
+    }
+
+    .recharts-bar-rectangle:focus,
+    .recharts-bar:focus,
+    .recharts-pie-sector:focus,
+    .recharts-line:focus,
+    .recharts-area:focus,
+    .recharts-bar-rectangle:focus-visible,
+    .recharts-bar:focus-visible,
+    .recharts-pie-sector:focus-visible,
+    .recharts-line:focus-visible,
+    .recharts-area:focus-visible {
+        outline: none !important;
+        outline-width: 0 !important;
+        outline-style: none !important;
+        outline-color: transparent !important;
+        -webkit-focus-ring-color: transparent !important;
+        -webkit-tap-highlight-color: transparent !important;
+        box-shadow: none !important;
+    }
+
+    // Remove focus from all chart elements
+    .recharts-wrapper *:focus,
+    .recharts-wrapper *:focus-visible {
+        outline: none !important;
+        outline-width: 0 !important;
+        outline-style: none !important;
+        outline-color: transparent !important;
+        -webkit-focus-ring-color: transparent !important;
+        -webkit-tap-highlight-color: transparent !important;
+        box-shadow: none !important;
+    }
+}

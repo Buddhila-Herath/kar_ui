@@ -1,0 +1,273 @@
+@use "../../abstracts/mixin";
+@use "../../abstracts/variable";
+
+.recently-joined-vendors {
+  padding: 32px 16px;
+  border: 1px solid variable.$primary-100;
+  background: #ffffff;
+  border-radius: 8px;
+  margin-top: 24px;
+  display: flex;
+  gap: 24px;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 16px;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    margin-top: 16px;
+  }
+}
+
+.recent-vendors-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 16px;
+  background: variable.$gray-50;
+  border: 1px solid variable.$primary-100;
+  border-radius: 8px;
+  max-width: 350px;
+  height: fit-content;
+  @include mixin.breakpoint(sm) {
+    width: auto;
+  }
+
+  .recent-vendors-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    h4 {
+      margin: 0;
+      font-size: 18px;
+      font-weight: 600;
+      color: #0b1426;
+      line-height: 24px;
+    }
+
+    img {
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+    }
+  }
+
+  .vendor-list {
+    min-height: 436px;
+    .vendor-slide {
+      width: 100%;
+      display: inline-flex !important;
+      flex-direction: column;
+      gap: 16px;
+      padding: 8px 0px;
+    }
+
+    .vendor-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px;
+      border-radius: 8px;
+      background: #ffffff;
+
+      .vender-item-img-name-wrapper {
+        display: flex;
+        flex: 1;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .vendor-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      .vendor-details {
+        flex: 1;
+
+        @include mixin.breakpoint(xxl) {
+          white-space: nowrap; /* single line */
+          overflow: hidden; /* hide overflow */
+          max-width: 168px; /* limit width to approx 10 chars */
+        }
+
+        @include mixin.breakpoint(xl) {
+          white-space: nowrap; /* single line */
+          overflow: hidden; /* hide overflow */
+          max-width: 162px; /* limit width to approx 10 chars */
+        }
+
+        @include mixin.breakpoint(sm) {
+          white-space: nowrap; /* single line */
+          overflow: hidden; /* hide overflow */
+          max-width: 115px; /* limit width to approx 10 chars */
+        }
+
+        .vendor-name {
+          margin: 0;
+          line-height: 24px;
+          font-size: 16px;
+          font-weight: 600;
+          color: variable.$primary-500;
+
+          @include mixin.breakpoint(xxl) {
+            white-space: nowrap; /* single line */
+            overflow: hidden; /* hide overflow */
+            text-overflow: ellipsis; /* add ... */
+          }
+
+          @include mixin.breakpoint(xl) {
+            white-space: nowrap; /* single line */
+            overflow: hidden; /* hide overflow */
+            text-overflow: ellipsis; /* add ... */
+          }
+
+          @include mixin.breakpoint(sm) {
+            white-space: nowrap; /* single line */
+            overflow: hidden; /* hide overflow */
+            text-overflow: ellipsis; /* add ... */
+          }
+        }
+
+        .vendor-email {
+          margin: 0;
+          font-size: 10px;
+          line-height: 16px;
+          color: variable.$gray-500;
+
+          @include mixin.breakpoint(sm) {
+            white-space: nowrap; /* single line */
+            overflow: hidden; /* hide overflow */
+            text-overflow: ellipsis; /* add ... */
+            max-width: 112px; /* limit width to approx 10 chars */
+          }
+        }
+      }
+
+      .vendor-joined,
+      span {
+        text-align: right;
+        font-size: 12px;
+        font-weight: 500;
+        color: #0b1426;
+        line-height: 20px;
+        white-space: nowrap;
+
+        p {
+          margin: 0;
+          font-size: 10px;
+          line-height: 16px;
+          color: #0b1426;
+        }
+      }
+    }
+  }
+}
+
+.empty-recent-vendors-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px;
+  background-color: variable.$gray-50;
+  border: 1px solid variable.$primary-100;
+  border-radius: 8px;
+  width: 350px;
+  height: 533px;
+  align-items: center;
+
+  @include mixin.breakpoint(sm) {
+    width: auto;
+  }
+
+  .no-data {
+    padding: 16px;
+    top: 30%;
+
+    @include mixin.breakpoint(xxl) {
+      left: unset !important;
+    }
+
+    @include mixin.breakpoint(sm) {
+      left: unset !important;
+    }
+
+    p {
+      @include mixin.breakpoint(sm) {
+        white-space: break-spaces;
+        width: auto;
+        left: unset !important;
+      }
+    }
+  }
+}
+
+.ant-carousel .slick-dots {
+  position: relative;
+  top: 10px;
+  bottom: none;
+  z-index: 9 !important;
+}
+
+.ant-carousel .slick-dots li {
+  width: 24px !important;
+  height: 4px !important;
+  border-radius: 4px !important;
+  button {
+    width: 100%;
+    height: 100%;
+    border-radius: 4px !important;
+    padding: 0;
+    background: transparent;
+  }
+}
+// Ensure active dot always has full opacity and correct color
+.ant-carousel .slick-dots li.slick-active button {
+  background: #183571 !important;
+  opacity: 1 !important;
+}
+
+.ant-carousel .slick-dots li {
+  background: #c5ccd8;
+}
+
+.ant-carousel .slick-dots li button {
+  opacity: 0 !important;
+}
+
+.ant-carousel .slick-dots-bottom {
+  padding: 8px 0px;
+}
+
+// Only apply hover opacity to inactive dots
+.ant-carousel .slick-dots li:not(.slick-active):hover button {
+  opacity: 0 !important; // or your preferred value
+}
+
+// add these line
+.recent-vender-modal {
+  .ant-modal-content {
+    padding: 40px 80px !important;
+    gap: 20px;
+
+    @include mixin.breakpoint(sm) {
+      padding: 40px 16px !important;
+    }
+  }
+
+  .ant-modal-close {
+    width: 24px;
+    height: 24px;
+  }
+
+  .ant-modal-body {
+    margin: 0 !important;
+  }
+
+  .recent-vender-modal-img {
+    border-radius: 12px !important;
+  }
+}

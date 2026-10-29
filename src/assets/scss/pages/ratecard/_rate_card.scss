@@ -1,0 +1,146 @@
+@use "../../abstracts/mixin";
+@use "../../abstracts/variable";
+
+.ratecard-container {
+  display: flex;
+  flex-direction: column;
+  padding: 32px 16px;
+  background-color: variable.$white;
+  border: 1px solid variable.$primary-100;
+  border-radius: 12px;
+  gap: 10px;
+  .rate-head {
+        text-align: left;
+        margin-bottom: 0px;
+  }
+  @include mixin.breakpoint(sm) {
+    background-color: unset;
+    border: none;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding: 0px !important;
+  }
+
+  .rate-head {
+    text-align: left;
+  }
+
+  .rate-cards-wrapper {
+    display: flex;
+    gap: 16px;
+    justify-content: flex-start;
+    margin-top: 0px;
+    flex-wrap: wrap;
+
+    @include mixin.breakpoint(sm) {
+      flex-direction: column;
+    }
+
+    .rate-card {
+      border: 1px solid variable.$primary-100;
+      padding: 16px;
+      background-color: #FBFDFF;
+      border-radius: 12px;
+      flex: 1 1 calc(25% - 16px);
+      max-width: calc(25% - 16px);
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+
+      @include mixin.breakpoint(sm) {
+        flex: 1 1 100%;
+        max-width: unset;
+      }
+
+      @include mixin.breakpoint(md) {
+        flex: 1 1 calc(50% - 16px);
+        max-width: calc(50% - 16px);
+      }
+
+      @include mixin.breakpoint(lmd) {
+        flex: 1 1 calc(33.33% - 16px);
+        max-width: calc(33.33% - 16px);
+      }
+
+      .rate-card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid variable.$primary-100;
+        padding-top: 4px;
+        padding-bottom: 4px;
+        margin-bottom: 0px;
+      }
+
+      .rate-card-title {
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 32px;
+        color: variable.$primary-500;
+      }
+
+      .edit-icon {
+        cursor: pointer;
+        width:24px;
+        height: 24px;
+      }
+
+      .rate-card-body {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+
+        .rate-card-item {
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+
+          .item-label {
+            font-size: 18px;
+            font-weight: 600;
+            color: variable.$gray-500;
+            line-height: 24px;
+          }
+
+          .item-value {
+            font-size: 18px;
+            font-weight: 600;
+            color: variable.$black;
+            line-height: 24px;
+          }
+        }
+      }
+    }
+  }
+  .reate-container{
+    gap: 40px;
+    display: flex;
+    flex-direction: column;
+    .table-title{
+    margin-right: 0px;}
+    @include mixin.breakpoint(sm) {
+      gap: 24px;
+    }
+  }
+}
+
+.ratecard-modal{
+  .ant-modal-content{
+    .ant-modal-header{
+      margin-bottom: 0px !important;
+    }
+    .ant-modal-footer{
+      margin-top: 0px !important;
+      gap: 12px !important;
+    }
+    .ant-modal-body{
+      padding-bottom: 24px !important;
+    }
+  }
+}
+
+.rate-card-content{
+  display: flex;
+  flex-direction: column;
+  gap:20px;
+}

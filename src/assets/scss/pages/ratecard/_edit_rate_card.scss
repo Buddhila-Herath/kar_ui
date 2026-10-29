@@ -1,0 +1,168 @@
+@use "../../abstracts/variable";
+
+.ratecard-modal {
+    width: 382px !important;
+
+    .ant-modal-content {
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .ant-modal-header {
+        border-bottom: 1px solid variable.$primary-100;
+        padding-bottom: 4px;
+        margin-bottom: 0px !important;
+    }
+
+    .ant-modal-title {
+        font-size: 24px;
+        line-height: 32px;
+        color: variable.$primary-500;
+        font-weight: 600;
+    }
+
+    .ant-modal-close-x {
+        color: variable.$primary-500 !important;
+        font-size: 20px !important;
+    }
+
+    .ant-modal-close {
+        top: unset !important;
+    }
+
+    .ant-modal-footer {
+        display: flex;
+        justify-content: flex-end !important;
+        background-color: unset !important;
+        gap: 16px !important;
+    }
+
+    .ant-btn {
+        border-radius: 4px;
+        font-weight: 500;
+    }
+}
+
+.button-base {
+    padding: 8px 16px;
+    border: unset;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    line-height: 20px;
+    align-self: center;
+    height: 36px;
+    font-weight: 600;
+}
+
+.save-btn {
+    @extend .button-base;
+    width: 63px;
+    background-color: variable.$primary-500;
+
+    &:hover {
+        border: 1px solid #183571 !important;
+        background-color: #ffffff !important;
+        color: #183571 !important;
+    }
+}
+
+.cancel-btn {
+    @extend .button-base;
+    border: unset !important;
+    background-color: variable.$gray-50;
+    color: variable.$gray-900;
+    width: 76px;
+
+    &:hover {
+        background-color: #071441 !important;
+        color: #ffffff !important;
+    }
+}
+
+.rate-edit-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 16px;
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 8px !important;
+    }
+
+    .form-label {
+        font-weight: 600;
+        margin-bottom: 0px;
+        font-size: 16px;
+        color: variable.$black;
+        line-height: 24px;
+    }
+
+    .custom-input {
+        border-radius: 8px;
+        border: 1px solid variable.$gray-500;
+        padding: 16px;
+        font-size: 16px;
+        line-height: 24px;
+        color: variable.$black;
+        font-weight: 500;
+
+        .discount {
+            padding-right: 40px;
+        }
+    }
+
+    .input-wrapper {
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+
+    .icon-container {
+        position: absolute;
+        right: 1px;
+        height: 95%;
+        background-color: variable.$primary-50;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 23px;
+        border-radius: 0 8px 8px 0;
+    }
+
+    .percentage-icon {
+        position: absolute;
+        right: 15px;
+        height: 14px;
+        width: auto;
+    }
+
+    .required {
+        margin-left: 3px;
+        margin-top: -1rem;
+    }
+
+    .error-message {
+        display: flex;
+        align-items: center;
+        margin-top: 2px;
+        line-height: 20px;
+
+        img {
+            width: 13px;
+            height: 13px;
+            margin-right: 4px;
+        }
+
+        span {
+            color: #A20000;
+            font-size: 12px;
+            line-height: 20px;
+            font-weight: 600;
+        }
+    }
+}

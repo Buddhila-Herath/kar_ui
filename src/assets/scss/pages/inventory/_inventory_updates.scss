@@ -1,0 +1,73 @@
+
+
+.inventory-table{
+    .tag-box{
+        @media (max-width: 768px) {
+            margin-top: 36px !important;
+            margin-bottom: 24px !important;
+        }
+    }
+    .job-container .job-tab-header .tab-item {
+        @media (min-width: 768px){
+            gap: 10px !important;
+        }
+    }
+    .rdt_Table 
+        .rdt_TableBody 
+            .rdt_TableRow
+                .rdt_TableCell{
+                    padding-top: 14px !important;
+                    padding-bottom: 14px !important;
+    }
+}
+.inventory-tab{
+    display: flex;
+    gap: 24px;
+    flex-direction: column;
+    margin-bottom: 36px;
+    .job-container{
+        border: none;
+        padding: 0;
+        margin-top: 0;
+        .job-tab-header{
+            .tab-item{
+                height: 48px;
+                padding: 16px !important;
+            }
+        }
+    }
+    .content-separator{
+        border: 1px solid #E4EAF2;
+    }
+    .table-header-sub-container{
+        display: flex !important;
+        justify-content: space-between !important;
+    }
+    @media (max-width: 767px){
+        margin-bottom: 8px !important;
+    }
+}
+.inventory-actions{
+    display: flex;
+    gap: 4px;
+    span{
+        font-size: 12px;
+    }
+}
+.inventory-table{
+    margin-top: 0;
+    .table-subheader{
+        top: 0 !important;
+    }
+}
+.inventory{
+    .filter-pop{
+        overflow: visible !important;
+        .react-datepicker-popper{
+            right: 0 !important;
+        }
+    }
+}
+.non-excel-space{
+    width: 135px;
+}

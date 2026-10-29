@@ -1,0 +1,173 @@
+@use "../../abstracts/mixin";
+@use "../../abstracts/variable";
+
+.warrenty {
+    padding: 4px 16px;
+    border-radius: 16px;
+    text-align: center;
+    display: inline-block;
+    width: 112px;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 20px;
+
+    &.applicable {
+        border: 1px solid variable.$primary-500;
+        background-color: variable.$primary-50;
+        color: variable.$primary-500;
+    }
+
+    &.non-applicable {
+        border: 1px solid variable.$gray-500;
+        background-color: variable.$gray-50;
+        color: variable.$gray-500;
+    }
+}
+
+.not-applicable {
+    width: 114px !important;
+    height: 28px;
+    white-space: nowrap;
+}
+
+.applied {
+    width: 90px !important;
+    height: 28px;
+}
+
+.radio-available {
+    width: 82px !important;
+    height: 28px;
+}
+
+.out-of-stock {
+    width: 102px !important;
+    white-space: nowrap;
+    height: 28px;
+}
+
+.dropdown {
+    &.radio-filter-dropdown {
+        .dropdown-select {
+            .css-r2ji3x-control {
+                display: none;
+            }
+        }
+    }
+}
+
+.dropdown {
+    &.radio-filter-dropdown {
+        .dropdown-menu {
+            .dropdown-select {
+                .css-ik6y5r {
+                    .css-qr46ko {
+                        max-height: unset !important;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.radio-filter-dropdown {
+    .css-qr46ko {
+        [role="option"] {
+            border-bottom: unset !important;
+            padding: 4px !important;
+        }
+    }
+}
+
+.dropdown {
+    .dropdown-button {
+        &:focus {
+            box-shadow: unset;
+            border-color: unset;
+        }
+
+        &:active {
+            border-color: unset !important;
+            columns: unset !important;
+        }
+
+        .ant-btn-icon {
+            position: relative;
+            // left: 5px;
+        }
+    }
+}
+
+.filter-menu {
+    margin-bottom: 24px;
+}
+
+@include mixin.breakpoint(sm) {
+.add-modal{
+        height: auto !important;
+}
+
+.ant-modal-root .ant-modal {
+    max-width: calc(100vw - 21px) !important;
+    height: auto !important;
+}
+
+}
+
+.business-checkbox-list .ant-checkbox-wrapper{
+    padding: 8px !important;
+}
+
+.vehicle-list{
+    .business-checkbox-list{
+        height: 255px !important;
+        overflow: scroll;
+    }
+}
+
+.admin-spare-part{
+    .form-row{
+        @include mixin.breakpoint(sm){
+            gap:16px !important;
+        }
+        
+    }
+   .form-footer{
+    gap: 8px !important;
+      .notes{
+        gap:8px;
+        margin-top:0px !important;
+      }
+    margin-top: 12px;
+        @include mixin.breakpoint(sm){
+            margin-top: 0px;
+        }
+   }
+   .footer {
+    display: grid;
+    flex-direction: column;
+    gap:36px;
+
+   }
+   .form{
+    @include mixin.breakpoint(sm){
+        gap:16px !important
+    }
+   }
+   @media screen and (min-width:1151px) and (max-width: 1400px) {
+        padding-left: 5rem !important;
+        padding-right: 5rem !important;
+    }
+}
+.form{
+    @include mixin.breakpoint(sm){
+        gap:16px !important
+    }
+   }
+
+.vendor-spare-part-form{
+    @media screen and (min-width:1151px) and (max-width: 1400px) {
+        padding-left: 5rem !important;
+        padding-right: 5rem !important;
+    }
+}

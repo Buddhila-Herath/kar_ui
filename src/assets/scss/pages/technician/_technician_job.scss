@@ -1,0 +1,1311 @@
+@use "../../abstracts/mixin";
+@use "../../abstracts/variable";
+
+.tech-widgets {
+  padding: 32px 16px;
+  display: block;
+
+  .widget-card-container {
+    margin-top: 16px;
+
+
+    @include mixin.breakpoint(sm) {
+      margin-top: 0px;
+      gap: 8px
+    }
+  }
+
+  @include mixin.breakpoint(sm) {
+    padding: 24px 16px;
+  }
+
+  @media (min-width: 1500px) and (max-width: 1515px) {
+    .react-datepicker-popper {
+      transform:translate(-18.4286px, 49.9048px) !important;
+    }
+  }
+
+  .no-border {
+    min-width: 100% !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    
+    .message{
+      font-size: 12px !important;
+    }
+    @include mixin.breakpoint(sm) {
+      display: block !important;
+      .card-header {
+        display: none !important;
+      }
+      .date-container{
+        margin-bottom: 8px ;
+      }
+     
+    }
+
+    .greeting {
+      display: flex !important;
+    }
+  }
+
+  .date-container {
+    display: flex !important;
+    justify-content: flex-end !important;
+
+    // margin-bottom: 16px;
+    .date {
+      padding: 8px 12px;
+      border: 1px solid variable.$gray-200;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #0B1426;
+      line-height: 24px;
+    }
+
+    input[type="date"] {
+      border: unset !important;
+      padding: 0px;
+      height: unset;
+    }
+
+    input[type="date"]:focus {
+      border: unset !important;
+      padding: 0px;
+      box-shadow: unset;
+    }
+
+    .datepicker .react-datepicker__day--selected {
+      background-color: #183571 !important;
+      color: #FFFFFF !important;
+      border-radius: 29px !important;
+      width: 245px !important;
+    }
+
+    @include mixin.breakpoint(sm) {
+      gap: 10px;
+    }
+
+    .react-datepicker {
+      right: 1rem;
+
+      .react-datepicker__day {
+        box-shadow: none !important;
+        color: #222;
+        margin: 1px !important;
+        line-height: 33px !important;
+        width: 33px !important;
+        height: 33px;
+        border-radius: 0.313rem;
+      }
+    }
+
+    .px-4 {
+      font-weight: 600;
+      height: 40px;
+      padding: 8px 12px !important;
+      box-sizing: border-box;
+      width: fit-content;
+      min-width: 247px;
+    }
+
+    .input-icon {
+      filter: brightness(.5) sepia(1) hue-rotate(200deg) saturate(4) brightness(.4);
+      height: 20px;
+      width: 20px;
+      top: 20px;
+    }
+  }
+}
+
+.tech-jobs {
+  padding: 32px 16px;
+  margin-top:24px;
+  @include mixin.breakpoint (sm){
+    margin-top: 16px ;
+  }
+
+  .job-header-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: unset;
+    flex-wrap: wrap;
+    gap: 16px;
+
+    @include mixin.breakpoint(sm) {
+      flex-direction: column;
+      align-items: flex-start;
+    
+      gap: 24px;
+    }
+  }
+
+  .job-count-section {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    h4 {
+      margin: 0;
+      font-size: 18px;
+      font-weight: 600;
+      color: #183571;
+
+      @include mixin.breakpoint(sm) {
+        font-size: 16px;
+      }
+    }
+  }
+
+  .search-filter-section {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: nowrap;
+    flex: 0 0 auto;
+
+    @include mixin.breakpoint(sm) {
+      width: 100%;
+      flex-direction: row-reverse;
+    }
+
+    @media (max-width: 360px) {
+      gap: 12px !important;
+    }
+
+    .search-wrapper {
+      width: 264px;
+      flex-shrink: 0;
+
+      @include mixin.breakpoint(sm) {
+        flex: 1;
+        min-width: 0;
+        width: auto;
+      }
+    }
+  }
+
+  // Override search box width specifically for technician jobs at 375px
+  .search-box {
+    @media (max-width: 375px) {
+      width: 224px !important;
+    }
+  }
+
+  .active-filters-section {
+    border: 1px solid #6b717d;
+    border-radius: 8px;
+    padding: 16px;
+
+
+    &.tech-applied-filters {
+      .applied-filters-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+
+        @include mixin.breakpoint(sm) {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 16px;
+        }
+      }
+
+      .applied-filters-left {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+        flex: 1;
+
+        @include mixin.breakpoint(sm) {
+          width: 100%;
+        }
+      }
+
+      .applied-filters-label {
+        font-size: 14px;
+        font-weight: 600;
+        color: #183571;
+        white-space: nowrap;
+        line-height: 20px;
+      }
+
+      .applied-filters-tags {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      .applied-filter-tag-date{
+        @include mixin.breakpoint(sm){
+          width: 100%;
+        }
+        @media screen and (max-width: 390px){
+          flex-direction: column;
+          align-items: flex-start !important;
+          position: relative;
+        }
+      }
+      .filter-tag-group {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        border: 1px solid #e0ebff;
+        border-radius: 12px;
+        padding: 4px 8px;
+
+        @include mixin.breakpoint(sm) {
+          flex-wrap: wrap;
+        }
+
+      }
+
+      .filter-tag-label {
+        font-size: 14px;
+        font-weight: 500;
+        color: #183571;
+        white-space: nowrap;
+        line-height: 20px;
+      }
+
+      .filter-tag-content {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        line-height: 24px;
+        @include mixin.breakpoint(sm){
+          gap: 4px;
+        }
+        span {
+          font-size: 16px;
+          font-weight: 500;
+          color: #0b1426;
+        }
+
+        .arrow-right-icon {
+          width: 16px;
+          height: 16px;
+          flex-shrink: 0;
+          margin: 0 !important;
+        }
+        .date-close-btn{
+          @media screen and (max-width: 390px){
+            position: absolute;
+            top: 8px;
+            right: 8px;
+          }
+        }
+      }
+
+      .filter-tag-items {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+
+      .filter-tag-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        border: 1px solid #e0ebff;
+        border-radius: 12px;
+        padding: 4px 8px;
+
+
+        span {
+          font-size: 16px;
+          font-weight: 500;
+          color: #0b1426;
+
+        }
+      }
+
+      .filter-close-btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 16px;
+        height: 16px;
+        flex-shrink: 0;
+
+        img {
+          width: 16px;
+          height: 16px;
+        }
+
+        @include mixin.breakpoint(sm) {
+          width: 14px;
+          height: 14px;
+
+          img {
+            width: 14px;
+            height: 14px;
+          }
+        }
+      }
+
+      .applied-filters-right {
+        flex-shrink: 0;
+
+        @include mixin.breakpoint(sm) {
+          width: 100%;
+        }
+      }
+
+      .clear-all-btn {
+        border: 1px solid #6b717d;
+        border-radius: 4px;
+        padding: 8px 12px;
+        height: 36px;
+        background: transparent;
+        font-size: 16px;
+        font-weight: 500;
+        color: #183571;
+        cursor: pointer;
+        white-space: nowrap;
+        transition: all 0.3s ease;
+
+        &:hover {
+          background-color: #f1f4f8;
+        }
+      }
+      .clear-all-btn-tech-job{
+        line-height: normal;
+      }
+    }
+  }
+
+  .filter-tag {
+    padding: 4px 12px;
+    background-color: #E0EBFF;
+    border-radius: 16px;
+    font-size: 12px;
+    color: #1D366F;
+
+    @include mixin.breakpoint(sm) {
+      font-size: 11px;
+      padding: 3px 10px;
+    }
+
+    .filter-close-btn {
+      margin-left: 8px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #1D366F;
+      font-size: 14px;
+      padding: 0;
+      line-height: 1;
+
+      @include mixin.breakpoint(sm) {
+        margin-left: 6px;
+        font-size: 12px;
+      }
+    }
+  }
+
+  .no-results-message {
+    padding: 20px;
+    text-align: center;
+    color: #666;
+
+    @include mixin.breakpoint(sm) {
+      padding: 16px;
+      font-size: 14px;
+    }
+  }
+
+  .date-filter-section {
+    .from-date {
+      .datepicker {
+        .react-datepicker-popper {
+          left: -36px !important;
+          right: auto !important;
+        }
+      }
+    }
+    
+    .to-picker {
+      .datepicker {
+        .react-datepicker-popper {
+          left: -36px !important;
+          right: auto !important;
+        }
+      }
+    }
+    
+    @media (max-width: 360px) {
+      .from-date,
+      .to-picker {
+        .datepicker {
+          .react-datepicker-popper {
+            left: 6px !important;
+            right: auto !important;
+          }
+        }
+      }
+    }
+    
+    @media (min-width: 361px) and (max-width: 767px) {
+      .from-date,
+      .to-picker {
+        .datepicker {
+          .react-datepicker-popper {
+            left: -1px !important;
+            right: auto !important;
+          }
+        }
+      }
+    }
+    
+    // @media (min-width: 1501px) {
+    //   .from-date,
+    //   .to-picker {
+    //     .datepicker {
+    //       .react-datepicker-popper {
+    //         left: -72px !important;
+    //         right: auto !important;
+    //       }
+    //     }
+    //   }
+    // }
+  }
+
+  
+  .tech-jobs-filter-wrapper ~ * .filter-pop,
+  .tech-jobs-filter-wrapper .filter-pop,
+  .search-filter-section .filter-pop {
+    height: 55dvh !important;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin: 0 !important;
+  }
+
+}
+
+.job-tab-header{
+  .tab-item {
+    gap:8px !important;
+  .tab-count{
+    padding: 0px 4px !important;
+  }
+}}
+
+  .tab-item {
+     @include mixin.breakpoint (sm){
+      padding:0px 8px !important ;
+      padding-bottom: 10px !important ;
+
+     }
+     @include mixin.breakpoint(xs){
+      padding: 12px 10px  !important;
+     }
+    h4,
+    h2 {
+      white-space: nowrap !important;
+    }
+  }
+  .main-tab{
+    @include mixin.breakpoint(sm){
+      padding-top: 12px  !important ;
+    }
+  }
+  .my-jobs-tab-header {
+    overflow: auto;
+    margin-top: 0px;
+    @include mixin.breakpoint(sm){
+      scrollbar-color: transparent transparent;
+    }
+  }
+
+  .tab-separator {
+    @include mixin.breakpoint(sm) {
+      height: 24px !important;
+     
+    }
+  }
+
+  .tech-job-card {
+    display: grid !important;
+
+    .box {
+      width: auto !important;
+    }
+
+    grid-template-columns: repeat(3, 1fr);
+
+    @include mixin.breakpoint(xxl) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .tab-content {
+    
+    gap: 16px;
+
+    @include mixin.breakpoint(sm) {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+    @include mixin.breakpoint(xxl) {
+      grid-template-columns: repeat(4, 1fr)!important;
+    }
+    .box {
+      color: #F8F8FF;
+      border-color: #C3DCF9;
+      padding: 16px;
+      border-radius: 8px;
+      // width: 32%;
+      text-decoration: none;
+
+      @include mixin.breakpoint(sm) {
+        width: 100%;
+      }
+
+  
+
+      .separator {
+        border-bottom: 0.5px dotted #6B717D;
+      }
+
+      .box-top {
+        .box-header{
+         margin-bottom: 0px !important;}
+        .box-body {
+          gap: 8px;
+          display: grid;
+        }
+      }
+    }
+
+    .tech-box-job-number {
+      color: #183571;
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .box-date {
+      background-color: #E4EAF2 !important;
+
+      .label {
+        font-size: 12px;
+        font-weight: 600;
+        color: #0B1426 !important;
+      }
+    }
+      .deadline-passed {
+        background-color: #FEE9E9 !important;
+
+        .label {
+          color: variable.$danger !important;
+      }
+    }
+
+    .entity {
+      margin-bottom: 0px !important;
+      border-bottom: unset !important;
+
+      @include mixin.breakpoint(sm) {
+        flex-direction: row;
+      }
+
+      .entity-badge {
+        padding: unset !important;
+
+        h6 {
+          color: #a20000 !important;
+          font-size: 14px;
+          font-weight: 700 !important;
+          margin: 0;
+        }
+      }
+
+      .entity-label {
+        font-size: 14px;
+        font-weight: 500;
+        color: #0B1426 !important;
+        min-width: unset !important;
+
+      }
+
+      .entity-value {
+        font-size: 14px;
+        font-weight: 500;
+        color: #0B1426 !important;
+        text-align: right;
+      }
+
+    }
+
+    .box-footer {
+      display: flex;
+      gap: 8px !important;
+      justify-content: space-between;
+      flex-wrap: wrap;
+
+      @include mixin.breakpoint(sm) {
+        gap: 4px !important;
+      }
+
+      button {
+        flex: 1 1 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 8px 12px;
+        gap: 10px;
+        height: 36px;
+        min-width: 0;
+
+        @media (min-width: 1200px) and (max-width: 1400px) {
+          justify-content: space-between;
+        }
+
+        @include mixin.breakpoint(sm) {
+          justify-content: space-between;
+        }
+      }
+
+      button:hover {
+        h5 {
+          color: #fff !important;
+          font-size: 14px;
+          font-weight: 600;
+        }
+
+        span {
+          color: #fff !important;
+          font-size: 12px;
+          font-weight: 500;
+        }
+      }
+
+      .complete-job {
+        border-radius: 4px;
+
+        h5 {
+          font-size: 16px;
+          font-weight: 500;
+        }
+
+        &:hover {
+          h5 {
+            color: #fff !important;
+            font-size: 16px;
+            font-weight: 500;
+          }
+
+        }
+
+        @include mixin.breakpoint(sm) {
+          justify-content: center;
+        }
+
+        @media (min-width: 1200px) and (max-width: 1400px) {
+          justify-content: center;
+        }
+      }
+
+      .total-service {
+        background-color: #F8F8FF !important;
+        border: 1px solid #5D88CC;
+        transition: all 0.3s ease;
+        min-width: fit-content;
+        pointer-events: none;
+
+        &:hover {
+          color: #0B1426 !important;
+        }
+
+        h5,
+        span {
+          color: #0B1426;
+          font-size: 12px;
+          font-weight: 500;
+          white-space: nowrap;
+        }
+
+        span {
+          line-height: 12px;
+          background-color: #30579D ;
+          color: #FFFFFF !important;
+          border-radius: 4px;
+          width: 24px;
+          height: 20px;
+          padding: 4px;
+        }
+      }
+
+      .available-service {
+        background-color: #D4E2FF !important;
+        border: unset !important;
+        transition: all 0.3s ease;
+        min-width: fit-content;
+        pointer-events: none;
+
+        &:hover {
+          color: #0B1426 !important;
+        }
+
+        h5,
+        span {
+          color: #0B1426;
+          font-size: 12px;
+          font-weight: 500;
+          white-space: nowrap;
+        }
+
+        span {
+          line-height: 12px;
+          background-color: #30579D !important;
+          color: #FFFFFF !important;
+          border-radius: 4px;
+          width: 24px;
+          height: 20px;
+          padding: 4px;
+        }
+      }
+
+    }
+
+    @include mixin.breakpoint(xl) {
+      .box-footer {
+        justify-content: space-between;
+      }
+    }
+  }
+
+.tech-job-cotainer {
+  .image-uploader-container{
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+  }
+  .upload-area{
+    padding:32px 16px !important;
+    @include mixin.breakpoint(sm) {
+      padding: 36px 16px!important;
+    }
+  }
+  
+  .additional-info{
+    gap:12px !important;
+  }
+
+
+  .job-img-save{
+    justify-content: flex-end;
+    @include mixin.breakpoint(sm) {
+      display: flex !important;
+    }
+    
+  .button-cancel,.button-submit{
+    width:106px !important;
+    white-space: nowrap;
+    @include mixin.breakpoint(sm) {
+      width: 153px !important;
+      margin-top: 0px !important;
+    }
+  }
+  }
+  .back-page {
+    img {
+      filter: brightness(0) saturate(100%) invert(6%) sepia(25%) saturate(2284%) hue-rotate(189deg) brightness(100%) contrast(98%);
+    }
+
+    h3 {
+      color: #0B1426;
+    }
+
+  }
+
+  .view-spare-header {
+    @include mixin.breakpoint(sm) {
+      padding-bottom: 0px !important;
+    }
+  }
+
+  .service-box {
+    padding: 12px 16px;
+    border: 1px solid #6999FC;
+    border-radius: 12px;
+    margin-bottom: 24px;
+    display: inline-flex;
+    align-items: center;
+    color: #626A7E;
+    gap: 8px;
+
+    @include mixin.breakpoint(sm) {
+      margin-bottom: 0px;
+    }
+
+    .status-dot {
+      width: 10px;
+      height: 10px;
+      background-color: #1D4FD6;
+      border-radius: 50%;
+
+    }
+  }
+
+  .special-note {
+    .detail-value {
+      @include mixin.breakpoint(sm) {
+        text-align: right;
+      }
+    }
+  }
+
+  .services-tab {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid #dcdcdc;
+    overflow-x: auto;
+  }
+
+  .tab-item {
+ 
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+    font-weight: 400;
+    cursor: pointer;
+    padding-bottom: 10px;
+    position: relative;
+    color: #0B1426;
+    white-space: nowrap;
+    transition: border-bottom 0.3s ease-in-out;
+  
+    &.active {
+      font-weight: 600;
+      color: #0B1426;
+      // box-shadow: inset 0 -4px 0 0 #183571;
+      
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -1.5px; 
+        height: 4px;
+        background-color: #183571;
+      }
+    }
+  }
+  
+
+  .count {
+    background-color: #5d8ad3;
+    color: white;
+    font-size: 14px;
+    padding: 0px 4px;
+    border-radius: 4px;
+    font-weight: 600;
+    height: 20px;
+    align-items: center;
+    display: flex;
+  }
+
+  .divider {
+    width: 1px;
+    height: 24px;
+    background-color: #ccc;
+    align-self: center;
+    margin-bottom: 10px;
+    
+    @include mixin.breakpoint(sm){
+      flex-shrink: 0;
+    }
+  }
+
+  .ant-table-content {
+    overflow: auto !important;
+  }
+
+  .job-service-table {
+    border: 1px solid #e4eaf2 !important;
+    border-radius: 11px !important;
+    box-shadow: none !important;
+    overflow: hidden !important;
+    position: relative;
+
+    .ant-table-container {
+      border-radius: 11px !important;
+      overflow: hidden !important;
+
+      &::before {
+        box-shadow: unset !important;
+      }
+    }
+
+    .ant-table {
+      border: none !important;
+      border-collapse: separate !important;
+      border-spacing: 0;
+      border-radius: 11px !important;
+    }
+
+    table {
+      z-index: 1 !important;
+      position: relative;
+      border-radius: 11px !important;
+      overflow: hidden;
+
+      th,
+      td {
+        text-shadow: none !important;
+        position: relative;
+        white-space: normal !important;
+        word-wrap: break-word !important;
+       
+      }
+     
+     
+    }
+
+    th {
+      color: #0b1426 !important;
+      font-weight: 500 !important;
+      font-size: 12px !important;
+    }
+
+    .ant-table-thead {
+      >tr>th {
+        background-color: #f8f8ff !important;
+        white-space: normal !important;
+
+        &:first-child {
+          box-shadow: unset;
+        }
+      }
+    }
+
+    .check {
+      color: #5d88cc !important;
+      white-space: normal !important;
+
+      &:hover {
+        color: #5d88cc !important;
+        text-decoration: underline !important;
+      }
+    }
+
+    .ant-table-cell-fix-right,
+    .ant-table-cell-fix-left {
+      width: 97px !important;
+      border-radius: 0 !important;
+      white-space: normal !important;
+
+      &::after {
+        box-shadow: inset -10px 0 8px -8px rgba(5, 5, 5, 0.16) !important;
+      }
+    }
+
+    .ant-table-cell-fix-left-last::after {
+      box-shadow: inset 10px 0 8px -8px rgba(5, 5, 5, 0.16) !important;
+    }
+
+    .no-sticky-shadow {
+
+      .ant-table-sticky-holder,
+      .ant-table-sticky-scroll {
+        box-shadow: none !important;
+        white-space: normal !important;
+      }
+    }
+    .ant-table-thead{
+      th{
+        color:#0B1426 !important;
+        size: 12px !important;
+        height: 44px !important;
+      }
+    }
+    
+    .ant-table-cell::before {
+      height: 0px !important;
+    }
+
+    .ant-table-cell {
+      white-space: normal !important;
+      word-break: break-word !important;
+      max-width: 200px;
+      width: fit-content !important;
+      color: #4E5569 !important;
+      height: 48px !important;
+      padding: 16px;
+    }
+
+    /* Mobile-only last column fix */
+    @include mixin.breakpoint(sm) {
+      .ant-table-container {
+        overflow-x: auto !important;
+
+        .ant-table {
+          min-width: calc(100% + 80px) !important;
+
+          /* Last column styling */
+          .ant-table-tbody>tr>td:last-child {
+            position: sticky !important;
+            right: 0 !important;
+            background: #fff !important;
+            z-index: 1 !important;
+            box-shadow: -2px 0 4px rgba(0, 0, 0, 0.08) !important;
+          }
+
+
+          .ant-table-thead>tr>th:last-child {
+            position: sticky !important;
+            right: 0 !important;
+            background: #f8f8ff !important;
+            z-index: 2 !important;
+          }
+        }
+      }
+
+
+      .ant-table-content {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+
+        &::-webkit-scrollbar {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .job-null {
+    display: inline-block;
+    width: 100px;
+    height: 28px;
+    background-color: #F1F4F8;
+    border-radius: 16px;
+  }
+
+  // _job-status.scss
+  .job-status-change {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: 500;
+    min-width: 80px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.5;
+    width: 100px;
+    height: 28px;
+    border-radius: 16px;
+    color: #676E7E;
+  }
+}
+
+
+.claim-service-button {
+  background-color: #1D4FD6 !important; // Temporary debug color
+  align-items: center !important;
+  border-radius: 16px !important;
+  height: 28px;
+  width: 93px;
+  display: flex;
+  border: none !important;
+  font-size: 12px;
+  white-space: nowrap;
+  padding: 4px 16px !important;
+  text-align: center;
+  justify-content: center;
+  color: #fff;
+
+
+  &::after {
+    content: " (unclaimed state)";
+    display: none;
+  }
+
+  &.claimed-service {
+    background-color: #6B717D !important;
+
+
+    &::after {
+      content: " (claimed state)";
+    }
+  }
+
+  &.claimed-service-disabled {
+    background-color: #F1F4F8 !important;
+    color: #999FAC;
+    font-weight: 600;
+
+    &::after {
+      content: " (claimed state)";
+    }
+  }
+}
+.card-mobile{
+  display: none;
+}
+@include mixin.breakpoint(sm) {
+  .card-mobile{
+    display: block;
+
+    .card-header-mob{
+     
+     
+
+      p{
+        color:#353F59;
+        margin-bottom: 8px;
+        font-size: 12px !important;
+        @include mixin.breakpoint(sm){
+          margin-bottom: 12px;
+        }
+      }
+    .greeting {
+      display: flex;
+      .p{
+        font-size: 12px !important;
+      }
+      .greeting-time {
+        color: variable.$black;
+        margin: 0;
+       
+      }
+     
+      .greeting-name {
+        color: variable.$primary;
+        margin: 0;
+      }
+
+      @include mixin.breakpoint(xl) {
+        display: flex;
+      }
+
+      @include mixin.breakpoint(lg) {
+        display: flex;
+      }
+
+      @include mixin.breakpoint(lmd) {
+        display: flex;
+      }
+
+      @include mixin.breakpoint(md) {
+        display: flex;
+      }
+    }
+  }
+}
+}
+
+.tech-empty{
+  left:0px;
+  transform: unset;
+}
+
+.tech-job-detail{
+  @include mixin.breakpoint(sm) {
+    gap:24px !important;
+  }
+}
+
+.pending-noti-box{
+  border: 1px solid #A20000;
+  padding:12px 16px;
+  border-radius: 12px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 16px;
+  .status-dot{
+    border-radius:50%;
+    height: 10px;
+    width: 10px;
+    background-color: #A20000 ;
+  }
+  .span{
+    font-size:14px;
+    font-weight: 500;
+    color: #A20000 ;
+  }
+  
+}
+
+.sub-head{
+  display: flex;
+  gap:2px;
+  .prio-badge-box{
+    background-color: #FEE9E9 !important;
+    color: #A20000 !important;
+    height: 36px;
+    min-width: -moz-fit-content;
+    min-width: fit-content;
+    border-radius: 4px;
+    padding: 0.5rem 0.75rem;
+  }
+  @include mixin.breakpoint(sm){
+    flex-direction: column;
+    gap:5px;
+    align-items: flex-end;
+  }
+}
+
+.view-job-btn button{
+  justify-content: center !important;
+ & button:hover h5 {
+  color: #fff !important;
+  font-weight: 600;
+ }
+}
+
+.service-tables-job{
+  gap:24px !important;
+  display: flex;
+  flex-direction: column;
+}
+
+.tech-job-card{
+  .box{
+    .box-top{
+      gap:16px !important;
+    }
+  }
+}
+.my-tab-item{
+  gap:8px !important
+}
+
+.tech-filter-mobile-btn{
+  display: none;
+  @include mixin.breakpoint(sm) {
+    display: inline-block;
+  }
+}
+.tech-filter-desktop{
+  display: inline-block;
+  @include mixin.breakpoint(sm) {
+    display: none;
+  }
+}
+.applied-filters-label-section{
+  @include mixin.breakpoint(sm){
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    button{
+      width: 84px !important;
+    }
+  }
+}
+.tech-jobs-filter-wrapper{
+  .datepicker__custom-datepicker{
+    font-weight: 400 !important;
+  }
+}

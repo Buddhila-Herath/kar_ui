@@ -1,0 +1,145 @@
+.paused-reason-dialog-down-container {
+    width: 764;
+    border-radius: 8px;
+    border-width: 1px;
+    padding: 16px;
+    top: 65px;
+    width: 100%;
+    border: 1px solid var(--Grey-500, #6B717D);
+    position: absolute;
+    background: var(--White, #FFFFFF);
+    z-index: 1;
+}
+
+.paused-reason-dialog-down-checkbox-container {
+    flex-direction: row;
+    align-items: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 13px;
+}
+
+.paused-reason-dialog-down-checkbox {
+    width: 500;
+    height: 500;
+    border: "1px solid #6B717D"
+}
+
+.paused-reason-dialog-down-label {
+    font-family: Figtree;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0%;
+    vertical-align: middle;
+    margin-left: 10px;
+    margin-top: 5px;
+    color: var(--Black, #0B1426);
+}
+
+.paused-reason-dialog-down-separator {
+    border: 1px solid var(--Grey-100, #E4EAF2);
+    border-width: 1px;
+}
+
+.paused-reason-dialog-down-list-button {
+    justify-content: space-between;
+}
+
+.paused-reason-dialog-down-list-title {
+    color: white;
+    margin-top: 5px;
+}
+
+.pr-footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+    flex-direction: column; 
+}
+
+.pr-footer-cancel-btn {
+    width: 50%;
+    height: 36px;
+    background-color: #F1F4F8;
+    color: #6B717D;
+    padding: 8px 6px;
+    border-radius: 4px;
+    display: grid;
+    align-content: center;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 600;
+    text-align: center;
+    border: none;
+}
+
+.pr-footer-save-btn {
+    width: 50%;
+    height: 36px;
+    background-color: #183571;
+    color: white;
+    padding: 8px 6px;
+    border-radius: 4px;
+    display: grid;
+    align-content: center;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 600;
+    text-align: center;
+    border: none;
+}
+
+.paused-reason-dialog-down-separator:first-child {
+    display: none !important;
+}
+
+.pr-footer-messages {
+    flex: 1 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-right: 16px;
+    text-align: center;
+    align-items: center;
+    padding-bottom: 15px;
+}
+
+.pr-footer-buttons {
+    display: flex;
+    gap: 12px;
+}
+
+.field-error, 
+.field-success {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.field-error h6,
+.field-success h6 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+@media (min-width: 769px) {
+    .pr-footer {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+    
+    .pr-footer-messages {
+        align-items: start;
+    }
+
+    .pr-footer-cancel-btn {
+        width: 76px;
+    }
+    
+    .pr-footer-save-btn {
+        width: 100px;
+    }
+}

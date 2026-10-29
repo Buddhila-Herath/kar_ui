@@ -1,0 +1,1106 @@
+@use "../../abstracts/mixin";
+
+//range tabs
+.date-navigation-tabs {
+    background: white;
+    padding: 24px 16px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 16px;
+    align-items: flex-start;
+    border: 1px solid #E9F3FF;
+
+    @include mixin.breakpoint(sm) {
+
+        flex-wrap: wrap;
+    }
+
+    .date-navigation-tabs-containers {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        align-items: center;
+
+        @include mixin.breakpoint(sm) {
+            flex-direction: column-reverse;
+            align-items: flex-start;
+            gap: 24px;
+        }
+
+
+        .date-range-picker {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            margin-bottom: 16px;
+            gap: 8px;
+
+            .date-range-display {
+                background: white;
+                border: 1px solid #E4EAF2;
+                border-radius: 6px;
+                padding: 8px 12px;
+                font-size: 14px;
+                font-weight: 500;
+                color: #0B1426;
+                min-width: 200px;
+                text-align: center;
+            }
+
+            .input-icon {
+                display: none !important;
+            }
+        }
+
+        .date-navigation-and-frequency {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .date-navigation {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+            cursor: pointer;
+
+            @include mixin.breakpoint(sm) {
+                justify-content: space-between;
+                gap: 69vw;
+            }
+
+            .nav-arrow {
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                img {
+                    width: 20px;
+                    height: 20px;
+                }
+
+                &.prev {
+                    img {
+                        width: 23px;
+                        height: 25px;
+                        color: #0B1426;
+                        margin-top: 1px;
+                    }
+                }
+
+                &.next {
+                    img {
+                        opacity: 0.2;
+                    }
+                }
+            }
+
+            .current-date {
+                font-size: 16px;
+                font-weight: 600;
+                color: #183571;
+                text-align: center;
+                white-space: nowrap;
+
+                @include mixin.breakpoint(sm) {
+                    position: absolute;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    z-index: 1;
+                    color: #0B1426;
+                }
+            }
+        }
+
+        .frequency-buttons {
+            display: flex;
+            gap: 8px;
+
+            @include mixin.breakpoint(sm) {
+                max-width: 100%;
+                overflow-x: auto;
+                overflow-y: hidden;
+                padding-bottom: 4px;
+                box-sizing: border-box;
+                height: auto;
+                min-height: 32px;
+                -webkit-overflow-scrolling: touch; // Smooth scrolling on iOS
+                scroll-behavior: smooth;
+
+                // Custom scrollbar styling for Chrome and Firefox
+                &::-webkit-scrollbar {
+                    height: 4px;
+                }
+
+                &::-webkit-scrollbar-track {
+                    background: #f1f1f1;
+                    border-radius: 2px;
+                    margin: 0 2px;
+                }
+
+                &::-webkit-scrollbar-thumb {
+                    background: #E9F3FF;
+                    border-radius: 2px;
+
+                    &:hover {
+                        background: #a8a8a8;
+                    }
+                }
+
+                // Firefox scrollbar styling
+                scrollbar-width: thin;
+                scrollbar-color: #E9F3FF #f1f1f1;
+            }
+
+            .frequency-btn {
+                padding: 4px 12px;
+                border: none;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #183571;
+                font-size: 14px;
+                font-weight: 500;
+                border-radius: 32px;
+                cursor: pointer;
+                transition: all 0.2s ease;
+                height: 28px;
+                white-space: nowrap; // Prevent text wrapping
+                flex-shrink: 0; // Prevent buttons from shrinking
+
+                &:hover {
+                    background-color: #FFFFFF;
+                }
+
+                &.active {
+                    background-color: #183571;
+                    color: #FFFFFF;
+                }
+
+                @include mixin.breakpoint(sm) {
+                    height: 32px;
+                    padding: 4px 12px;
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+
+    .charts-container {
+        display: flex;
+        width: 100%;
+        gap:16px;
+        height: 332px;
+
+        @include mixin.breakpoint(sm) {
+            flex-direction: column;
+            gap: 16px;
+            height: auto;
+        }
+
+        .estimate-status-widget {
+            background: white;
+            padding: 24px;
+            width: 56.7%;
+            border: 1px solid #E4EAF2;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+
+            @include mixin.breakpoint(sm) {
+                width: 100%;
+                height: 332px;
+            }
+
+            .widget-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                font-size: 18px;
+                font-weight: 700;
+                color: #0B1426;
+
+                @include mixin.breakpoint(sm) {
+                    flex-direction: column;
+                    align-items: flex-start;
+                    gap: 15px;
+                }
+
+                .widget-title {
+                    font-size: 18px;
+                    font-weight: 700;
+                    color: #0B1426;
+                    margin: 0;
+                }
+
+                .date-container {
+                    min-width: 200px;
+
+                    @include mixin.breakpoint(sm) {
+                        width: 100%;
+                    }
+                }
+            }
+
+            .chart-container {
+                min-height: 200px;
+
+                @include mixin.breakpoint(sm) {
+                    overflow-x: auto;
+                    overflow-y: hidden;
+
+                    // Custom scrollbar styling for mobile only
+                    &::-webkit-scrollbar {
+                        height: 6px;
+                    }
+
+                    &::-webkit-scrollbar-track {
+                        background: #f1f1f1;
+                        border-radius: 3px;
+                    }
+
+                    &::-webkit-scrollbar-thumb {
+                        background: #E9F3FF;
+                        border-radius: 3px;
+
+                        &:hover {
+                            background: #a8a8a8;
+                        }
+                    }
+
+                    // Firefox scrollbar styling
+                    scrollbar-width: thin;
+                    scrollbar-color: #E9F3FF #f1f1f1;
+                }
+
+                .loading-container {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    height: 200px;
+                    color: #6b7280;
+
+                    .loading-spinner {
+                        width: 32px;
+                        height: 32px;
+                        border: 3px solid #f3f4f6;
+                        border-top: 3px solid #3b82f6;
+                        border-radius: 50%;
+                        animation: spin 1s linear infinite;
+                        margin-bottom: 12px;
+                    }
+
+                    p {
+                        margin: 0;
+                        font-size: 14px;
+                    }
+                }
+
+                .horizontal-bar-chart {
+                    display: flex;
+                    flex-direction: column;
+                    height: 235px;
+                    width: 98%;
+
+                    .chart-y-axis {
+                        display: flex;
+                        align-items: center;
+                        margin-bottom: 10px;
+
+                        .axis-label {
+                            font-size: 12px;
+                            color: #6b7280;
+                            font-weight: 500;
+                        }
+                    }
+
+                    .chart-content {
+                        flex: 1;
+                        display: flex;
+                        flex-direction: column;
+                        position: relative;
+
+                        @include mixin.breakpoint(sm) {
+                            min-width: 400px;
+                        }
+
+                        .chart-bars {
+                            flex: 1;
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: space-around;
+
+                            .bar-row {
+                                display: flex;
+                                align-items: center;
+                                position: relative;
+                                z-index: 3;
+                                gap: 12px;
+
+                                .bar-label {
+                                    width: 52.3px;
+                                    font-size: 12px;
+                                    color: #0B1426;
+                                    font-weight: 500;
+                                    text-align: right;
+                                    white-space: nowrap;
+                                    flex-shrink: 0;
+
+                                    @include mixin.breakpoint(sm) {
+                                        font-size: 12px;
+                                    }
+                                }
+
+                                .bar-container {
+                                    flex: 1;
+                                    position: relative;
+                                    height: 12px;
+                                    border-radius: 4px;
+                                    overflow: visible;
+                                    z-index: 3;
+
+                                    .bar-fill {
+                                        height: 100%;
+                                        width: calc(var(--bar-width, 0%) - 3px);
+
+                                        border-radius: 4px;
+                                        transition: width 0.3s ease;
+                                        position: relative;
+                                        z-index: 4;
+
+                                        // // Hide bar when width is 0
+                                        // &:not([style*="--bar-width: 0%"]) {
+                                        //     width: max(calc(var(--bar-width, 0%) - 2%), 2%);
+
+                                        //     @include breakpoint(xxl) {
+                                        //         width: max(calc(var(--bar-width, 0%) - 1.2%), 1.2%);
+                                        //     }
+
+
+
+                                        //     @include breakpoint(xl) {
+                                        //         width: max(calc(var(--bar-width, 0%) - 2.3%), 2%);
+                                        //     }
+
+                                        // }
+
+
+                                        &.no-subtract {
+                                            width: calc(var(--bar-width, 0%) - 1.5px);
+                                        }
+
+                                        // For 3rd value onwards - subtract
+                                        &.subtract-width {
+                                            width: calc(var(--bar-width, 0%) - 3.8px);
+                                        }
+
+                                        &.approved {
+                                            background-color: #90A3F0;
+                                        }
+
+                                        &.pending {
+                                            background-color: #C0D8F0;
+                                        }
+
+                                        &.rejected {
+                                            background-color: #C0C9F0;
+                                        }
+                                    }
+
+                                    .rejected-fill {
+
+                                        // For first 2 values (20, 40) - don't subtract
+                                        &.no-subtract {
+                                            width: var(--bar-width, 0%);
+                                        }
+
+                                        // For 3rd value onwards - subtract
+                                        &.subtract-width {
+                                            width: calc(var(--bar-width, 0%) - 3.8px);
+                                        }
+                                    }
+
+                                    .bar-value {
+                                        position: absolute;
+                                        left: calc(var(--bar-width) + 12px);
+                                        top: 50%;
+                                        transform: translateY(-50%);
+                                        font-size: 14px;
+                                        font-weight: 500;
+                                        color: #676E7E;
+                                        z-index: 5;
+                                        white-space: nowrap;
+
+                                        &.above-bar {
+                                            left: var(--bar-width);
+                                            top: -18px;
+                                            transform: translateX(-108%);
+                                            color: #676E7E;
+                                            
+                                            // Alternative: Use right positioning for better control
+                                            // right: 0;
+                                            // left: auto;
+                                            // transform: translateX(50%);
+
+                                            // @include breakpoint(sm) {
+                                            //     left: calc(var(--bar-width) - 5px);
+
+                                            // }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        .x-axis-label {
+                            font-size: 12px;
+                            color: #999FAC;
+                            font-weight: 500;
+                            text-align: center;
+                            margin-top: 16px;
+                        }
+
+                        .chart-x-axis {
+
+                            position: relative;
+
+                            .axis-ticks {
+                                display: flex;
+                                justify-content: space-between;
+                                padding-left: 59px;
+                                position: relative;
+
+                                @include mixin.breakpoint(sm) {
+                                    padding-left: 58px;
+                                }
+
+
+                                .tick {
+                                    display: flex;
+                                    flex-direction: column;
+                                    align-items: center;
+                                    position: relative;
+                                    z-index: 2;
+                                    width: 10px;
+
+                                    // Grid line for each tick
+                                    &::before {
+                                        content: '';
+                                        position: absolute;
+                                        top: -174px;
+                                        left: 50%;
+                                        transform: translateX(-50%);
+                                        width: 1px;
+                                        height: 179px;
+                                        z-index: 1;
+                                    }
+
+                                    // Solid line for 0
+                                    &:first-child::before {
+                                        background-color: #E4EAF2;
+                                    }
+
+                                    // Dashed lines for others
+                                    &:not(:first-child)::before {
+                                        background-image: repeating-linear-gradient(to bottom,
+                                                #E4EAF2 0,
+                                                #E4EAF2 5px,
+                                                transparent 4px,
+                                                transparent 12px);
+                                    }
+
+                                    .tick-label {
+                                        font-size: 14px;
+                                        font-weight: 400;
+                                        color: #001523;
+                                        margin-top: 12px;
+
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    //EstimateStats
+
+
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+}
+
+// Date picker positioning and styling - overlay mode
+.date-navigation-tabs {
+    position: relative;
+
+    .date-picker-container {
+        position: absolute;
+        left: 18px;
+        z-index: 9999;
+        margin-top: 14px;
+
+        .react-datepicker__day--disabled {
+            color: #C5CCD8 !important;
+
+            &:hover {
+                background-color: transparent !important;
+                color: #C5CCD8 !important;
+            }
+        }
+
+        // Ensure disabled days never get background color on hover
+        .react-datepicker__week:hover .react-datepicker__day--disabled {
+            background-color: transparent !important;
+            color: #C5CCD8 !important;
+        }
+       
+        .input-icon {
+            display: none !important;
+        }
+
+        .react-datepicker {
+            box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.2), 0px 30px 70px 0px rgba(26, 34, 64, 0.15), 0px 0px 0px 1px rgba(136, 143, 170, 0.1) !important;
+            border-radius: 8px !important;
+            border: unset !important;
+            background-color: #F8F8FF !important;
+
+            @include mixin.breakpoint(sm) {
+                right: 0px;
+                left: 2.5rem;
+            }
+
+            @media (max-width: 390px) {
+                left: 1rem;
+            }
+
+            @media (max-width: 360px) {
+                left: -0.5rem !important;
+            }
+
+            .react-datepicker__day-name::first-letter{
+                font-size: 16px !important;
+            }
+
+        }
+
+        .react-datepicker__navigation {
+            margin-top: 10px;
+            margin-left: 5px;
+        }
+
+        .react-datepicker__navigation--next {
+            margin-right: 15px;
+        }
+
+        .react-datepicker__current-month {
+            padding-top: 0px !important;
+        }
+
+        .react-datepicker__navigation--previous {
+            left: 15px;
+        }
+
+        .react-datepicker__month-container {
+            border: unset !important;
+           gap: 12px !important;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+
+            .react-datepicker__day-names {
+                top: 0px;
+                margin-top: 2rem;
+                gap: 12px;
+            }
+
+            .react-datepicker__header {
+                padding: 24px !important;
+                padding-bottom: 0px !important;
+                color: #183571 !important;
+            }
+
+            .react-datepicker__month{
+                margin-top: 0px !important;
+            }
+
+        }
+
+        .react-datepicker__quarter-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            width: 338px !important;
+            padding: 24px !important;
+
+            @include mixin.breakpoint(sm) {
+                width: 100% !important;
+            }
+        }
+
+        // Custom quarterly picker styling
+        .react-datepicker__quarter-text {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: flex-start !important;
+            padding: 12px 24px !important;
+            border-radius: 4px !important;
+            border: none !important;
+            color: #0B1426 !important;
+            font-weight: 400 !important;
+            text-align: left !important;
+            width: 100% !important;
+            gap: 12px !important;
+            margin: 0 !important;
+            font-size: 16px !important;
+
+
+            &:last-child {
+                margin-bottom: 20px !important;
+            }
+
+            &:hover {
+                background-color: #E4EAF2 ;
+            }
+
+            &.react-datepicker__quarter--selected {
+                background-color: #183571 !important;
+                color: #FFFFFF !important;
+                font-weight: 600 !important;
+
+                &:hover {
+                    background-color: #183571 ;
+                    color: #FFFFFF ;
+                }
+            }
+
+           
+
+            .quarter-badge {
+                padding: 0px !important;
+                text-align: left !important;
+            }
+
+            &.react-datepicker__quarter--selected .quarter-badge {
+                background-color: #0F2A61 !important;
+                color: #FFFFFF !important;
+            }
+
+            .quarter-range {
+                font-weight: 500 !important;
+            }
+
+            .react-datepicker__quarter-wrapper {
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+            }
+
+
+        }
+
+        .react-datepicker__quarter-text--disabled{
+            color: #C5CCD8 !important;
+
+            &:hover {
+                background-color: unset !important;
+                color: #C5CCD8 !important;
+            }
+        }
+
+        .react-datepicker__quarter-text--selected {
+            background-color: #183571 !important;
+            color: #FFFFFF !important;
+        }
+    }
+
+
+    .year-picker {
+        .react-datepicker__year-text::first-letter{
+            font-size: 16px !important;
+        }
+
+        .react-datepicker__year--container {
+            border: 0px !important;
+            width: 350px !important;
+            @include mixin.breakpoint(sm) {
+                width: 100% !important;
+            }
+
+        }
+
+       
+
+        .react-datepicker {
+            border: 0px !important;
+            border-radius: 8px !important;
+            box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.2), 0px 30px 70px 0px rgba(26, 34, 64, 0.15), 0px 0px 0px 1px rgba(136, 143, 170, 0.1) !important;
+
+            @include mixin.breakpoint(sm) {
+                right: 0px;
+                left: -11px;
+            }
+
+            @media (max-width: 390px) {
+                left: -16px;
+            }
+
+            @media (max-width: 360px) {
+                left: -16px;
+            }
+
+        }
+
+        .react-datepicker__year-text {
+            padding: 12px 16px !important;
+            margin: 4px 0 !important;
+            border-radius: 6px !important;
+            border: none !important;
+            color: #0B1426 !important;
+            font-weight: 500 !important;
+            text-align: center !important;
+            width: 100% !important;
+            transition: all 0.2s ease !important;
+
+            &:hover {
+                background-color: #E4EAF2 ;
+            }
+
+            &.react-datepicker__year-text--selected {
+                background-color: #183571 !important;
+                color: #FFFFFF !important;
+
+                &:hover {
+                    background-color: #183571 ;
+                    color: #FFFFFF ;
+                }
+            }
+
+            &.react-datepicker__year-text--keyboard-selected {
+                background-color: #183571 !important;
+                color: #FFFFFF !important;
+            }
+        }
+
+        .react-datepicker__year-text--disabled{
+            color: #C5CCD8 !important;
+
+            &:hover {
+                background-color: unset !important;
+                color: #C5CCD8 !important;
+            }
+        }
+
+        .react-datepicker__year-wrapper {
+            display: flex !important;
+            flex-wrap: wrap !important;
+            gap: 12px !important;
+            padding: 8px !important;
+        }
+
+        .react-datepicker__year {
+            display: flex !important;
+            flex-wrap: wrap !important;
+            gap: 4px !important;
+        }
+
+        .react-datepicker-year-header{
+            line-height: 37px !important;
+            font-size: 16px !important;
+           
+        }
+    }
+
+    .month-picker {
+        @include mixin.breakpoint(sm) {
+            position: relative !important;
+            left: 15px !important;
+        }
+
+       
+        @media (max-width: 360px) {
+            left: -10px !important;
+        }
+
+        .react-datepicker__header {
+            margin-bottom: 12px !important;
+           
+        }
+
+        .react-datepicker__month-container{
+            @include mixin.breakpoint(sm) {
+                width: 318px !important;
+            }
+        }
+
+        .react-datepicker {
+            border: unset !important;
+            border-radius: 8px !important;
+            box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.2), 0px 30px 70px 0px rgba(26, 34, 64, 0.15), 0px 0px 0px 1px rgba(136, 143, 170, 0.1) !important;
+
+            .react-datepicker__navigation {
+                margin-top: 10px;
+                margin-left: 1px;
+            }
+
+            @include mixin.breakpoint(sm) {
+                right: 0px;
+                left: -11px;
+            }
+
+            @media (max-width: 390px) {
+                left: -20px;
+            }
+
+            @media (max-width: 360px) {
+                left: -35px;
+            }
+        }
+
+        .react-datepicker__month-text {
+            padding: 12px 8px !important;
+            border-radius: 6px !important;
+            border: none !important;
+            color: #0B1426 !important;
+            font-weight: 400 !important;
+            text-align: center !important;
+            width: auto !important;
+            transition: all 0.2s ease !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            font-size: 16px;
+
+            &:hover {
+                background-color: #E4EAF2 ;
+            }
+
+            &.react-datepicker__month-text--selected {
+                background-color: #183571 !important;
+                color: #FFFFFF !important;
+                font-weight: 600 !important;
+            }
+
+            &.react-datepicker__month-text--keyboard-selected {
+                background-color: #183571 !important;
+                color: #FFFFFF !important;
+            }
+        }
+
+        .react-datepicker__month-wrapper {
+            display: grid !important;
+            grid-template-columns: repeat(3, 1fr) !important;
+            gap: 12px !important;
+            padding: 0px 24px !important;
+            width: 348px !important;
+            
+            // @media (max-width: 390px) {
+            //     left: -16px;
+            // }
+            
+            @media (max-width: 360px) {
+                width: 344px !important; 
+            }
+
+
+            &:last-child {
+                padding-bottom: 24px !important;
+            }
+        }
+
+        .react-datepicker__month {
+            display: contents !important;
+        }
+
+        .react-datepicker__header {
+            width: 350px !important;
+            color: #183571 !important;
+            font-size: 16px !important;
+        }
+
+        .react-datepicker__month-text--disabled{
+            color: #C5CCD8 !important;
+
+            &:hover {
+                background-color: unset !important;
+                color: #C5CCD8 !important;
+            }
+        }
+
+
+    }
+
+    .daily-picker{
+        @include mixin.breakpoint(sm) {
+            position: relative !important;
+            left: 11px !important;
+        }
+
+        @media (max-width: 360px) {
+            left: 22px !important;
+        }
+    }
+    
+    // Custom weekly picker styling for dashboard
+    .week-picker {
+
+        @include mixin.breakpoint(sm) {
+            position: relative !important;
+            left: 9px !important;
+        }
+
+        @media (max-width: 360px) {
+            left: 21px !important;
+        }
+
+        .react-datepicker__day-name::first-letter{
+            font-size: 16px !important;
+        }
+
+        .react-datepicker {
+            border: unset !important;
+            border-radius: 8px !important;
+            box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.2), 0px 30px 70px 0px rgba(26, 34, 64, 0.15), 0px 0px 0px 1px rgba(136, 143, 170, 0.1) !important;
+        }
+
+        .react-datepicker__navigation {
+            margin-left: 0px;
+        }
+
+        .react-datepicker__month-container {
+            border: unset !important;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+
+            .react-datepicker__day-names {
+                top: 0px !important;
+
+                position: relative !important;
+            }
+        }
+
+        .react-datepicker__day {
+            padding: 8px !important;
+            border-radius: 6px !important;
+            border: none !important;
+            color: #0B1426 !important;
+            font-weight: 500 !important;
+            text-align: center !important;
+            width: auto !important;
+            min-width: 32px !important;
+            height: 32px !important;
+            transition: all 0.2s ease !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+
+            &:hover {
+                background-color: #E4EAF2 ;
+            }
+
+            &.react-datepicker__day--selected {
+                background-color: #183571 !important;
+                color: #FFFFFF !important;
+            }
+
+            &.react-datepicker__day--keyboard-selected {
+                background-color: #183571 !important;
+                color: #FFFFFF !important;
+            }
+
+            &.react-datepicker__day--in-selecting-range {
+                background-color: #183571 !important;
+                color: #FFFFFF !important;
+            }
+
+            &.react-datepicker__day--in-range {
+                background-color: #183571 !important;
+                color: #FFFFFF !important;
+            }
+        }
+
+        .react-datepicker__day--keyboard-selected{
+            &:hover {
+                background-color: #183571 !important;
+                color: #FFFFFF !important;
+            }
+        }
+        .react-datepicker__week {
+            display: flex !important;
+            justify-content: space-between !important;
+            gap: 4px !important;
+            padding: 4px 8px !important;
+            transition: all 0.2s ease !important;
+
+            @include mixin.breakpoint(sm) {
+                gap: 2px !important;
+            }
+
+            &:hover {
+                .react-datepicker__day {
+                    background-color: #E4EAF2 ;
+                    color: #0B1426 ;
+                }
+            }
+
+
+        }
+
+        .react-datepicker__day-names {
+            display: flex !important;
+            justify-content: space-between !important;
+            gap: 9px !important;
+            margin-top: 2rem !important;
+            position: relative !important;
+            top: 0 !important;
+        }
+
+        .react-datepicker__day-name {
+            margin: 2px !important;
+            width: auto !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            font-weight: 600 !important;
+            color: #183571 !important;
+            font-size: 12px !important;
+        }
+
+        .react-datepicker__day--disabled {
+            color: #C5CCD8 !important;
+
+            &:hover {
+                background-color: unset !important;
+                color: #C5CCD8 !important;
+            }
+        }
+
+        // Week hover effect only when aria-selected="true"
+        .react-datepicker__week:hover .react-datepicker__day[aria-selected="true"] {
+            background-color: #E4EAF2;
+            color: #0B1426;
+        }
+
+        .react-datepicker__day--keyboard-selected[aria-selected="true"]:hover {
+            background-color: #183571 !important;
+            color: #FFFFFF !important;
+        }
+    }
+
+}

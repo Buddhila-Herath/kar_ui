@@ -1,0 +1,31 @@
+@use "../abstracts/mixin";
+@use "../abstracts/variable";
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  font-weight: variable.$font-weight-500;
+  line-height: 24px;
+  margin-bottom: 16px;
+
+  &_link {
+    color: variable.$primary-500;
+    text-decoration: none;
+  }
+
+  &_separator {
+    margin: 0 5px;
+    width: 24px;
+    height: 24px;
+  }
+
+  &_link--active {
+    color: variable.$primary-400;
+    text-decoration: none;
+  }
+
+  @include mixin.breakpoint(sm){
+    display: none ;
+  }
+}

@@ -1,0 +1,599 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="x-apple-disable-message-reformatting" />
+    <title>Invoice Details</title>
+    <style type="text/css">
+        @page {
+          size: A4;
+          margin: 40mm 0 25mm 0;
+
+
+          @top-center {
+            content: element(header);
+          }
+
+          @bottom-center {
+            content: element(footer);
+          }
+
+          counter-increment: page;
+        }
+
+        * {
+          margin: 0;
+          padding: 0;
+        }
+
+        body {
+          font-family: 'Figtree', serif;
+          background-color: transparent;
+        }
+
+        .container {
+          margin: auto;
+          border-radius: 8px;
+          background-color: transparent;
+          overflow: hidden;
+          page-break-before: always;
+        }
+
+        .header {
+          position: running(header);
+          align-items: center;
+          padding: 23px 70px;
+          background-color: #f1f4f8;
+          margin-bottom: 10mm;
+        }
+
+        .headerTable {
+          width: 100%;
+          border: none;
+        }
+
+        .logo {
+          align-items: left;
+        }
+
+        .logo > img {
+          width: auto;
+          height: 20mm;
+        }
+
+        .header > .details {
+          text-align: right;
+        }
+
+        .header-address-title {
+          color: #0b1426;
+          font-size: 14px;
+          line-height: 20px;
+        }
+
+        .header-address-details {
+          color: #6b717d;
+          font-size: 10px;
+          line-height: 14px;
+        }
+
+        .footer {
+          position: running(footer);
+          text-align: center;
+          font-size: 10px;
+        }
+
+        .pageNumber:before {
+          content: counter(page);
+        }
+
+        .totalPages:before {
+          content: counter(pages);
+        }
+
+        .pagination {
+          padding: 15px;
+        }
+
+        .copyright {
+          background-color: #f3f5f9;
+          padding: 8px;
+          line-height: 20px;
+        }
+
+        .section-sub {
+          padding: 8px 0;
+          background-color: #f1f4f8;
+          text-align: center;
+          font-weight: 400;
+          font-size: 12px;
+          line-height: 16px;
+        }
+
+        .section-title .heading {
+          color: #183571;
+          font-weight: 400;
+        }
+
+        .section-title span {
+          color: #0b1426;
+          padding: 10px;
+          font-size: 12px;
+        }
+
+        .quote-info {
+          align-items: center;
+        }
+
+        .details {
+          width: 100%;
+        }
+
+        .details td {
+          padding: 5px;
+        }
+
+        .invoice-to {
+          font-size: 12px;
+          width: 50%;
+          align-items: left;
+         vertical-align: top
+        }
+
+        .invoice-to strong {
+          font-weight: 500;
+          color: #0b1426;
+          margin-bottom: 4px;
+            line-height: 16px;
+            margin-left: 2px;
+        }
+
+
+        .quote-details {
+          width: 100%;
+          text-align: right;
+          font-size: 12px;
+          font-weight: 400;
+        }
+
+        .quote-details strong {
+          font-weight: 500;
+          color: #0b1426;
+          line-height: 20px;
+        }
+
+
+        .quote-details span {
+          font-size: 10px;
+          font-weight: 700;
+          text-align: right;
+          color: #353f59;
+          display: inline-block;
+        }
+
+        .quote-date {
+          color: #6b717d !important;
+          font-weight: 400 !important;
+          font-size: 10px !important;
+          line-height: 16px;
+          width: 60px;
+          word-wrap: anywhere;
+          margin-left: 3px;
+        }
+
+        .details-no {
+          color: #0b1426;
+          text-align: center;
+          font-size: 12px;
+          font-weight: 500;
+          line-height: 20px;
+        }
+
+        .details-no span {
+          color: #353f59;
+        }
+
+        .stripe-div {
+          padding: 15px 70px;
+        }
+
+        .stripe-table {
+          width: 100%;
+        }
+
+        .quote-title {
+          padding: 10px;
+          text-align: center;
+          background-color: #f1f4f8;
+          color: #183571;
+          font-size: 12px;
+          margin-top: 20px;
+          font-weight: 500;
+        }
+
+        .table-container {
+          width: 100%;
+        }
+
+        .table-container table {
+          width: 100%;
+          padding: 15px 70px;
+          border-collapse: collapse;
+          border-spacing: 0 10px;
+          border-collapse: separate;
+        }
+
+        .table-container table tr {
+          margin-bottom: 20px;
+        }
+
+        .table-container th {
+          padding: 12px;
+          text-align: left;
+          text-transform: uppercase;
+          line-height: 20px;
+          font-weight: 700;
+          color: #0b1426;
+          white-space: nowrap;
+          font-size: 12px;
+        }
+
+        .table-container td {
+          background-color: #f9f9f9;
+          margin-bottom: 10px;
+          padding: 10px;
+          font-size: 12px;
+          color: #0b1426;
+          white-space: normal; /* Allows text to wrap */
+          word-wrap: break-word; /* Breaks long words to fit inside the cell */
+          word-break: break-word; /* Ensures long words will break to avoid overflow */
+        }
+
+        .td-name {
+          font-weight: 400;
+        }
+
+        .td-normal {
+          font-weight: 400;
+        }
+
+        .td-right {
+          text-align: right;
+          width: 70px;
+        }
+
+        .td-bold {
+          font-weight: 700;
+        }
+
+        .total {
+          text-align: right;
+          font-size: 10px;
+          font-weight: 400;
+          line-height: 16px;
+          color: #353f59;
+          padding: 8px 70px;
+        }
+
+        .total span {
+          color: #183571 !important;
+          font-size: 16px !important;
+          min-width: 40px;
+          display: inline-block;
+        }
+
+        .ivoice-details {
+          padding: 0px 70px;
+          margin-top: 3rem;
+          page-break-inside: avoid;
+        }
+
+        .table-deiv {
+          margin-bottom: 0;
+         }
+
+        .invoice-box {
+          border: 1px solid #c3dcf9;
+          border-radius: 8px;
+          padding: 15px;
+          background-color: #f8f8ff;
+          line-height: 20px;
+        }
+
+        .invoice-box p {
+          margin: 5px 0;
+          font-size: 14px;
+        }
+
+        .bold {
+          font-weight: 400;
+          color: #4e5569;
+          font-size: 12px;
+        }
+
+        .bold-number {
+          font-weight: 700 !important;
+          color: #0b1426 !important;
+          font-size: 18px !important;
+        }
+
+        .bold-text {
+          font-size: 12px !important;
+        }
+
+        .sub {
+          color: #0b1426 !important;
+        }
+
+        .right-number {
+          float: right;
+          font-size: 14px;
+          font-weight: 400;
+          color: #4e5569;
+        }
+
+        .sub-bold {
+          color: #0b1426;
+          font-weight: 700;
+          font-size: 12px;
+        }
+
+        .comments {
+          margin-top: 20px;
+          line-height: 15px;
+        }
+
+        .comments span {
+          color: #0b1426;
+          font-size: 12px;
+          font-weight: 500;
+        }
+
+        .comments p {
+          color: #676e7e;
+          font-weight: 400;
+          font-size: 10px;
+          margin: 0px;
+          margin-top: 10px;
+        }
+
+        .quote-details p {
+          margin: 0;
+          line-height: 1.5;
+        }
+        .name {
+          width: 80px;
+          white-space: nowrap;
+        }
+        .created-by {
+          display: flex;
+          align-items: flex-start;
+          justify-content: flex-end;
+        }
+        .invoice-date{
+          color: #6b717d !important;
+          font-weight: 400 !important;
+          font-size: 10px !important;
+          line-height: 16px;
+          word-wrap: anywhere;
+          margin-left: 3px;
+          display: grid;
+          gap: 4px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+    <!-- Header Section -->
+    <div class="header">
+        <table class="headerTable">
+            <tr>
+                <td style="width: 50%; align-items: left">
+                    <div class="logo">
+                        <img
+                                th:src="'data:image/png;base64,' + ${vendorLogo}"
+                                alt="Vendor Logo"
+                        />
+                    </div>
+                </td>
+                <td style="width: 50%; text-align: right">
+                    <div class="details">
+                        <p
+                                class="header-address-title"
+                                th:text="${vendorBusinessName}"
+                        ></p>
+                        <p class="header-address-details">
+                            <span th:text="${businessAddress}">fghjk</span><br />
+                            <span th:text="${vendorWebsite}">vhjk</span><br />
+                            <span th:text="${vendorTelephone}">vhbjk</span>
+                        </p>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Footer Section -->
+    <div class="footer">
+        <div class="pagination">
+            Page <span class="pageNumber"></span> of
+            <span class="totalPages"></span>
+        </div>
+        <div class="copyright">
+            Copyrights &copy;
+            <span th:text="${currentYear}"></span> KARSTATION.COM All Rights Reserved
+        </div>
+    </div>
+
+    <!-- Content Section -->
+    <div class="section-sub">
+        <div class="section-title">
+            <span class="heading">Service Quote/Estimate</span><br />
+            <span th:text="${quoteType} + '/Estimate'"></span>
+        </div>
+    </div>
+
+    <div class="quote-info stripe-div">
+        <table class="details stripe-table">
+            <tr>
+                <td
+                        class="invoice-to">
+                    <strong>Quote To:</strong>
+                    <p class="quote-dates invoice-date">
+                        <span th:text="${customerName}">fghjkl</span><br />
+                    </p>
+                </td>
+                <td class="quote-details">
+                    <strong>Quote Details</strong>
+                    <p>
+                        <span class="name">Quote ID: </span>
+                        <span class="quote-date" th:text="${quoteId}">fghjk</span>
+                    </p>
+                    <p>
+                        <span class="name">Quote Create date: </span>
+                        <span class="quote-date" th:text="${quoteCreatedDate}">fghj</span>
+                    </p>
+                    <p>
+                        <span class="name">Due date: </span>
+                        <span class="quote-date" th:text="${quoteDueDate}">fghj</span>
+                    </p>
+                    <p class="created-by">
+                        <span class="name">Quote Created by: </span>
+                        <span class="quote-date " th:text="${quoteCreatedBy}">vbnm</span>
+                    <p style=" color: #6b717d !important; font-size:10px;" th:text="${quoteLast}">fghjfgh</p>
+                    </p>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="quote-info stripe-div" style="background-color: #f1f4f8">
+        <table class="details-no stripe-table">
+            <tr>
+                <td style="text-align: left; width: 33%">
+                    <span>Vehicle:</span>
+                    <span style="color: #0b1426; font-weight:400px !important;" th:text="${vehicleModel}">vghjhhjj</span
+                    >
+                </td>
+                <td style="text-align: center; width: 33%">
+                    <span>Reg No:</span>
+                    <span style="color: #0b1426;font-weight:400px !important;" th:text="${vehicleRegNo}">ghjklkk</span
+                    >
+                </td>
+                <td style="text-align: right; width: 33%">
+                    <span>Job Type:</span>
+                    <span style="color: #0b1426;font-weight:400px !important;" th:text="${jobType}">ghjkkkk</span>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Quote Spare part details -->
+
+    <h3 class="quote-title">Spare Parts Quote</h3>
+
+    <div class="table-container">
+        <table>
+            <thead>
+            <tr style="font-weight: 500;">
+                <th style="font-weight: 500;">CATEGORY</th>
+                <th style="font-weight: 500;">PART NAME</th>
+                <th style="font-weight: 500;">QUANTITY</th>
+                <th style="font-weight: 500;">UNIT PRICE (RS.)</th>
+                <th style="font-weight: 500;">TOTAL (RS.)</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="item : ${quoteParts}">
+                <td class="td-name" th:text="${item.category}">cvhjk</td>
+                <td class="td-normal" th:text="${item.partsName}">fghj</td>
+                <td class="td-normal" th:text="${item.quantity}">TYUJ</td>
+                <td class="td-normal td-right" th:text="${item.unitCost}">vbjk</td>
+                <td class="td-bold td-right" style="font-weight:500" th:text="${item.totalPartCost}">gfhj</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <p class="total">
+        TOTAL AMOUNT: <span style="font-weight:500"th:text="${partTotalAmount}">hgjkl</span>
+    </p>
+
+    <!-- Quote Service details -->
+    <h3 class="quote-title">Service Quote</h3>
+
+    <div class="table-container">
+        <div class="table-deiv">
+            <table>
+                <thead>
+                <tr>
+                    <th style="font-weight: 500;">CATEGORY</th>
+                    <th style="font-weight: 500;">SERVICE NAME</th>
+                    <th style="font-weight: 500;">HOURS</th>
+                    <th style="font-weight: 500;">HOURLY RATE (RS.)</th>
+                    <th style="font-weight: 500;">TOTAL (RS.)</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="item : ${quoteServices}">
+                    <td class="td-name td-normal" th:text="${item.serviceCategory}">fghjk</td>
+                    <td class="td-normal" th:text="${item.serviceName}">gfhjk</td>
+                    <td class="td-normal" th:text="${item.hours}">fghj</td>
+                    <td
+                            class="td-normal td-right"
+                            th:text="${item.hourlyRate}"
+                    ></td>
+                    <td
+                            class="td-bold td-right"
+                            th:text="${item.totalServiceCost}"
+                    ></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <p class="total">
+            TOTAL AMOUNT:  <span style="font-weight:500" th:text="${serviceTotalAmount}">dfghj</span>
+        </p>
+
+        <div class="ivoice-details" >
+            <div class="invoice-box">
+                <p>
+                    <span class="bold sub">SUBTOTAL(RS.)</span>
+                    <span class="right-number"  th:text="${subTotal}">gfhj</span>
+                </p>
+                <p>
+                    <span class="bold">DISCOUNT</span>
+                    <span class="sub-bold" th:text="${discountPercentage}">ertyu</span
+                    ><span class="sub-bold"></span>
+                    <span class="right-number" th:text="${discountAmount}">ertyu</span>
+                </p>
+                <p>
+                    <span class="bold">TAX</span>
+                    <span class="sub-bold" th:text="${taxPercentage}">erty</span
+                    ><span class="right-number" th:text="${taxAmount}">erty</span>
+                </p>
+                <br />
+                <p>
+                    <span class="bold-number bold-text">FINAL AMOUNT (RS.)</span>
+                    <span
+                            style="font-weight: 560; color:#0b1426;"
+                            class="right-number "
+                            th:text="${finalAmount}"
+                    >fghjkl</span>
+                </p>
+            </div>
+
+            <div class="comments">
+                <p><span>COMMENTS</span></p>
+                <p th:text="${comments}">fghjk</p>
+                <p>
+                    Thank you for trusting us with your vehicle’s parts and services.
+                    We appreciate your business and look forward to serving you again!
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

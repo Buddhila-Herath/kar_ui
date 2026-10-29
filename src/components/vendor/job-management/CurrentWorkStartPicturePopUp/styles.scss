@@ -1,0 +1,167 @@
+.current-work-modal .ant-modal-content {
+  border-radius: 8px;
+  overflow: hidden;
+  padding: 16px;
+}
+
+.current-work-modal .ant-modal-body {
+  // max-height: 80vh;
+  overflow-y: auto;
+  
+}
+
+.current-work-modal__header {
+  border-bottom: 1px solid #c5ccd8;
+  .modal-title {
+    font-family: Figtree;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: 0%;
+    color: #183571;
+    margin-bottom: 12px;
+  }
+
+  .select-images-label {
+    font-family: Figtree;
+    font-weight: 600;
+    font-size: 14px;
+    color: #183571;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+}
+
+.ant-modal-close-x {
+  color: #183571;
+}
+
+.current-work-first-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+  min-height: 200px;
+  // background-color: pink;
+
+  @media screen and (max-width: 768px) {
+    padding: 16px 8px;
+  }
+
+  .react-transform-wrapper .transform-component-module_wrapper__SPB86  {
+    width: 100% !important;
+  }
+}
+
+.current-work-footer__checkbox {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.current-work-second-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 0px;
+  padding: 12px 3px;
+  border: 1px solid #183571;
+  border-radius: 8px;
+  // background-color: skyblue;
+
+  @media screen and (max-width: 768px) {
+    padding: 16px 36px;
+  }
+
+  .check-box-wrapper-download-option {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    .check-box-wrapper {
+      display: flex;
+      align-items: center;
+      // background-color: red;
+      gap: 10px;
+
+      .p-checkbox {
+        width: 18px !important;
+        height: 18px !important;
+      }
+
+      .p-checkbox-input {
+        width: 100% !important;
+        height: 100% !important;
+      }
+
+      .check-box-label {
+        font-family: Figtree;
+        font-weight: 400;
+        font-size: 14px;
+        color: #0b1426;
+      }
+
+      .p-checkbox-box {
+        display: none !important;
+      }
+    }
+
+    .cancel-select {
+      background: transparent;
+      border: none;
+      color: #183571;
+      font-family: Figtree;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .download-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      cursor: pointer;
+
+      .download-image-name {
+        font-family: Figtree;
+        font-weight: 700;
+        font-size: 14px;
+        color: #183571;
+      }
+    }
+  }
+}
+
+/* Footer */
+.current-work-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0 0 0;
+
+  .current-file-name {
+    font-family: Figtree;
+    font-weight: 400;
+    font-size: 14px;
+    color: #0b1426;
+  }
+
+  .download-btn {
+    background: #183571;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 16px;
+    font-weight: 500;
+    font-size: 16px;
+    cursor: pointer;
+    width: 105px;
+    height: 40px;
+  }
+}
+.current-work-modal{
+  .desktop-view{
+    padding: 0 72px !important;
+  }
+}

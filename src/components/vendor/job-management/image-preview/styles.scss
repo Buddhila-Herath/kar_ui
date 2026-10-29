@@ -1,0 +1,203 @@
+.car-modal .ant-modal-content {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.car-popup-modal__header {
+  border-bottom: 1px solid #e8e8e8;
+  .modal-title {
+    font-family: Figtree;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: 0%;
+    color: #183571;
+  }
+}
+
+.ant-modal-close-x {
+  color: #183571;
+}
+
+.car-swiper-wrapper {
+  margin-top: 0;
+}
+
+.car-view-container {
+  height: 200px;
+  overflow: hidden;
+  margin: 20px 0 0 0;
+  position: relative;
+
+  @media screen and (max-width: 768px) {
+    margin: unset;
+  }
+
+  .car-rotate-360 {
+    height: 100px;
+    width: 255px;
+    margin: auto;
+
+    @media screen and (max-width: 768px) {
+      width: 70%;
+    }
+  }
+
+  .car-rotate-360 .rotate-viewer-360 {
+    width: 100% !important;
+    height: 200px !important;
+    z-index: 999;
+  }
+
+  .square-car-bg {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) rotateX(64deg) translateZ(-55px) rotateZ(-1deg)
+      rotateY(3deg) rotate(-8deg);
+    height: 129px;
+    bottom: 64px;
+    width: 300px;
+    border-radius: 50%;
+    border: 2px solid #b9b9ba;
+    border-top: none;
+
+    @media screen and (max-width: 768px) {
+      width: 90%;
+      left: 50%;
+      bottom: 44px;
+      height: 100px;
+      transform: translateX(-50%) rotateX(60deg) translateZ(-20px) rotate(-1deg);
+    }
+  }
+
+  .v360-viewer-container {
+    height: 200px;
+    width: 100%;
+    margin: auto;
+  }
+
+  .square-viewer-container {
+    width: 354px;
+    height: 28px;
+    display: flex;
+    margin: auto;
+  }
+
+  .click-arrow-icon {
+    position: absolute;
+    z-index: 1;
+    width: 20px;
+    bottom: 44px;
+    height: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    span {
+      display: flex;
+      font-family: Figtree;
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 20px;
+      text-align: center;
+    }
+  }
+}
+
+.car-popup-modal__footer {
+  display: flex;
+  width: 100%;
+  min-height: 116px;
+  padding: 10px 40px;
+  margin-top: 10px;
+  justify-content: space-between;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    padding: 0px;
+    gap:12px;
+  }
+}
+
+.desktop {
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+  @media screen and (min-width: 769px) {
+    display: block;
+  }
+}
+
+.mobile {
+  @media screen and (max-width: 768px) {
+    display: block;
+  }
+
+  @media screen and (min-width: 769px) {
+    display: none;
+  }
+}
+
+.columns-container {
+  gap: 12px;
+  
+}
+
+.columns-container ol {
+  margin: 0 !important;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.column-item {
+  display: flex;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  border-radius: 4px;
+  gap: 8px;
+}
+
+.item-space {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.item-label {
+  font-family: Figtree;
+  font-size: 12px;
+  line-height: 20px;
+  font-weight: 600;
+  color: #000000;
+  // @media screen and (max-width: 768px) {
+  //   padding:12px;
+  // }
+}
+
+/* Cancel button styling */
+.car-modal {
+  .ant-modal-close {
+    top: 16px;
+    right: 16px;
+  }
+}
+
+.car-modal {
+  .add-modal-section {
+    display: flex;
+    justify-content: flex-end;
+    border-top: 1px solid #c5ccd8;
+    margin-top: 12px;
+    padding-top: 24px;
+  }
+
+  .pop-cancel-btn {
+    margin-right: 0;
+  }
+}

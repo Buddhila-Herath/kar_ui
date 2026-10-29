@@ -1,0 +1,228 @@
+@use "../abstracts/mixin";
+@use "../abstracts/variable";
+
+.header-container {
+  width: 100%;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  // overflow: hidden;
+  top: 0;
+  z-index: 10;
+  padding: 1rem 3.75rem 1rem 2rem;
+  background-color: variable.$white;
+  border-bottom: 1px solid #e4eaf2;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 64px;
+    background-image: url(#{variable.$assetsPath}/header-bg.svg);
+    background-size: cover;
+    background-position: top;
+    opacity: 0.9;
+
+    @include mixin.breakpoint(sm) {
+      height: 92px;
+    }
+  }
+
+  @include mixin.breakpoint(lmd) {
+    padding: 2rem 1.25rem;
+  }
+
+  @include mixin.breakpoint(md) {
+    padding: 2rem 1.25rem;
+  }
+
+  @include mixin.breakpoint(sm) {
+    height: 92px;
+    padding: 0 2rem;
+    z-index: 10;
+  }
+}
+
+.left-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  img {
+    display: none;
+
+    @include mixin.breakpoint(lmd) {
+      display: block;
+      cursor: pointer;
+      z-index: 9;
+    }
+
+    @include mixin.breakpoint(md) {
+      display: block;
+      cursor: pointer;
+      z-index: 9;
+    }
+
+    @include mixin.breakpoint(sm) {
+      display: block;
+      cursor: pointer;
+      z-index: 9;
+    }
+  }
+
+  .date-and-time-container {
+    display: flex;
+    align-items: center;
+
+    @include mixin.breakpoint(sm) {
+      display: none;
+    }
+
+    .logo-icon {
+      display: none;
+      width: 36px;
+      height: 42px;
+      margin-right: 0.5rem;
+
+      @include mixin.breakpoint(lmd) {
+        display: block;
+      }
+
+      @include mixin.breakpoint(md) {
+        display: block;
+      }
+    }
+
+    .date-container {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      padding-right: 0.5rem;
+
+      .date-sub-container {
+        display: flex;
+        align-items: center;
+        gap: 0.375rem;
+      }
+    }
+
+  .time-container {
+    display: flex;
+    align-items: baseline;
+    height: 2rem;
+    gap: 0.375rem;
+    padding-left: 0.5rem;
+    border-left: 1px solid #9da4b1;
+  }
+
+    .day,
+    .month,
+    .year,
+    .time {
+      font-size: variable.$font-size-xl;
+      font-weight: 700;
+      line-height: 2rem;
+      color: variable.$primary;
+    }
+  
+    .weekday,
+    .period {
+      font-size: 1.125rem;
+      font-weight: 500;
+      line-height: 1.5rem;
+      color: variable.$primary;
+    }
+  }
+}
+
+.profile-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  @include mixin.breakpoint(sm) {
+    margin-left: auto;
+  }  
+
+  .profile-photo-container{
+    display: flex;
+    gap:8px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .notification-icon {
+    display: flex !important;
+    align-items: center;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+
+    .notification-count {
+      display: flex;
+      align-items: center;
+      font-weight: 500;
+
+      img {
+        width: 24px;
+        height: 24px;
+        filter: brightness(0) saturate(100%) invert(14%) sepia(23%)
+          saturate(5923%) hue-rotate(209deg) brightness(101%) contrast(91%);
+      }
+    }
+
+    .ant-badge-dot {
+      width: 10px;
+      height: 10px;
+      background-color: variable.$primary-300;
+    }
+
+    @include mixin.breakpoint(md) {
+      display: none;
+    }
+  }
+
+  .profile-info-container {
+    display: flex;
+    flex-direction: column;
+
+    .profile-name {
+      font-size: variable.$font-size-md;
+      font-weight: 700;
+      line-height: 1.5rem;
+      text-align: left;
+      color: variable.$primary;
+        
+      @include mixin.breakpoint(sm) {
+       max-width: 150px;
+       white-space: nowrap;
+       align-items: center;
+       overflow: hidden;
+       text-overflow: ellipsis;
+      }
+    }
+
+    .profile-role {
+      font-size: variable.$font-size-sm;
+      font-weight: 600;
+      line-height: 1.25rem;
+      text-align: left;
+      color: #6B717D;
+    }
+
+    @include mixin.breakpoint(sm) {
+      align-items: flex-start;
+    }
+  }
+
+  .profile-photo {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+}

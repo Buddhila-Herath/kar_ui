@@ -1,0 +1,271 @@
+.zoom-image {
+  max-width: 100%;
+  max-height: 420px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Selection controls styling */
+.select-mode-controls {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.select-all-control {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+  margin-bottom: 0; /* override global label margin */
+  .ant-checkbox-wrapper{
+    padding: 0px !important;
+  }
+}
+
+/* Unchecked border color only */
+.select-all-control .ant-checkbox .ant-checkbox-inner {
+  border-color: #183571 !important;
+}
+
+.select-all-control input[type="checkbox"] {
+ accent-color: #183571;
+  
+}
+
+
+.check-box-label {
+  font-family: Figtree;
+  font-weight: 700;
+  font-size: 14px;
+  color: #183571;
+}
+
+.cancel-select {
+  background: transparent;
+  border: none;
+  color: #183571;
+  font-family: Figtree;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  padding: 0; /* cancel global button padding */
+  height: auto; /* cancel global button height */
+  line-height: 1; /* keep inline, compact */
+}
+
+.cancel-select-container {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 24px;
+
+  img{
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+  }
+}
+
+.cancel-select:hover {
+  background: transparent !important;
+  color: #183571 !important;
+  border: none !important;
+}
+
+.transform-component-module_wrapper__SPB86  {
+  width: 100% !important;
+}
+
+.react-transform-component {
+  width: 100% !important;
+}
+
+/* Ensure the preview (embed) image is always centered */
+.zoom-image-embed-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.zoom-image-embed-content .react-transform-wrapper {
+  width: 100% !important;
+}
+
+.zoom-image-embed-content .react-transform-component {
+  width: 100% !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 320px; /* gives a consistent viewing area */
+  height: 460px;
+  @media screen and (max-width: 768px){
+    height: 200px;
+  }
+}
+
+.download-zoom-row-container {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column-reverse;
+    gap: 12px;
+    align-items: flex-start; /* left align children on mobile */
+  }
+  .select-images-trigger {
+    display: flex;
+    flex: 1 1 auto; /* allow underline to stretch to the right */
+    align-items: flex-end;
+    gap: 6px;
+    cursor: pointer;
+
+    /* Mobile: align to left */
+    @media screen and (max-width: 768px) {
+      align-self: flex-start;
+      flex: 0 0 auto;
+      justify-content: flex-start;
+    }
+
+    img {
+      width: 24px;
+      height: 24px;
+    }
+    
+    span {
+      font-weight: 700;
+      font-size: 14px;
+      color: #183571;
+      line-height: unset;
+      margin-top: 5px;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+  
+    
+  }
+
+}
+
+.zoom-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* center controls horizontally */
+  width: 240px;
+  padding: 12px 0;
+  // background-color: #fff;
+  user-select: none;
+  
+
+  @media screen and (max-width: 768px) {
+    width: 75%;
+    align-self: center; /* ensure centered within column layout */
+    justify-content: center;
+    margin: 0 auto;
+  }
+}
+
+.zoom-btn {
+  display: flex;
+  justify-content: center;
+  width: 20px;
+  height: 30px;
+  font-size: 20px;
+  align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #183571;
+
+  &:hover {
+    background: none;
+    border: none;
+    color: #183571;
+  }
+}
+
+.zoom-track {
+  position: relative;
+  width: 500px;
+  height: 6px;
+  background: #c3dcf9;
+  border-radius: 3px;
+  margin: 0 10px;
+}
+
+.zoom-filled {
+  position: absolute;
+  height: 6px;
+  background: #183571;
+  left: 0;
+  border-radius: 3px;
+}
+
+.zoom-thumb {
+  position: absolute;
+  top: -7px;
+  width: 20px;
+  height: 20px;
+  background: #183571;
+  border: 4px solid #5c85d6;
+  border-radius: 50%;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.zoom-image-modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.7);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.zoom-image-modal-content {
+  background: #fff;
+  padding: 24px;
+  border-radius: 8px;
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow: auto;
+}
+
+/* Ensure the zoom area fills and centers inside modal */
+.zoom-image-modal-content .react-transform-wrapper {
+  width: 100% !important;
+}
+
+.zoom-image-modal-content .react-transform-component {
+  width: 100% !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh; /* gives a stable centered area to zoom within */
+}
+
+.zoom-image-modal-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: transparent;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+ .downloading-text {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    color: #183571;
+  }

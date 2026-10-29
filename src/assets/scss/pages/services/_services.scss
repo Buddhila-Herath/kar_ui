@@ -1,0 +1,133 @@
+@use "../../abstracts/variable";
+
+
+.part-required {
+    padding: 4px 16px;
+    border-radius: 20px;
+    text-align: center;
+    display: inline-block;
+    width: 80px;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 20px;
+
+    &.yes {
+        border: 1px solid variable.$primary-500;
+        background-color: variable.$primary-50;
+        color: variable.$primary-500;
+    }
+
+    &.no {
+        border: 1px solid variable.$gray-500;
+        background-color: variable.$gray-50;
+        color: variable.$gray-500;
+    }
+}
+
+.brFloq {
+    white-space: break-spaces !important;
+}
+
+.hour-item{
+    flex-direction: column-reverse;
+}
+.service-hour{
+        input[type="number"] {
+            border: 1px solid #6B717D !important;        
+                &:hover {
+                border: 1px solid #6B717D !important;
+                }
+
+                &:focus {
+                border-color: #6B717D !important;
+                }    
+   
+
+   
+    }
+
+    display: flex;
+    flex-direction: row;
+    gap:8px;
+}
+
+input[type="number"] {
+  &:focus {
+    border-color: #6B717D !important;
+  }
+}
+
+
+.custom-number-input {
+  position: relative;
+  display: inline-block;
+  img,.arrowUp{
+    filter: brightness(0) saturate(100%) invert(46%) sepia(6%) saturate(231%) hue-rotate(180deg) brightness(94%) contrast(90%);
+    width:11px;
+    height: 20px;
+  }
+}
+
+.custom-number-input input[type="number"] {
+  width: 100%;
+  padding:0px 16px;
+  border: 1px solid #6B717D;
+  border-radius: 6px;
+  font-size: 16px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.custom-arrows {
+  position: absolute;
+  right: 4px;
+  top: 17px;
+  display: flex;
+  flex-direction: column;
+  height: 24px;
+  width: 24px;
+  justify-content: space-between;
+}
+
+.arrow {
+  width: 20px;
+  height: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  outline: none;
+  position: relative;
+}
+
+.arrow.up::after,
+.arrow.down::after {
+  content: "";
+  display: block;
+  margin: auto;
+  width: 0;
+  height: 0;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+}
+
+.arrow.up::after {
+  border-bottom: 7px solid #6b717d;
+}
+
+.arrow.down::after {
+  border-top: 7px solid #6b717d;
+}
+
+.arrowUp{
+ transform: rotate(180deg);
+}
+.hidden-notes{
+  display: none;
+}
+
+.tech-type {
+  .dropdown-button .selected-options .tag-container {
+    max-width: unset !important;
+  }
+}
